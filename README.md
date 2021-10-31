@@ -2,7 +2,7 @@
 
 GCC / Makefile example for the Gigadevices GD32E230x based on GD32E23x_Firmware_Library_V1.1.1.
 
-In particular, includes a GCC port of <b>startup_gd32e23x.s</b>, the <b>GD32E230.svd</b> file.
+In particular, includes a GCC port of <b>startup_gd32e23x.s</b>, and the <b>GD32E230.svd</b> file.
 
 Blinks LED on Port B1.
 
