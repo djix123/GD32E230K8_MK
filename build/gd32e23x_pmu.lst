@@ -1,0 +1,984 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gd32e23x_pmu.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.pmu_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	pmu_deinit
+  18              		.arch armv8-m.base
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	pmu_deinit:
+  25              	.LFB66:
+  26              		.file 1 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c"
+   1:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+   2:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \file    gd32e23x_pmu.c
+   3:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief   PMU driver
+   4:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+   5:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \version 2019-02-19, V1.0.0, firmware for GD32E23x
+   6:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \version 2019-05-06, V1.0.1, firmware for GD32E23x
+   7:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \version 2020-11-25, V1.0.2, firmware for GD32E23x
+   8:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \version 2020-12-12, V1.1.0, firmware for GD32E23x
+   9:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \version 2021-03-30, V1.1.1, firmware for GD32E23x
+  10:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+  11:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  12:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*
+  13:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     Copyright (c) 2021, GigaDevice Semiconductor Inc.
+  14:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  15:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  16:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** are permitted provided that the following conditions are met:
+  17:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  18:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  19:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****        list of conditions and the following disclaimer.
+  20:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  21:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****        this list of conditions and the following disclaimer in the documentation 
+  22:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****        and/or other materials provided with the distribution.
+  23:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  24:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****        may be used to endorse or promote products derived from this software without 
+  25:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****        specific prior written permission.
+  26:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  27:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  28:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  29:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  30:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  31:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  32:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 2
+
+
+  33:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  34:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  35:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  36:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** OF SUCH DAMAGE.
+  37:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+  38:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  39:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** #include "gd32e23x_pmu.h"
+  40:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  41:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+  42:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      reset PMU register
+  43:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  none
+  44:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+  45:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+  46:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+  47:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_deinit(void)
+  48:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+  27              		.loc 1 48 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  49:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* reset PMU */
+  50:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     rcu_periph_reset_enable(RCU_PMURST);
+  36              		.loc 1 50 5 view .LVU1
+  37 0002 40F21C40 		movw	r0, #1052
+  38 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  39              	.LVL0:
+  51:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     rcu_periph_reset_disable(RCU_PMURST);
+  40              		.loc 1 51 5 view .LVU2
+  41 000a 40F21C40 		movw	r0, #1052
+  42 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  43              	.LVL1:
+  52:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+  44              		.loc 1 52 1 is_stmt 0 view .LVU3
+  45              		@ sp needed
+  46 0012 10BD     		pop	{r4, pc}
+  47              		.cfi_endproc
+  48              	.LFE66:
+  50              		.section	.text.pmu_lvd_select,"ax",%progbits
+  51              		.align	1
+  52              		.global	pmu_lvd_select
+  53              		.syntax unified
+  54              		.code	16
+  55              		.thumb_func
+  56              		.fpu softvfp
+  58              	pmu_lvd_select:
+  59              	.LVL2:
+  60              	.LFB67:
+  53:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  54:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+  55:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      select low voltage detector threshold
+  56:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  lvdt_n:
+  57:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 3
+
+
+  58:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_0: voltage threshold is 2.1V
+  59:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_1: voltage threshold is 2.3V
+  60:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_2: voltage threshold is 2.4V
+  61:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_3: voltage threshold is 2.6V
+  62:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_4: voltage threshold is 2.7V
+  63:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_5: voltage threshold is 2.9V
+  64:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_6: voltage threshold is 3.0V
+  65:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LVDT_7: voltage threshold is 3.1V
+  66:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+  67:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+  68:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+  69:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_lvd_select(uint32_t lvdt_n)
+  70:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+  61              		.loc 1 70 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		.loc 1 70 1 is_stmt 0 view .LVU5
+  66 0000 30B5     		push	{r4, r5, lr}
+  67              	.LCFI1:
+  68              		.cfi_def_cfa_offset 12
+  69              		.cfi_offset 4, -12
+  70              		.cfi_offset 5, -8
+  71              		.cfi_offset 14, -4
+  71:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* disable LVD */
+  72:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+  72              		.loc 1 72 5 is_stmt 1 view .LVU6
+  73              		.loc 1 72 13 is_stmt 0 view .LVU7
+  74 0002 47F20003 		movw	r3, #28672
+  75 0006 C4F20003 		movt	r3, 16384
+  76 000a 1C68     		ldr	r4, [r3]
+  77 000c 1025     		movs	r5, #16
+  78 000e AC43     		bics	r4, r5
+  79 0010 1C60     		str	r4, [r3]
+  73:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* clear LVDT bits */
+  74:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDT;
+  80              		.loc 1 74 5 is_stmt 1 view .LVU8
+  81              		.loc 1 74 13 is_stmt 0 view .LVU9
+  82 0012 1C68     		ldr	r4, [r3]
+  83 0014 E022     		movs	r2, #224
+  84 0016 9443     		bics	r4, r2
+  85 0018 1C60     		str	r4, [r3]
+  75:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* set LVDT bits according to lvdt_n */
+  76:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= lvdt_n;
+  86              		.loc 1 76 5 is_stmt 1 view .LVU10
+  87              		.loc 1 76 13 is_stmt 0 view .LVU11
+  88 001a 1968     		ldr	r1, [r3]
+  89 001c 0143     		orrs	r1, r0
+  90 001e 1960     		str	r1, [r3]
+  77:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* enable LVD */
+  78:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= PMU_CTL_LVDEN;
+  91              		.loc 1 78 5 is_stmt 1 view .LVU12
+  92              		.loc 1 78 13 is_stmt 0 view .LVU13
+  93 0020 1A68     		ldr	r2, [r3]
+  94 0022 2A43     		orrs	r2, r5
+  95 0024 1A60     		str	r2, [r3]
+  79:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 4
+
+
+  96              		.loc 1 79 1 view .LVU14
+  97              		@ sp needed
+  98 0026 30BD     		pop	{r4, r5, pc}
+  99              		.cfi_endproc
+ 100              	.LFE67:
+ 102              		.section	.text.pmu_ldo_output_select,"ax",%progbits
+ 103              		.align	1
+ 104              		.global	pmu_ldo_output_select
+ 105              		.syntax unified
+ 106              		.code	16
+ 107              		.thumb_func
+ 108              		.fpu softvfp
+ 110              	pmu_ldo_output_select:
+ 111              	.LVL3:
+ 112              	.LFB68:
+  80:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  81:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+  82:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      select LDO output voltage
+  83:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 these bits set by software when the main PLL closed
+  84:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  ldo_output:
+  85:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+  86:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LDOVS_LOW: LDO output voltage low mode
+  87:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LDOVS_HIGH: LDO output voltage high mode
+  88:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+  89:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+  90:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+  91:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_ldo_output_select(uint32_t ldo_output)
+  92:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 113              		.loc 1 92 1 is_stmt 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+  93:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LDOVS;
+ 118              		.loc 1 93 5 view .LVU16
+ 119              		.loc 1 93 13 is_stmt 0 view .LVU17
+ 120 0000 47F20003 		movw	r3, #28672
+ 121 0004 C4F20003 		movt	r3, 16384
+ 122 0008 1968     		ldr	r1, [r3]
+ 123 000a 034A     		ldr	r2, .L4
+ 124 000c 1140     		ands	r1, r2
+ 125 000e 1960     		str	r1, [r3]
+  94:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= ldo_output;
+ 126              		.loc 1 94 5 is_stmt 1 view .LVU18
+ 127              		.loc 1 94 13 is_stmt 0 view .LVU19
+ 128 0010 1A68     		ldr	r2, [r3]
+ 129 0012 0243     		orrs	r2, r0
+ 130 0014 1A60     		str	r2, [r3]
+  95:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 131              		.loc 1 95 1 view .LVU20
+ 132              		@ sp needed
+ 133 0016 7047     		bx	lr
+ 134              	.L5:
+ 135              		.align	2
+ 136              	.L4:
+ 137 0018 FF3FFFFF 		.word	-49153
+ 138              		.cfi_endproc
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 5
+
+
+ 139              	.LFE68:
+ 141              		.section	.text.pmu_lvd_disable,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	pmu_lvd_disable
+ 144              		.syntax unified
+ 145              		.code	16
+ 146              		.thumb_func
+ 147              		.fpu softvfp
+ 149              	pmu_lvd_disable:
+ 150              	.LFB69:
+  96:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+  97:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+  98:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      disable PMU lvd
+  99:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  none
+ 100:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 101:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 102:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 103:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_lvd_disable(void)
+ 104:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 151              		.loc 1 104 1 is_stmt 1 view -0
+ 152              		.cfi_startproc
+ 153              		@ args = 0, pretend = 0, frame = 0
+ 154              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155              		@ link register save eliminated.
+ 105:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* disable LVD */
+ 106:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+ 156              		.loc 1 106 5 view .LVU22
+ 157              		.loc 1 106 13 is_stmt 0 view .LVU23
+ 158 0000 47F20003 		movw	r3, #28672
+ 159 0004 C4F20003 		movt	r3, 16384
+ 160 0008 1A68     		ldr	r2, [r3]
+ 161 000a 1021     		movs	r1, #16
+ 162 000c 8A43     		bics	r2, r1
+ 163 000e 1A60     		str	r2, [r3]
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 164              		.loc 1 107 1 view .LVU24
+ 165              		@ sp needed
+ 166 0010 7047     		bx	lr
+ 167              		.cfi_endproc
+ 168              	.LFE69:
+ 170              		.section	.text.pmu_to_sleepmode,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	pmu_to_sleepmode
+ 173              		.syntax unified
+ 174              		.code	16
+ 175              		.thumb_func
+ 176              		.fpu softvfp
+ 178              	pmu_to_sleepmode:
+ 179              	.LVL4:
+ 180              	.LFB70:
+ 108:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 110:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      PMU work at sleep mode
+ 111:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  sleepmodecmd:
+ 112:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 113:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 114:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 6
+
+
+ 115:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 116:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 117:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 118:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_to_sleepmode(uint8_t sleepmodecmd)
+ 119:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 181              		.loc 1 119 1 is_stmt 1 view -0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* clear sleepdeep bit of Cortex-M23 system control register */
+ 121:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+ 186              		.loc 1 121 5 view .LVU26
+ 187              		.loc 1 121 14 is_stmt 0 view .LVU27
+ 188 0000 4EF60053 		movw	r3, #60672
+ 189 0004 CEF20003 		movt	r3, 57344
+ 190 0008 1A69     		ldr	r2, [r3, #16]
+ 191 000a 0421     		movs	r1, #4
+ 192 000c 8A43     		bics	r2, r1
+ 193 000e 1A61     		str	r2, [r3, #16]
+ 122:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* select WFI or WFE command to enter sleep mode */
+ 124:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(WFI_CMD == sleepmodecmd){
+ 194              		.loc 1 124 5 is_stmt 1 view .LVU28
+ 195              		.loc 1 124 7 is_stmt 0 view .LVU29
+ 196 0010 08B9     		cbnz	r0, .L8
+ 125:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFI();
+ 197              		.loc 1 125 9 is_stmt 1 view .LVU30
+ 198              		.syntax divided
+ 199              	@ 125 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 200 0012 30BF     		wfi
+ 201              	@ 0 "" 2
+ 202              		.thumb
+ 203              		.syntax unified
+ 204              	.L7:
+ 126:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }else{
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 128:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 129:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 205              		.loc 1 129 1 is_stmt 0 view .LVU31
+ 206              		@ sp needed
+ 207 0014 7047     		bx	lr
+ 208              	.L8:
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 209              		.loc 1 127 9 is_stmt 1 view .LVU32
+ 210              		.syntax divided
+ 211              	@ 127 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 212 0016 20BF     		wfe
+ 213              	@ 0 "" 2
+ 214              		.loc 1 129 1 is_stmt 0 view .LVU33
+ 215              		.thumb
+ 216              		.syntax unified
+ 217 0018 FCE7     		b	.L7
+ 218              		.cfi_endproc
+ 219              	.LFE70:
+ 221              		.section	.text.pmu_to_deepsleepmode,"ax",%progbits
+ 222              		.align	1
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 7
+
+
+ 223              		.global	pmu_to_deepsleepmode
+ 224              		.syntax unified
+ 225              		.code	16
+ 226              		.thumb_func
+ 227              		.fpu softvfp
+ 229              	pmu_to_deepsleepmode:
+ 230              	.LVL5:
+ 231              	.LFB71:
+ 130:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 131:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 132:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      PMU work at deepsleep mode
+ 133:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  ldo:
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LDO_NORMAL: LDO operates normally when pmu enter deepsleep mode
+ 136:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_LDO_LOWPOWER: LDO work at low power mode when pmu enter deepsleep mode
+ 137:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  deepsleepmodecmd:
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 139:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 140:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 142:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 143:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 144:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_to_deepsleepmode(uint32_t ldo,uint8_t deepsleepmodecmd)
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 232              		.loc 1 145 1 is_stmt 1 view -0
+ 233              		.cfi_startproc
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236              		.loc 1 145 1 is_stmt 0 view .LVU35
+ 237 0000 10B5     		push	{r4, lr}
+ 238              	.LCFI2:
+ 239              		.cfi_def_cfa_offset 8
+ 240              		.cfi_offset 4, -8
+ 241              		.cfi_offset 14, -4
+ 146:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* clear stbmod and ldolp bits */
+ 147:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~((uint32_t)(PMU_CTL_STBMOD | PMU_CTL_LDOLP));
+ 242              		.loc 1 147 5 is_stmt 1 view .LVU36
+ 243              		.loc 1 147 13 is_stmt 0 view .LVU37
+ 244 0002 47F20003 		movw	r3, #28672
+ 245 0006 C4F20003 		movt	r3, 16384
+ 246 000a 1C68     		ldr	r4, [r3]
+ 247 000c 0322     		movs	r2, #3
+ 248 000e 9443     		bics	r4, r2
+ 249 0010 1C60     		str	r4, [r3]
+ 148:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 149:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* set ldolp bit according to pmu_ldo */
+ 150:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= ldo;
+ 250              		.loc 1 150 5 is_stmt 1 view .LVU38
+ 251              		.loc 1 150 13 is_stmt 0 view .LVU39
+ 252 0012 1A68     		ldr	r2, [r3]
+ 253 0014 0243     		orrs	r2, r0
+ 254 0016 1A60     		str	r2, [r3]
+ 151:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 152:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* set sleepdeep bit of Cortex-M23 system control register */
+ 153:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+ 255              		.loc 1 153 5 is_stmt 1 view .LVU40
+ 256              		.loc 1 153 14 is_stmt 0 view .LVU41
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 8
+
+
+ 257 0018 4EF60053 		movw	r3, #60672
+ 258 001c CEF20003 		movt	r3, 57344
+ 259 0020 1A69     		ldr	r2, [r3, #16]
+ 260 0022 0420     		movs	r0, #4
+ 261              	.LVL6:
+ 262              		.loc 1 153 14 view .LVU42
+ 263 0024 0243     		orrs	r2, r0
+ 264 0026 1A61     		str	r2, [r3, #16]
+ 154:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****   
+ 155:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* select WFI or WFE command to enter deepsleep mode */
+ 156:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(WFI_CMD == deepsleepmodecmd){
+ 265              		.loc 1 156 5 is_stmt 1 view .LVU43
+ 266              		.loc 1 156 7 is_stmt 0 view .LVU44
+ 267 0028 49B9     		cbnz	r1, .L11
+ 157:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFI();
+ 268              		.loc 1 157 9 is_stmt 1 view .LVU45
+ 269              		.syntax divided
+ 270              	@ 157 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 271 002a 30BF     		wfi
+ 272              	@ 0 "" 2
+ 273              		.thumb
+ 274              		.syntax unified
+ 275              	.L12:
+ 158:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }else{
+ 159:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __SEV();
+ 160:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 161:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 162:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 163:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 164:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* reset sleepdeep bit of Cortex-M23 system control register */
+ 165:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+ 276              		.loc 1 165 5 view .LVU46
+ 277              		.loc 1 165 14 is_stmt 0 view .LVU47
+ 278 002c 4EF60053 		movw	r3, #60672
+ 279 0030 CEF20003 		movt	r3, 57344
+ 280 0034 1A69     		ldr	r2, [r3, #16]
+ 281 0036 0421     		movs	r1, #4
+ 282              	.LVL7:
+ 283              		.loc 1 165 14 view .LVU48
+ 284 0038 8A43     		bics	r2, r1
+ 285 003a 1A61     		str	r2, [r3, #16]
+ 166:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 286              		.loc 1 166 1 view .LVU49
+ 287              		@ sp needed
+ 288 003c 10BD     		pop	{r4, pc}
+ 289              	.LVL8:
+ 290              	.L11:
+ 159:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 291              		.loc 1 159 9 is_stmt 1 view .LVU50
+ 292              		.syntax divided
+ 293              	@ 159 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 294 003e 40BF     		sev
+ 295              	@ 0 "" 2
+ 160:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 296              		.loc 1 160 9 view .LVU51
+ 297              	@ 160 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 298 0040 20BF     		wfe
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 9
+
+
+ 299              	@ 0 "" 2
+ 161:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 300              		.loc 1 161 9 view .LVU52
+ 301              	@ 161 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 302 0042 20BF     		wfe
+ 303              	@ 0 "" 2
+ 304              		.thumb
+ 305              		.syntax unified
+ 306 0044 F2E7     		b	.L12
+ 307              		.cfi_endproc
+ 308              	.LFE71:
+ 310              		.section	.text.pmu_to_standbymode,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	pmu_to_standbymode
+ 313              		.syntax unified
+ 314              		.code	16
+ 315              		.thumb_func
+ 316              		.fpu softvfp
+ 318              	pmu_to_standbymode:
+ 319              	.LVL9:
+ 320              	.LFB72:
+ 167:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 168:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 169:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      pmu work at standby mode
+ 170:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  standbymodecmd:
+ 171:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 172:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 173:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 174:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 175:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 176:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 177:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_to_standbymode(uint8_t standbymodecmd)
+ 178:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 321              		.loc 1 178 1 view -0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              		.loc 1 178 1 is_stmt 0 view .LVU54
+ 326 0000 10B5     		push	{r4, lr}
+ 327              	.LCFI3:
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 4, -8
+ 330              		.cfi_offset 14, -4
+ 179:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* switch to IRC8M clock as system clock, close HXTAL */
+ 180:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS; 
+ 331              		.loc 1 180 5 is_stmt 1 view .LVU55
+ 332              		.loc 1 180 14 is_stmt 0 view .LVU56
+ 333 0002 41F20403 		movw	r3, #4100
+ 334 0006 C4F20203 		movt	r3, 16386
+ 335 000a 1A68     		ldr	r2, [r3]
+ 336 000c 0321     		movs	r1, #3
+ 337 000e 8A43     		bics	r2, r1
+ 338 0010 1A60     		str	r2, [r3]
+ 181:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     RCU_CTL0 &= ~RCU_CTL0_HXTALEN;    
+ 339              		.loc 1 181 5 is_stmt 1 view .LVU57
+ 340              		.loc 1 181 14 is_stmt 0 view .LVU58
+ 341 0012 41F20003 		movw	r3, #4096
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 10
+
+
+ 342 0016 C4F20203 		movt	r3, 16386
+ 343 001a 1A68     		ldr	r2, [r3]
+ 344 001c 0D49     		ldr	r1, .L16
+ 345 001e 0A40     		ands	r2, r1
+ 346 0020 1A60     		str	r2, [r3]
+ 182:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 183:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* set sleepdeep bit of Cortex-M23 system control register */
+ 184:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+ 347              		.loc 1 184 5 is_stmt 1 view .LVU59
+ 348              		.loc 1 184 14 is_stmt 0 view .LVU60
+ 349 0022 4EF60053 		movw	r3, #60672
+ 350 0026 CEF20003 		movt	r3, 57344
+ 351 002a 1969     		ldr	r1, [r3, #16]
+ 352 002c 0424     		movs	r4, #4
+ 353 002e 2143     		orrs	r1, r4
+ 354 0030 1961     		str	r1, [r3, #16]
+ 185:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 186:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* set stbmod bit */
+ 187:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= PMU_CTL_STBMOD;
+ 355              		.loc 1 187 5 is_stmt 1 view .LVU61
+ 356              		.loc 1 187 13 is_stmt 0 view .LVU62
+ 357 0032 47F20003 		movw	r3, #28672
+ 358 0036 C4F20003 		movt	r3, 16384
+ 359 003a 1968     		ldr	r1, [r3]
+ 360 003c 0222     		movs	r2, #2
+ 361 003e 1143     		orrs	r1, r2
+ 362 0040 1960     		str	r1, [r3]
+ 188:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         
+ 189:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* reset wakeup flag */
+ 190:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= PMU_CTL_WURST;
+ 363              		.loc 1 190 5 is_stmt 1 view .LVU63
+ 364              		.loc 1 190 13 is_stmt 0 view .LVU64
+ 365 0042 1A68     		ldr	r2, [r3]
+ 366 0044 2243     		orrs	r2, r4
+ 367 0046 1A60     		str	r2, [r3]
+ 191:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 192:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     /* select WFI or WFE command to enter standby mode */
+ 193:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(WFI_CMD == standbymodecmd){
+ 368              		.loc 1 193 5 is_stmt 1 view .LVU65
+ 369              		.loc 1 193 7 is_stmt 0 view .LVU66
+ 370 0048 08B9     		cbnz	r0, .L14
+ 194:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFI();
+ 371              		.loc 1 194 9 is_stmt 1 view .LVU67
+ 372              		.syntax divided
+ 373              	@ 194 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 374 004a 30BF     		wfi
+ 375              	@ 0 "" 2
+ 376              		.thumb
+ 377              		.syntax unified
+ 378              	.L13:
+ 195:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }else{
+ 196:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 197:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 198:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 199:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 379              		.loc 1 199 1 is_stmt 0 view .LVU68
+ 380              		@ sp needed
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 11
+
+
+ 381 004c 10BD     		pop	{r4, pc}
+ 382              	.L14:
+ 196:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         __WFE();
+ 383              		.loc 1 196 9 is_stmt 1 view .LVU69
+ 384              		.syntax divided
+ 385              	@ 196 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 386 004e 20BF     		wfe
+ 387              	@ 0 "" 2
+ 197:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 388              		.loc 1 197 9 view .LVU70
+ 389              	@ 197 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c" 1
+ 390 0050 20BF     		wfe
+ 391              	@ 0 "" 2
+ 392              		.loc 1 199 1 is_stmt 0 view .LVU71
+ 393              		.thumb
+ 394              		.syntax unified
+ 395 0052 FBE7     		b	.L13
+ 396              	.L17:
+ 397              		.align	2
+ 398              	.L16:
+ 399 0054 FFFFFEFF 		.word	-65537
+ 400              		.cfi_endproc
+ 401              	.LFE72:
+ 403              		.section	.text.pmu_wakeup_pin_enable,"ax",%progbits
+ 404              		.align	1
+ 405              		.global	pmu_wakeup_pin_enable
+ 406              		.syntax unified
+ 407              		.code	16
+ 408              		.thumb_func
+ 409              		.fpu softvfp
+ 411              	pmu_wakeup_pin_enable:
+ 412              	.LVL10:
+ 413              	.LFB73:
+ 200:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 201:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 202:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      enable wakeup pin
+ 203:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  wakeup_pin:
+ 204:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 one or more parameters can be selected which are shown as below:
+ 205:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN0: WKUP Pin 0 (PA0) 
+ 206:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN1: WKUP Pin 1 (PC13), only supported in GD32E230 devices 
+ 207:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN5: WKUP Pin 5 (PB5) 
+ 208:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN6: WKUP Pin 6 (PB15) 
+ 209:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 210:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 211:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 212:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_wakeup_pin_enable(uint32_t wakeup_pin)
+ 213:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 414              		.loc 1 213 1 is_stmt 1 view -0
+ 415              		.cfi_startproc
+ 416              		@ args = 0, pretend = 0, frame = 0
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418              		@ link register save eliminated.
+ 214:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CS |= wakeup_pin;
+ 419              		.loc 1 214 5 view .LVU73
+ 420              		.loc 1 214 12 is_stmt 0 view .LVU74
+ 421 0000 47F20403 		movw	r3, #28676
+ 422 0004 C4F20003 		movt	r3, 16384
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 12
+
+
+ 423 0008 1A68     		ldr	r2, [r3]
+ 424 000a 0243     		orrs	r2, r0
+ 425 000c 1A60     		str	r2, [r3]
+ 215:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 426              		.loc 1 215 1 view .LVU75
+ 427              		@ sp needed
+ 428 000e 7047     		bx	lr
+ 429              		.cfi_endproc
+ 430              	.LFE73:
+ 432              		.section	.text.pmu_wakeup_pin_disable,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	pmu_wakeup_pin_disable
+ 435              		.syntax unified
+ 436              		.code	16
+ 437              		.thumb_func
+ 438              		.fpu softvfp
+ 440              	pmu_wakeup_pin_disable:
+ 441              	.LVL11:
+ 442              	.LFB74:
+ 216:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 217:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 218:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      disable wakeup pin
+ 219:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  wakeup_pin:
+ 220:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 one or more parameters can be selected which are shown as below:
+ 221:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN0: WKUP Pin 0 (PA0) 
+ 222:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN1: WKUP Pin 1 (PC13), only supported in GD32E230 devices 
+ 223:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN5: WKUP Pin 5 (PB5) 
+ 224:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_WAKEUP_PIN6: WKUP Pin 6 (PB15)
+ 225:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 226:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 227:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 228:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_wakeup_pin_disable(uint32_t wakeup_pin)
+ 229:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 443              		.loc 1 229 1 is_stmt 1 view -0
+ 444              		.cfi_startproc
+ 445              		@ args = 0, pretend = 0, frame = 0
+ 446              		@ frame_needed = 0, uses_anonymous_args = 0
+ 447              		@ link register save eliminated.
+ 230:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CS &= ~(wakeup_pin);
+ 448              		.loc 1 230 5 view .LVU77
+ 449              		.loc 1 230 12 is_stmt 0 view .LVU78
+ 450 0000 47F20403 		movw	r3, #28676
+ 451 0004 C4F20003 		movt	r3, 16384
+ 452 0008 1A68     		ldr	r2, [r3]
+ 453 000a 8243     		bics	r2, r0
+ 454 000c 1A60     		str	r2, [r3]
+ 231:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 455              		.loc 1 231 1 view .LVU79
+ 456              		@ sp needed
+ 457 000e 7047     		bx	lr
+ 458              		.cfi_endproc
+ 459              	.LFE74:
+ 461              		.section	.text.pmu_backup_write_enable,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	pmu_backup_write_enable
+ 464              		.syntax unified
+ 465              		.code	16
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 13
+
+
+ 466              		.thumb_func
+ 467              		.fpu softvfp
+ 469              	pmu_backup_write_enable:
+ 470              	.LFB75:
+ 232:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 233:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 234:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      enable backup domain write
+ 235:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  none
+ 236:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 237:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 238:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 239:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_backup_write_enable(void)
+ 240:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 471              		.loc 1 240 1 is_stmt 1 view -0
+ 472              		.cfi_startproc
+ 473              		@ args = 0, pretend = 0, frame = 0
+ 474              		@ frame_needed = 0, uses_anonymous_args = 0
+ 475              		@ link register save eliminated.
+ 241:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL |= PMU_CTL_BKPWEN;
+ 476              		.loc 1 241 5 view .LVU81
+ 477              		.loc 1 241 13 is_stmt 0 view .LVU82
+ 478 0000 47F20003 		movw	r3, #28672
+ 479 0004 C4F20003 		movt	r3, 16384
+ 480 0008 1A68     		ldr	r2, [r3]
+ 481 000a 40F20011 		movw	r1, #256
+ 482 000e 0A43     		orrs	r2, r1
+ 483 0010 1A60     		str	r2, [r3]
+ 242:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 484              		.loc 1 242 1 view .LVU83
+ 485              		@ sp needed
+ 486 0012 7047     		bx	lr
+ 487              		.cfi_endproc
+ 488              	.LFE75:
+ 490              		.section	.text.pmu_backup_write_disable,"ax",%progbits
+ 491              		.align	1
+ 492              		.global	pmu_backup_write_disable
+ 493              		.syntax unified
+ 494              		.code	16
+ 495              		.thumb_func
+ 496              		.fpu softvfp
+ 498              	pmu_backup_write_disable:
+ 499              	.LFB76:
+ 243:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 244:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 245:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      disable backup domain write
+ 246:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  none
+ 247:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 248:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 249:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 250:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_backup_write_disable(void)
+ 251:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 500              		.loc 1 251 1 is_stmt 1 view -0
+ 501              		.cfi_startproc
+ 502              		@ args = 0, pretend = 0, frame = 0
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504              		@ link register save eliminated.
+ 252:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     PMU_CTL &= ~PMU_CTL_BKPWEN;
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 14
+
+
+ 505              		.loc 1 252 5 view .LVU85
+ 506              		.loc 1 252 13 is_stmt 0 view .LVU86
+ 507 0000 47F20003 		movw	r3, #28672
+ 508 0004 C4F20003 		movt	r3, 16384
+ 509 0008 1A68     		ldr	r2, [r3]
+ 510 000a 0249     		ldr	r1, .L22
+ 511 000c 0A40     		ands	r2, r1
+ 512 000e 1A60     		str	r2, [r3]
+ 253:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 513              		.loc 1 253 1 view .LVU87
+ 514              		@ sp needed
+ 515 0010 7047     		bx	lr
+ 516              	.L23:
+ 517 0012 C046     		.align	2
+ 518              	.L22:
+ 519 0014 FFFEFFFF 		.word	-257
+ 520              		.cfi_endproc
+ 521              	.LFE76:
+ 523              		.section	.text.pmu_flag_clear,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	pmu_flag_clear
+ 526              		.syntax unified
+ 527              		.code	16
+ 528              		.thumb_func
+ 529              		.fpu softvfp
+ 531              	pmu_flag_clear:
+ 532              	.LVL12:
+ 533              	.LFB77:
+ 254:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 255:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 256:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      clear flag bit
+ 257:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  flag_clear:
+ 258:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 one or more parameters can be selected which are shown as below:
+ 259:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_FLAG_RESET_WAKEUP: reset wakeup flag
+ 260:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_FLAG_RESET_STANDBY: reset standby flag
+ 261:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 262:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     none
+ 263:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 264:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** void pmu_flag_clear(uint32_t flag_clear)
+ 265:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 534              		.loc 1 265 1 is_stmt 1 view -0
+ 535              		.cfi_startproc
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 266:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(RESET != (flag_clear & PMU_FLAG_RESET_WAKEUP)){
+ 539              		.loc 1 266 5 view .LVU89
+ 540              		.loc 1 266 7 is_stmt 0 view .LVU90
+ 541 0000 4307     		lsls	r3, r0, #29
+ 542 0002 07D5     		bpl	.L25
+ 267:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         /* reset wakeup flag */
+ 268:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         PMU_CTL |= PMU_CTL_WURST;
+ 543              		.loc 1 268 9 is_stmt 1 view .LVU91
+ 544              		.loc 1 268 17 is_stmt 0 view .LVU92
+ 545 0004 47F20003 		movw	r3, #28672
+ 546 0008 C4F20003 		movt	r3, 16384
+ 547 000c 1A68     		ldr	r2, [r3]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 15
+
+
+ 548 000e 0421     		movs	r1, #4
+ 549 0010 0A43     		orrs	r2, r1
+ 550 0012 1A60     		str	r2, [r3]
+ 551              	.L25:
+ 269:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 270:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(RESET != (flag_clear & PMU_FLAG_RESET_STANDBY)){
+ 552              		.loc 1 270 5 is_stmt 1 view .LVU93
+ 553              		.loc 1 270 7 is_stmt 0 view .LVU94
+ 554 0014 0307     		lsls	r3, r0, #28
+ 555 0016 07D5     		bpl	.L24
+ 271:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         /* reset standby flag */
+ 272:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         PMU_CTL |= PMU_CTL_STBRST;
+ 556              		.loc 1 272 9 is_stmt 1 view .LVU95
+ 557              		.loc 1 272 17 is_stmt 0 view .LVU96
+ 558 0018 47F20003 		movw	r3, #28672
+ 559 001c C4F20003 		movt	r3, 16384
+ 560 0020 1A68     		ldr	r2, [r3]
+ 561 0022 0821     		movs	r1, #8
+ 562 0024 0A43     		orrs	r2, r1
+ 563 0026 1A60     		str	r2, [r3]
+ 564              	.L24:
+ 273:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 274:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 565              		.loc 1 274 1 view .LVU97
+ 566              		@ sp needed
+ 567 0028 7047     		bx	lr
+ 568              		.cfi_endproc
+ 569              	.LFE77:
+ 571              		.section	.text.pmu_flag_get,"ax",%progbits
+ 572              		.align	1
+ 573              		.global	pmu_flag_get
+ 574              		.syntax unified
+ 575              		.code	16
+ 576              		.thumb_func
+ 577              		.fpu softvfp
+ 579              	pmu_flag_get:
+ 580              	.LVL13:
+ 581              	.LFB78:
+ 275:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** 
+ 276:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** /*!
+ 277:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \brief      get flag state
+ 278:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[in]  flag:
+ 279:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****                 only one parameter can be selected which is shown as below:
+ 280:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_FLAG_WAKEUP: wakeup flag
+ 281:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_FLAG_STANDBY: standby flag
+ 282:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****       \arg        PMU_FLAG_LVD: lvd flag
+ 283:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \param[out] none
+ 284:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     \retval     FlagStatus SET or RESET
+ 285:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** */
+ 286:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** FlagStatus pmu_flag_get(uint32_t flag)
+ 287:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** {
+ 582              		.loc 1 287 1 is_stmt 1 view -0
+ 583              		.cfi_startproc
+ 584              		@ args = 0, pretend = 0, frame = 0
+ 585              		@ frame_needed = 0, uses_anonymous_args = 0
+ 586              		@ link register save eliminated.
+ 288:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     FlagStatus ret_status = RESET;
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 16
+
+
+ 587              		.loc 1 288 5 view .LVU99
+ 289:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 290:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     if(PMU_CS & flag){
+ 588              		.loc 1 290 5 view .LVU100
+ 589              		.loc 1 290 8 is_stmt 0 view .LVU101
+ 590 0000 47F20403 		movw	r3, #28676
+ 591 0004 C4F20003 		movt	r3, 16384
+ 592 0008 1B68     		ldr	r3, [r3]
+ 593              		.loc 1 290 7 view .LVU102
+ 594 000a 1842     		tst	r0, r3
+ 595 000c 01D1     		bne	.L29
+ 288:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     FlagStatus ret_status = RESET;
+ 596              		.loc 1 288 16 view .LVU103
+ 597 000e 0020     		movs	r0, #0
+ 598              	.LVL14:
+ 599              	.L28:
+ 291:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         ret_status = SET;
+ 292:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     }
+ 293:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     
+ 294:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****     return ret_status;
+ 600              		.loc 1 294 5 is_stmt 1 view .LVU104
+ 295:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c **** }
+ 601              		.loc 1 295 1 is_stmt 0 view .LVU105
+ 602              		@ sp needed
+ 603 0010 7047     		bx	lr
+ 604              	.LVL15:
+ 605              	.L29:
+ 291:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         ret_status = SET;
+ 606              		.loc 1 291 20 view .LVU106
+ 607 0012 0120     		movs	r0, #1
+ 608              	.LVL16:
+ 291:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_pmu.c ****         ret_status = SET;
+ 609              		.loc 1 291 20 view .LVU107
+ 610 0014 FCE7     		b	.L28
+ 611              		.cfi_endproc
+ 612              	.LFE78:
+ 614              		.text
+ 615              	.Letext0:
+ 616              		.file 2 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/machine/_defa
+ 617              		.file 3 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/sys/_stdint.h
+ 618              		.file 4 "Drivers/CMSIS/Core/Include/core_cm23.h"
+ 619              		.file 5 "Drivers/CMSIS/Device/GD/GD32E23x/Include/gd32e23x.h"
+ 620              		.file 6 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_rcu.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32e23x_pmu.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:16     .text.pmu_deinit:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:24     .text.pmu_deinit:0000000000000000 pmu_deinit
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:51     .text.pmu_lvd_select:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:58     .text.pmu_lvd_select:0000000000000000 pmu_lvd_select
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:103    .text.pmu_ldo_output_select:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:110    .text.pmu_ldo_output_select:0000000000000000 pmu_ldo_output_select
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:137    .text.pmu_ldo_output_select:0000000000000018 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:142    .text.pmu_lvd_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:149    .text.pmu_lvd_disable:0000000000000000 pmu_lvd_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:171    .text.pmu_to_sleepmode:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:178    .text.pmu_to_sleepmode:0000000000000000 pmu_to_sleepmode
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:222    .text.pmu_to_deepsleepmode:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:229    .text.pmu_to_deepsleepmode:0000000000000000 pmu_to_deepsleepmode
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:311    .text.pmu_to_standbymode:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:318    .text.pmu_to_standbymode:0000000000000000 pmu_to_standbymode
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:399    .text.pmu_to_standbymode:0000000000000054 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:404    .text.pmu_wakeup_pin_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:411    .text.pmu_wakeup_pin_enable:0000000000000000 pmu_wakeup_pin_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:433    .text.pmu_wakeup_pin_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:440    .text.pmu_wakeup_pin_disable:0000000000000000 pmu_wakeup_pin_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:462    .text.pmu_backup_write_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:469    .text.pmu_backup_write_enable:0000000000000000 pmu_backup_write_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:491    .text.pmu_backup_write_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:498    .text.pmu_backup_write_disable:0000000000000000 pmu_backup_write_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:519    .text.pmu_backup_write_disable:0000000000000014 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:524    .text.pmu_flag_clear:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:531    .text.pmu_flag_clear:0000000000000000 pmu_flag_clear
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:572    .text.pmu_flag_get:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc0uiiG8.s:579    .text.pmu_flag_get:0000000000000000 pmu_flag_get
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

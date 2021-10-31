@@ -1,0 +1,478 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gd32e23x_wwdgt.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.wwdgt_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	wwdgt_deinit
+  18              		.arch armv8-m.base
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	wwdgt_deinit:
+  25              	.LFB66:
+  26              		.file 1 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c"
+   1:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+   2:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \file    gd32e23x_wwdgt.c
+   3:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief   WWDGT driver
+   4:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     
+   5:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \version 2019-02-19, V1.0.0, firmware for GD32E23x
+   6:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \version 2020-12-12, V1.1.0, firmware for GD32E23x
+   7:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+   8:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+   9:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*
+  10:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  12:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     All rights reserved.
+  13:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  14:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  15:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  17:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  18:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  20:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****        this list of conditions and the following disclaimer in the documentation 
+  21:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  23:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****        may be used to endorse or promote products derived from this software without 
+  24:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****        specific prior written permission.
+  25:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  26:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  27:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  28:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  29:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  30:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  31:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  32:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 2
+
+
+  33:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  34:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  35:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+  37:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  38:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** #include "gd32e23x_wwdgt.h"
+  39:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  40:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /* WWDGT_CTL register value */
+  41:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** #define CTL_CNT(regval)             (BITS(0,6) & ((uint32_t)(regval) << 0U))    /*!< write value to
+  42:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /* WWDGT_CFG register value */
+  43:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** #define CFG_WIN(regval)             (BITS(0,6) & ((uint32_t)(regval) << 0U))    /*!< write value to
+  44:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  45:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+  46:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      reset the window watchdog timer configuration
+  47:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  none
+  48:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+  49:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+  50:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+  51:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_deinit(void)
+  52:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+  27              		.loc 1 52 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  53:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     rcu_periph_reset_enable(RCU_WWDGTRST);
+  36              		.loc 1 53 5 view .LVU1
+  37 0002 40F20B40 		movw	r0, #1035
+  38 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  39              	.LVL0:
+  54:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     rcu_periph_reset_disable(RCU_WWDGTRST);
+  40              		.loc 1 54 5 view .LVU2
+  41 000a 40F20B40 		movw	r0, #1035
+  42 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  43              	.LVL1:
+  55:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+  44              		.loc 1 55 1 is_stmt 0 view .LVU3
+  45              		@ sp needed
+  46 0012 10BD     		pop	{r4, pc}
+  47              		.cfi_endproc
+  48              	.LFE66:
+  50              		.section	.text.wwdgt_enable,"ax",%progbits
+  51              		.align	1
+  52              		.global	wwdgt_enable
+  53              		.syntax unified
+  54              		.code	16
+  55              		.thumb_func
+  56              		.fpu softvfp
+  58              	wwdgt_enable:
+  59              	.LFB67:
+  56:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  57:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+  58:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      start the window watchdog timer counter
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 3
+
+
+  59:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  none
+  60:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+  61:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+  62:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+  63:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_enable(void)
+  64:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+  60              		.loc 1 64 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_CTL |= WWDGT_CTL_WDGTEN;
+  65              		.loc 1 65 5 view .LVU5
+  66              		.loc 1 65 15 is_stmt 0 view .LVU6
+  67 0000 42F60043 		movw	r3, #11264
+  68 0004 C4F20003 		movt	r3, 16384
+  69 0008 1A68     		ldr	r2, [r3]
+  70 000a 8021     		movs	r1, #128
+  71 000c 0A43     		orrs	r2, r1
+  72 000e 1A60     		str	r2, [r3]
+  66:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+  73              		.loc 1 66 1 view .LVU7
+  74              		@ sp needed
+  75 0010 7047     		bx	lr
+  76              		.cfi_endproc
+  77              	.LFE67:
+  79              		.section	.text.wwdgt_counter_update,"ax",%progbits
+  80              		.align	1
+  81              		.global	wwdgt_counter_update
+  82              		.syntax unified
+  83              		.code	16
+  84              		.thumb_func
+  85              		.fpu softvfp
+  87              	wwdgt_counter_update:
+  88              	.LVL2:
+  89              	.LFB68:
+  67:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  68:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+  69:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      configure the window watchdog timer counter value
+  70:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  counter_value: 0x00000000 - 0x0000007F
+  71:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+  72:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+  73:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+  74:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_counter_update(uint16_t counter_value)
+  75:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+  90              		.loc 1 75 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  76:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     uint32_t reg = 0x00000000U;
+  95              		.loc 1 76 5 view .LVU9
+  77:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     
+  78:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg = WWDGT_CTL &(~(uint32_t)WWDGT_CTL_CNT);
+  96              		.loc 1 78 5 view .LVU10
+  97              		.loc 1 78 11 is_stmt 0 view .LVU11
+  98 0000 42F60042 		movw	r2, #11264
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 4
+
+
+  99 0004 C4F20002 		movt	r2, 16384
+ 100 0008 1168     		ldr	r1, [r2]
+ 101              		.loc 1 78 9 view .LVU12
+ 102 000a 7F23     		movs	r3, #127
+ 103 000c 9943     		bics	r1, r3
+ 104              	.LVL3:
+  79:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg |= (uint32_t)(CTL_CNT(counter_value));
+ 105              		.loc 1 79 5 is_stmt 1 view .LVU13
+ 106              		.loc 1 79 12 is_stmt 0 view .LVU14
+ 107 000e 0340     		ands	r3, r0
+ 108              		.loc 1 79 9 view .LVU15
+ 109 0010 0B43     		orrs	r3, r1
+ 110              	.LVL4:
+  80:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     
+  81:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_CTL = (uint32_t)reg;
+ 111              		.loc 1 81 5 is_stmt 1 view .LVU16
+ 112              		.loc 1 81 15 is_stmt 0 view .LVU17
+ 113 0012 1360     		str	r3, [r2]
+  82:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+ 114              		.loc 1 82 1 view .LVU18
+ 115              		@ sp needed
+ 116 0014 7047     		bx	lr
+ 117              		.cfi_endproc
+ 118              	.LFE68:
+ 120              		.section	.text.wwdgt_config,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	wwdgt_config
+ 123              		.syntax unified
+ 124              		.code	16
+ 125              		.thumb_func
+ 126              		.fpu softvfp
+ 128              	wwdgt_config:
+ 129              	.LVL5:
+ 130              	.LFB69:
+  83:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+  84:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+  85:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      configure counter value, window value, and prescaler divider value  
+  86:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  counter: 0x00000000 - 0x0000007F
+  87:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  window: 0x00000000 - 0x0000007F
+  88:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  prescaler: wwdgt prescaler value
+  89:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****                 only one parameter can be selected which is shown as below:
+  90:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV1: the time base of window watchdog counter = (PCLK1/4096)/1
+  91:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV2: the time base of window watchdog counter = (PCLK1/4096)/2
+  92:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV4: the time base of window watchdog counter = (PCLK1/4096)/4
+  93:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV8: the time base of window watchdog counter = (PCLK1/4096)/8
+  94:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+  95:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+  96:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+  97:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_config(uint16_t counter, uint16_t window, uint32_t prescaler)
+  98:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+ 131              		.loc 1 98 1 is_stmt 1 view -0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		.loc 1 98 1 is_stmt 0 view .LVU20
+ 136 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 137              	.LCFI1:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 5
+
+
+ 138              		.cfi_def_cfa_offset 20
+ 139              		.cfi_offset 4, -20
+ 140              		.cfi_offset 5, -16
+ 141              		.cfi_offset 6, -12
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+  99:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     uint32_t reg_cfg = 0x00000000U, reg_ctl = 0x00000000U;
+ 144              		.loc 1 99 5 is_stmt 1 view .LVU21
+ 145              	.LVL6:
+ 100:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+ 101:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     /* clear WIN and PSC bits, clear CNT bit */
+ 102:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg_cfg = WWDGT_CFG &(~((uint32_t)WWDGT_CFG_WIN|(uint32_t)WWDGT_CFG_PSC));
+ 146              		.loc 1 102 5 view .LVU22
+ 147              		.loc 1 102 15 is_stmt 0 view .LVU23
+ 148 0002 42F60446 		movw	r6, #11268
+ 149 0006 C4F20006 		movt	r6, 16384
+ 150 000a 3468     		ldr	r4, [r6]
+ 151              		.loc 1 102 13 view .LVU24
+ 152 000c 640A     		lsrs	r4, r4, #9
+ 153 000e 6402     		lsls	r4, r4, #9
+ 154              	.LVL7:
+ 103:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg_ctl = WWDGT_CTL &(~(uint32_t)WWDGT_CTL_CNT);
+ 155              		.loc 1 103 5 is_stmt 1 view .LVU25
+ 156              		.loc 1 103 15 is_stmt 0 view .LVU26
+ 157 0010 42F60045 		movw	r5, #11264
+ 158 0014 C4F20005 		movt	r5, 16384
+ 159 0018 2B68     		ldr	r3, [r5]
+ 160              		.loc 1 103 13 view .LVU27
+ 161 001a 7F27     		movs	r7, #127
+ 162 001c BB43     		bics	r3, r7
+ 163 001e 1F00     		movs	r7, r3
+ 164              	.LVL8:
+ 104:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****   
+ 105:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     /* configure WIN and PSC bits, configure CNT bit */
+ 106:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg_cfg |= (uint32_t)(CFG_WIN(window));
+ 165              		.loc 1 106 5 is_stmt 1 view .LVU28
+ 166              		.loc 1 106 16 is_stmt 0 view .LVU29
+ 167 0020 7F23     		movs	r3, #127
+ 168              	.LVL9:
+ 169              		.loc 1 106 16 view .LVU30
+ 170 0022 1940     		ands	r1, r3
+ 171              	.LVL10:
+ 172              		.loc 1 106 13 view .LVU31
+ 173 0024 2143     		orrs	r1, r4
+ 174              	.LVL11:
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg_cfg |= (uint32_t)(prescaler);
+ 175              		.loc 1 107 5 is_stmt 1 view .LVU32
+ 176              		.loc 1 107 13 is_stmt 0 view .LVU33
+ 177 0026 1143     		orrs	r1, r2
+ 178              	.LVL12:
+ 108:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     reg_ctl |= (uint32_t)(CTL_CNT(counter));
+ 179              		.loc 1 108 5 is_stmt 1 view .LVU34
+ 180              		.loc 1 108 16 is_stmt 0 view .LVU35
+ 181 0028 0340     		ands	r3, r0
+ 182              		.loc 1 108 13 view .LVU36
+ 183 002a 3B43     		orrs	r3, r7
+ 184              	.LVL13:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 6
+
+
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     
+ 110:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_CFG = (uint32_t)reg_cfg;
+ 185              		.loc 1 110 5 is_stmt 1 view .LVU37
+ 186              		.loc 1 110 15 is_stmt 0 view .LVU38
+ 187 002c 3160     		str	r1, [r6]
+ 111:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_CTL = (uint32_t)reg_ctl;
+ 188              		.loc 1 111 5 is_stmt 1 view .LVU39
+ 189              		.loc 1 111 15 is_stmt 0 view .LVU40
+ 190 002e 2B60     		str	r3, [r5]
+ 112:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+ 191              		.loc 1 112 1 view .LVU41
+ 192              		@ sp needed
+ 193 0030 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 194              		.cfi_endproc
+ 195              	.LFE69:
+ 197              		.section	.text.wwdgt_interrupt_enable,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	wwdgt_interrupt_enable
+ 200              		.syntax unified
+ 201              		.code	16
+ 202              		.thumb_func
+ 203              		.fpu softvfp
+ 205              	wwdgt_interrupt_enable:
+ 206              	.LFB70:
+ 113:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+ 114:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+ 115:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      enable early wakeup interrupt of WWDGT
+ 116:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  none
+ 117:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+ 118:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+ 119:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_interrupt_enable(void)
+ 121:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+ 207              		.loc 1 121 1 is_stmt 1 view -0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              		@ link register save eliminated.
+ 122:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_CFG |= WWDGT_CFG_EWIE;
+ 212              		.loc 1 122 5 view .LVU43
+ 213              		.loc 1 122 15 is_stmt 0 view .LVU44
+ 214 0000 42F60443 		movw	r3, #11268
+ 215 0004 C4F20003 		movt	r3, 16384
+ 216 0008 1A68     		ldr	r2, [r3]
+ 217 000a 40F20021 		movw	r1, #512
+ 218 000e 0A43     		orrs	r2, r1
+ 219 0010 1A60     		str	r2, [r3]
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+ 220              		.loc 1 123 1 view .LVU45
+ 221              		@ sp needed
+ 222 0012 7047     		bx	lr
+ 223              		.cfi_endproc
+ 224              	.LFE70:
+ 226              		.section	.text.wwdgt_flag_get,"ax",%progbits
+ 227              		.align	1
+ 228              		.global	wwdgt_flag_get
+ 229              		.syntax unified
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 7
+
+
+ 230              		.code	16
+ 231              		.thumb_func
+ 232              		.fpu softvfp
+ 234              	wwdgt_flag_get:
+ 235              	.LFB71:
+ 124:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+ 125:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+ 126:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      check early wakeup interrupt state of WWDGT
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  none
+ 128:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+ 129:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     FlagStatus: SET or RESET
+ 130:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+ 131:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** FlagStatus wwdgt_flag_get(void)
+ 132:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+ 236              		.loc 1 132 1 is_stmt 1 view -0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              		@ link register save eliminated.
+ 133:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****   if(RESET != (WWDGT_STAT & WWDGT_STAT_EWIF)){
+ 241              		.loc 1 133 3 view .LVU47
+ 242              		.loc 1 133 16 is_stmt 0 view .LVU48
+ 243 0000 42F60843 		movw	r3, #11272
+ 244 0004 C4F20003 		movt	r3, 16384
+ 245 0008 1B68     		ldr	r3, [r3]
+ 246              		.loc 1 133 5 view .LVU49
+ 247 000a DB07     		lsls	r3, r3, #31
+ 248 000c 01D4     		bmi	.L8
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****         return SET;
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****   }
+ 136:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     return RESET;
+ 249              		.loc 1 136 12 view .LVU50
+ 250 000e 0020     		movs	r0, #0
+ 251              	.L7:
+ 137:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+ 252              		.loc 1 137 1 view .LVU51
+ 253              		@ sp needed
+ 254 0010 7047     		bx	lr
+ 255              	.L8:
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****         return SET;
+ 256              		.loc 1 134 16 view .LVU52
+ 257 0012 0120     		movs	r0, #1
+ 258 0014 FCE7     		b	.L7
+ 259              		.cfi_endproc
+ 260              	.LFE71:
+ 262              		.section	.text.wwdgt_flag_clear,"ax",%progbits
+ 263              		.align	1
+ 264              		.global	wwdgt_flag_clear
+ 265              		.syntax unified
+ 266              		.code	16
+ 267              		.thumb_func
+ 268              		.fpu softvfp
+ 270              	wwdgt_flag_clear:
+ 271              	.LFB72:
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** 
+ 139:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** /*!
+ 140:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \brief      clear early wakeup interrupt state of WWDGT
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 8
+
+
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[in]  none
+ 142:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \param[out] none
+ 143:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     \retval     none
+ 144:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** */
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** void wwdgt_flag_clear(void)
+ 146:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** {
+ 272              		.loc 1 146 1 is_stmt 1 view -0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 0
+ 275              		@ frame_needed = 0, uses_anonymous_args = 0
+ 276              		@ link register save eliminated.
+ 147:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c ****     WWDGT_STAT &= (uint32_t)(~(uint32_t)WWDGT_STAT_EWIF);
+ 277              		.loc 1 147 5 view .LVU54
+ 278              		.loc 1 147 16 is_stmt 0 view .LVU55
+ 279 0000 42F60843 		movw	r3, #11272
+ 280 0004 C4F20003 		movt	r3, 16384
+ 281 0008 1A68     		ldr	r2, [r3]
+ 282 000a 0121     		movs	r1, #1
+ 283 000c 8A43     		bics	r2, r1
+ 284 000e 1A60     		str	r2, [r3]
+ 148:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_wwdgt.c **** }
+ 285              		.loc 1 148 1 view .LVU56
+ 286              		@ sp needed
+ 287 0010 7047     		bx	lr
+ 288              		.cfi_endproc
+ 289              	.LFE72:
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/machine/_defa
+ 294              		.file 3 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/sys/_stdint.h
+ 295              		.file 4 "Drivers/CMSIS/Device/GD/GD32E23x/Include/gd32e23x.h"
+ 296              		.file 5 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_rcu.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32e23x_wwdgt.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:16     .text.wwdgt_deinit:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:24     .text.wwdgt_deinit:0000000000000000 wwdgt_deinit
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:51     .text.wwdgt_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:58     .text.wwdgt_enable:0000000000000000 wwdgt_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:80     .text.wwdgt_counter_update:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:87     .text.wwdgt_counter_update:0000000000000000 wwdgt_counter_update
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:121    .text.wwdgt_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:128    .text.wwdgt_config:0000000000000000 wwdgt_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:198    .text.wwdgt_interrupt_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:205    .text.wwdgt_interrupt_enable:0000000000000000 wwdgt_interrupt_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:227    .text.wwdgt_flag_get:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:234    .text.wwdgt_flag_get:0000000000000000 wwdgt_flag_get
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:263    .text.wwdgt_flag_clear:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccqOuFRB.s:270    .text.wwdgt_flag_clear:0000000000000000 wwdgt_flag_clear
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

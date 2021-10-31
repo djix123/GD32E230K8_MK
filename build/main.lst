@@ -1,0 +1,237 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.main,"ax",%progbits
+  16              		.align	1
+  17              		.global	main
+  18              		.arch armv8-m.base
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	main:
+  25              	.LFB69:
+  26              		.file 1 "Src/main.c"
+   1:Src/main.c    **** /*!
+   2:Src/main.c    ****     \file    main.c
+   3:Src/main.c    ****     \brief   running LED
+   4:Src/main.c    **** 
+   5:Src/main.c    ****     \version 2019-02-19, V1.0.0, firmware for GD32E23x
+   6:Src/main.c    ****     \version 2020-12-12, V1.1.0, firmware for GD32E23x
+   7:Src/main.c    **** */
+   8:Src/main.c    **** 
+   9:Src/main.c    **** /*
+  10:Src/main.c    ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:Src/main.c    **** 
+  12:Src/main.c    ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:Src/main.c    **** are permitted provided that the following conditions are met:
+  14:Src/main.c    **** 
+  15:Src/main.c    ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:Src/main.c    ****        list of conditions and the following disclaimer.
+  17:Src/main.c    ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:Src/main.c    ****        this list of conditions and the following disclaimer in the documentation 
+  19:Src/main.c    ****        and/or other materials provided with the distribution.
+  20:Src/main.c    ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:Src/main.c    ****        may be used to endorse or promote products derived from this software without 
+  22:Src/main.c    ****        specific prior written permission.
+  23:Src/main.c    **** 
+  24:Src/main.c    ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:Src/main.c    **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:Src/main.c    **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:Src/main.c    **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:Src/main.c    **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:Src/main.c    **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:Src/main.c    **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:Src/main.c    **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:Src/main.c    **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s 			page 2
+
+
+  33:Src/main.c    **** OF SUCH DAMAGE.
+  34:Src/main.c    **** */
+  35:Src/main.c    **** 
+  36:Src/main.c    **** #include "gd32e23x.h"
+  37:Src/main.c    **** #include "systick.h"
+  38:Src/main.c    **** #include <stdio.h>
+  39:Src/main.c    **** 
+  40:Src/main.c    **** //#define __GD_DEMO__
+  41:Src/main.c    **** 
+  42:Src/main.c    **** /*!
+  43:Src/main.c    ****     \brief      main function
+  44:Src/main.c    ****     \param[in]  none
+  45:Src/main.c    ****     \param[out] none
+  46:Src/main.c    ****     \retval     none
+  47:Src/main.c    **** */
+  48:Src/main.c    **** int main(void)
+  49:Src/main.c    **** {
+  27              		.loc 1 49 1 view -0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  50:Src/main.c    ****     systick_config();
+  37              		.loc 1 50 5 view .LVU1
+  38 0002 FFF7FEFF 		bl	systick_config
+  39              	.LVL0:
+  51:Src/main.c    **** #ifdef __GD_DEMO__
+  52:Src/main.c    ****     /* enable the LED2 GPIO clock */
+  53:Src/main.c    ****     rcu_periph_clock_enable(RCU_GPIOA);
+  54:Src/main.c    ****     /* configure LED2 GPIO port */ 
+  55:Src/main.c    ****     gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_8);
+  56:Src/main.c    ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_8);
+  57:Src/main.c    ****     /* reset LED2 GPIO pin */
+  58:Src/main.c    ****     gpio_bit_reset(GPIOA,GPIO_PIN_8);
+  59:Src/main.c    **** 
+  60:Src/main.c    ****     /* enable the LED3 GPIO clock */
+  61:Src/main.c    ****     /* configure LED3 GPIO port */ 
+  62:Src/main.c    ****     gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_11);
+  63:Src/main.c    ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_11);
+  64:Src/main.c    ****     /* reset LED3 GPIO pin */
+  65:Src/main.c    ****     gpio_bit_reset(GPIOA,GPIO_PIN_11);
+  66:Src/main.c    ****     
+  67:Src/main.c    ****     /* enable the LED4 GPIO clock */
+  68:Src/main.c    ****     /* configure LED4 GPIO port */ 
+  69:Src/main.c    ****     gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_12);
+  70:Src/main.c    ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_12);
+  71:Src/main.c    ****     /* reset LED4 GPIO pin */
+  72:Src/main.c    ****     gpio_bit_reset(GPIOA,GPIO_PIN_12);
+  73:Src/main.c    ****     
+  74:Src/main.c    ****     /* enable the LED5 GPIO clock */
+  75:Src/main.c    ****     /* configure LED5 GPIO port */ 
+  76:Src/main.c    ****     gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_15);
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s 			page 3
+
+
+  77:Src/main.c    ****     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_15);
+  78:Src/main.c    ****     /* reset LED5 GPIO pin */
+  79:Src/main.c    ****     gpio_bit_reset(GPIOA,GPIO_PIN_15);
+  80:Src/main.c    **** #else
+  81:Src/main.c    ****     /* enable the LED GPIO clock */
+  82:Src/main.c    ****     rcu_periph_clock_enable(RCU_GPIOB);
+  40              		.loc 1 82 5 view .LVU2
+  41 0006 40F21250 		movw	r0, #1298
+  42 000a FFF7FEFF 		bl	rcu_periph_clock_enable
+  43              	.LVL1:
+  83:Src/main.c    ****     /* configure LED2 GPIO port */ 
+  84:Src/main.c    ****     gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, GPIO_PIN_1);
+  44              		.loc 1 84 5 view .LVU3
+  45 000e 40F20044 		movw	r4, #1024
+  46 0012 C4F60004 		movt	r4, 18432
+  47 0016 0223     		movs	r3, #2
+  48 0018 0222     		movs	r2, #2
+  49 001a 0121     		movs	r1, #1
+  50 001c 2000     		movs	r0, r4
+  51 001e FFF7FEFF 		bl	gpio_mode_set
+  52              	.LVL2:
+  85:Src/main.c    ****     gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_1);
+  53              		.loc 1 85 5 view .LVU4
+  54 0022 0223     		movs	r3, #2
+  55 0024 0022     		movs	r2, #0
+  56 0026 0021     		movs	r1, #0
+  57 0028 2000     		movs	r0, r4
+  58 002a FFF7FEFF 		bl	gpio_output_options_set
+  59              	.LVL3:
+  86:Src/main.c    ****     /* reset LED2 GPIO pin */
+  87:Src/main.c    ****     gpio_bit_reset(GPIOB,GPIO_PIN_1);
+  60              		.loc 1 87 5 view .LVU5
+  61 002e 0221     		movs	r1, #2
+  62 0030 2000     		movs	r0, r4
+  63 0032 FFF7FEFF 		bl	gpio_bit_reset
+  64              	.LVL4:
+  65              	.L2:
+  88:Src/main.c    **** #endif
+  89:Src/main.c    **** 
+  90:Src/main.c    ****     while(1){
+  66              		.loc 1 90 5 discriminator 1 view .LVU6
+  91:Src/main.c    **** #ifdef __GD_DEMO__
+  92:Src/main.c    ****         /* turn on LED2, turn off LED5 */
+  93:Src/main.c    ****         gpio_bit_set(GPIOA,GPIO_PIN_8);
+  94:Src/main.c    ****         gpio_bit_reset(GPIOA,GPIO_PIN_15);
+  95:Src/main.c    ****         delay_1ms(500);
+  96:Src/main.c    ****         /* turn on LED3, turn off LED2 */
+  97:Src/main.c    ****         gpio_bit_set(GPIOA,GPIO_PIN_11);
+  98:Src/main.c    ****         gpio_bit_reset(GPIOA,GPIO_PIN_8);
+  99:Src/main.c    ****         delay_1ms(500);
+ 100:Src/main.c    ****         /* turn on LED4, turn off LED3 */
+ 101:Src/main.c    ****         gpio_bit_set(GPIOA,GPIO_PIN_12);
+ 102:Src/main.c    ****         gpio_bit_reset(GPIOA,GPIO_PIN_11);
+ 103:Src/main.c    ****         delay_1ms(500);
+ 104:Src/main.c    ****         /* turn on LED5, turn off LED4 */
+ 105:Src/main.c    ****         gpio_bit_set(GPIOA,GPIO_PIN_15);
+ 106:Src/main.c    ****         gpio_bit_reset(GPIOA,GPIO_PIN_12);
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s 			page 4
+
+
+ 107:Src/main.c    ****         delay_1ms(500);
+ 108:Src/main.c    **** #else
+ 109:Src/main.c    ****         gpio_bit_set(GPIOB, GPIO_PIN_1);
+  67              		.loc 1 109 9 discriminator 1 view .LVU7
+  68 0036 40F20044 		movw	r4, #1024
+  69 003a C4F60004 		movt	r4, 18432
+  70 003e 0221     		movs	r1, #2
+  71 0040 2000     		movs	r0, r4
+  72 0042 FFF7FEFF 		bl	gpio_bit_set
+  73              	.LVL5:
+ 110:Src/main.c    ****         delay_1ms(250);
+  74              		.loc 1 110 9 discriminator 1 view .LVU8
+  75 0046 FA20     		movs	r0, #250
+  76 0048 FFF7FEFF 		bl	delay_1ms
+  77              	.LVL6:
+ 111:Src/main.c    ****         gpio_bit_reset(GPIOB, GPIO_PIN_1);
+  78              		.loc 1 111 9 discriminator 1 view .LVU9
+  79 004c 0221     		movs	r1, #2
+  80 004e 2000     		movs	r0, r4
+  81 0050 FFF7FEFF 		bl	gpio_bit_reset
+  82              	.LVL7:
+ 112:Src/main.c    ****         delay_1ms(250);
+  83              		.loc 1 112 9 discriminator 1 view .LVU10
+  84 0054 FA20     		movs	r0, #250
+  85 0056 FFF7FEFF 		bl	delay_1ms
+  86              	.LVL8:
+  90:Src/main.c    **** #ifdef __GD_DEMO__
+  87              		.loc 1 90 10 discriminator 1 view .LVU11
+  88 005a ECE7     		b	.L2
+  89              		.cfi_endproc
+  90              	.LFE69:
+  92              		.text
+  93              	.Letext0:
+  94              		.file 2 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/machine/_defa
+  95              		.file 3 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/sys/_stdint.h
+  96              		.file 4 "Inc/systick.h"
+  97              		.file 5 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_rcu.h"
+  98              		.file 6 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_gpio.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s:16     .text.main:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccDWNMke.s:24     .text.main:0000000000000000 main
+
+UNDEFINED SYMBOLS
+systick_config
+rcu_periph_clock_enable
+gpio_mode_set
+gpio_output_options_set
+gpio_bit_reset
+gpio_bit_set
+delay_1ms

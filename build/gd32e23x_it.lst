@@ -1,0 +1,400 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gd32e23x_it.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.NMI_Handler,"ax",%progbits
+  16              		.align	1
+  17              		.global	NMI_Handler
+  18              		.arch armv8-m.base
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	NMI_Handler:
+  25              	.LFB66:
+  26              		.file 1 "Src/gd32e23x_it.c"
+   1:Src/gd32e23x_it.c **** /*!
+   2:Src/gd32e23x_it.c ****     \file    gd32e23x_it.c
+   3:Src/gd32e23x_it.c ****     \brief   interrupt service routines
+   4:Src/gd32e23x_it.c **** 
+   5:Src/gd32e23x_it.c ****     \version 2019-02-19, V1.0.0, firmware for GD32E23x
+   6:Src/gd32e23x_it.c ****     \version 2020-12-12, V1.1.0, firmware for GD32E23x
+   7:Src/gd32e23x_it.c **** */
+   8:Src/gd32e23x_it.c **** 
+   9:Src/gd32e23x_it.c **** /*
+  10:Src/gd32e23x_it.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:Src/gd32e23x_it.c **** 
+  12:Src/gd32e23x_it.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:Src/gd32e23x_it.c **** are permitted provided that the following conditions are met:
+  14:Src/gd32e23x_it.c **** 
+  15:Src/gd32e23x_it.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:Src/gd32e23x_it.c ****        list of conditions and the following disclaimer.
+  17:Src/gd32e23x_it.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:Src/gd32e23x_it.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:Src/gd32e23x_it.c ****        and/or other materials provided with the distribution.
+  20:Src/gd32e23x_it.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:Src/gd32e23x_it.c ****        may be used to endorse or promote products derived from this software without 
+  22:Src/gd32e23x_it.c ****        specific prior written permission.
+  23:Src/gd32e23x_it.c **** 
+  24:Src/gd32e23x_it.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:Src/gd32e23x_it.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:Src/gd32e23x_it.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:Src/gd32e23x_it.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:Src/gd32e23x_it.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:Src/gd32e23x_it.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:Src/gd32e23x_it.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:Src/gd32e23x_it.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:Src/gd32e23x_it.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 2
+
+
+  33:Src/gd32e23x_it.c **** OF SUCH DAMAGE.
+  34:Src/gd32e23x_it.c **** */
+  35:Src/gd32e23x_it.c **** 
+  36:Src/gd32e23x_it.c **** #include "gd32e23x_it.h"
+  37:Src/gd32e23x_it.c **** #include "systick.h"
+  38:Src/gd32e23x_it.c **** 
+  39:Src/gd32e23x_it.c **** /*!
+  40:Src/gd32e23x_it.c ****     \brief      this function handles NMI exception
+  41:Src/gd32e23x_it.c ****     \param[in]  none
+  42:Src/gd32e23x_it.c ****     \param[out] none
+  43:Src/gd32e23x_it.c ****     \retval     none
+  44:Src/gd32e23x_it.c **** */
+  45:Src/gd32e23x_it.c **** void NMI_Handler(void)
+  46:Src/gd32e23x_it.c **** {
+  27              		.loc 1 46 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  47:Src/gd32e23x_it.c **** }
+  32              		.loc 1 47 1 view .LVU1
+  33              		@ sp needed
+  34 0000 7047     		bx	lr
+  35              		.cfi_endproc
+  36              	.LFE66:
+  38              		.section	.text.HardFault_Handler,"ax",%progbits
+  39              		.align	1
+  40              		.global	HardFault_Handler
+  41              		.syntax unified
+  42              		.code	16
+  43              		.thumb_func
+  44              		.fpu softvfp
+  46              	HardFault_Handler:
+  47              	.LFB67:
+  48:Src/gd32e23x_it.c **** 
+  49:Src/gd32e23x_it.c **** /*!
+  50:Src/gd32e23x_it.c ****     \brief      this function handles HardFault exception
+  51:Src/gd32e23x_it.c ****     \param[in]  none
+  52:Src/gd32e23x_it.c ****     \param[out] none
+  53:Src/gd32e23x_it.c ****     \retval     none
+  54:Src/gd32e23x_it.c **** */
+  55:Src/gd32e23x_it.c **** void HardFault_Handler(void)
+  56:Src/gd32e23x_it.c **** {
+  48              		.loc 1 56 1 view -0
+  49              		.cfi_startproc
+  50              		@ Volatile: function does not return.
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54              	.L3:
+  57:Src/gd32e23x_it.c ****     /* if Hard Fault exception occurs, go to infinite loop */
+  58:Src/gd32e23x_it.c ****     while(1){
+  55              		.loc 1 58 5 discriminator 1 view .LVU3
+  59:Src/gd32e23x_it.c ****     }
+  56              		.loc 1 59 5 discriminator 1 view .LVU4
+  58:Src/gd32e23x_it.c ****     }
+  57              		.loc 1 58 10 discriminator 1 view .LVU5
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 3
+
+
+  58 0000 FEE7     		b	.L3
+  59              		.cfi_endproc
+  60              	.LFE67:
+  62              		.section	.text.MemManage_Handler,"ax",%progbits
+  63              		.align	1
+  64              		.global	MemManage_Handler
+  65              		.syntax unified
+  66              		.code	16
+  67              		.thumb_func
+  68              		.fpu softvfp
+  70              	MemManage_Handler:
+  71              	.LFB68:
+  60:Src/gd32e23x_it.c **** }
+  61:Src/gd32e23x_it.c **** 
+  62:Src/gd32e23x_it.c **** /*!
+  63:Src/gd32e23x_it.c ****     \brief      this function handles MemManage exception
+  64:Src/gd32e23x_it.c ****     \param[in]  none
+  65:Src/gd32e23x_it.c ****     \param[out] none
+  66:Src/gd32e23x_it.c ****     \retval     none
+  67:Src/gd32e23x_it.c **** */
+  68:Src/gd32e23x_it.c **** void MemManage_Handler(void)
+  69:Src/gd32e23x_it.c **** {
+  72              		.loc 1 69 1 view -0
+  73              		.cfi_startproc
+  74              		@ Volatile: function does not return.
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77              		@ link register save eliminated.
+  78              	.L5:
+  70:Src/gd32e23x_it.c ****     /* if Memory Manage exception occurs, go to infinite loop */
+  71:Src/gd32e23x_it.c ****     while(1){
+  79              		.loc 1 71 5 discriminator 1 view .LVU7
+  72:Src/gd32e23x_it.c ****     }
+  80              		.loc 1 72 5 discriminator 1 view .LVU8
+  71:Src/gd32e23x_it.c ****     }
+  81              		.loc 1 71 10 discriminator 1 view .LVU9
+  82 0000 FEE7     		b	.L5
+  83              		.cfi_endproc
+  84              	.LFE68:
+  86              		.section	.text.BusFault_Handler,"ax",%progbits
+  87              		.align	1
+  88              		.global	BusFault_Handler
+  89              		.syntax unified
+  90              		.code	16
+  91              		.thumb_func
+  92              		.fpu softvfp
+  94              	BusFault_Handler:
+  95              	.LFB69:
+  73:Src/gd32e23x_it.c **** }
+  74:Src/gd32e23x_it.c **** 
+  75:Src/gd32e23x_it.c **** /*!
+  76:Src/gd32e23x_it.c ****     \brief      this function handles BusFault exception
+  77:Src/gd32e23x_it.c ****     \param[in]  none
+  78:Src/gd32e23x_it.c ****     \param[out] none
+  79:Src/gd32e23x_it.c ****     \retval     none
+  80:Src/gd32e23x_it.c **** */
+  81:Src/gd32e23x_it.c **** void BusFault_Handler(void)
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 4
+
+
+  82:Src/gd32e23x_it.c **** {
+  96              		.loc 1 82 1 view -0
+  97              		.cfi_startproc
+  98              		@ Volatile: function does not return.
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		@ link register save eliminated.
+ 102              	.L7:
+  83:Src/gd32e23x_it.c ****     /* if Bus Fault exception occurs, go to infinite loop */
+  84:Src/gd32e23x_it.c ****     while(1){
+ 103              		.loc 1 84 5 discriminator 1 view .LVU11
+  85:Src/gd32e23x_it.c ****     }
+ 104              		.loc 1 85 5 discriminator 1 view .LVU12
+  84:Src/gd32e23x_it.c ****     }
+ 105              		.loc 1 84 10 discriminator 1 view .LVU13
+ 106 0000 FEE7     		b	.L7
+ 107              		.cfi_endproc
+ 108              	.LFE69:
+ 110              		.section	.text.UsageFault_Handler,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	UsageFault_Handler
+ 113              		.syntax unified
+ 114              		.code	16
+ 115              		.thumb_func
+ 116              		.fpu softvfp
+ 118              	UsageFault_Handler:
+ 119              	.LFB70:
+  86:Src/gd32e23x_it.c **** }
+  87:Src/gd32e23x_it.c **** 
+  88:Src/gd32e23x_it.c **** /*!
+  89:Src/gd32e23x_it.c ****     \brief      this function handles UsageFault exception
+  90:Src/gd32e23x_it.c ****     \param[in]  none
+  91:Src/gd32e23x_it.c ****     \param[out] none
+  92:Src/gd32e23x_it.c ****     \retval     none
+  93:Src/gd32e23x_it.c **** */
+  94:Src/gd32e23x_it.c **** void UsageFault_Handler(void)
+  95:Src/gd32e23x_it.c **** {
+ 120              		.loc 1 95 1 view -0
+ 121              		.cfi_startproc
+ 122              		@ Volatile: function does not return.
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ 126              	.L9:
+  96:Src/gd32e23x_it.c ****     /* if Usage Fault exception occurs, go to infinite loop */
+  97:Src/gd32e23x_it.c ****     while(1){
+ 127              		.loc 1 97 5 discriminator 1 view .LVU15
+  98:Src/gd32e23x_it.c ****     }
+ 128              		.loc 1 98 5 discriminator 1 view .LVU16
+  97:Src/gd32e23x_it.c ****     }
+ 129              		.loc 1 97 10 discriminator 1 view .LVU17
+ 130 0000 FEE7     		b	.L9
+ 131              		.cfi_endproc
+ 132              	.LFE70:
+ 134              		.section	.text.SVC_Handler,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	SVC_Handler
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 5
+
+
+ 137              		.syntax unified
+ 138              		.code	16
+ 139              		.thumb_func
+ 140              		.fpu softvfp
+ 142              	SVC_Handler:
+ 143              	.LFB71:
+  99:Src/gd32e23x_it.c **** }
+ 100:Src/gd32e23x_it.c **** 
+ 101:Src/gd32e23x_it.c **** /*!
+ 102:Src/gd32e23x_it.c ****     \brief      this function handles SVC exception
+ 103:Src/gd32e23x_it.c ****     \param[in]  none
+ 104:Src/gd32e23x_it.c ****     \param[out] none
+ 105:Src/gd32e23x_it.c ****     \retval     none
+ 106:Src/gd32e23x_it.c **** */
+ 107:Src/gd32e23x_it.c **** void SVC_Handler(void)
+ 108:Src/gd32e23x_it.c **** {
+ 144              		.loc 1 108 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 109:Src/gd32e23x_it.c **** }
+ 149              		.loc 1 109 1 view .LVU19
+ 150              		@ sp needed
+ 151 0000 7047     		bx	lr
+ 152              		.cfi_endproc
+ 153              	.LFE71:
+ 155              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	DebugMon_Handler
+ 158              		.syntax unified
+ 159              		.code	16
+ 160              		.thumb_func
+ 161              		.fpu softvfp
+ 163              	DebugMon_Handler:
+ 164              	.LFB72:
+ 110:Src/gd32e23x_it.c **** 
+ 111:Src/gd32e23x_it.c **** /*!
+ 112:Src/gd32e23x_it.c ****     \brief      this function handles DebugMon exception
+ 113:Src/gd32e23x_it.c ****     \param[in]  none
+ 114:Src/gd32e23x_it.c ****     \param[out] none
+ 115:Src/gd32e23x_it.c ****     \retval     none
+ 116:Src/gd32e23x_it.c **** */
+ 117:Src/gd32e23x_it.c **** void DebugMon_Handler(void)
+ 118:Src/gd32e23x_it.c **** {
+ 165              		.loc 1 118 1 view -0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              		@ link register save eliminated.
+ 119:Src/gd32e23x_it.c **** }
+ 170              		.loc 1 119 1 view .LVU21
+ 171              		@ sp needed
+ 172 0000 7047     		bx	lr
+ 173              		.cfi_endproc
+ 174              	.LFE72:
+ 176              		.section	.text.PendSV_Handler,"ax",%progbits
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 6
+
+
+ 177              		.align	1
+ 178              		.global	PendSV_Handler
+ 179              		.syntax unified
+ 180              		.code	16
+ 181              		.thumb_func
+ 182              		.fpu softvfp
+ 184              	PendSV_Handler:
+ 185              	.LFB73:
+ 120:Src/gd32e23x_it.c **** 
+ 121:Src/gd32e23x_it.c **** /*!
+ 122:Src/gd32e23x_it.c ****     \brief      this function handles PendSV exception
+ 123:Src/gd32e23x_it.c ****     \param[in]  none
+ 124:Src/gd32e23x_it.c ****     \param[out] none
+ 125:Src/gd32e23x_it.c ****     \retval     none
+ 126:Src/gd32e23x_it.c **** */
+ 127:Src/gd32e23x_it.c **** void PendSV_Handler(void)
+ 128:Src/gd32e23x_it.c **** {
+ 186              		.loc 1 128 1 view -0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190              		@ link register save eliminated.
+ 129:Src/gd32e23x_it.c **** }
+ 191              		.loc 1 129 1 view .LVU23
+ 192              		@ sp needed
+ 193 0000 7047     		bx	lr
+ 194              		.cfi_endproc
+ 195              	.LFE73:
+ 197              		.section	.text.SysTick_Handler,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	SysTick_Handler
+ 200              		.syntax unified
+ 201              		.code	16
+ 202              		.thumb_func
+ 203              		.fpu softvfp
+ 205              	SysTick_Handler:
+ 206              	.LFB74:
+ 130:Src/gd32e23x_it.c **** 
+ 131:Src/gd32e23x_it.c **** /*!
+ 132:Src/gd32e23x_it.c ****     \brief      this function handles SysTick exception
+ 133:Src/gd32e23x_it.c ****     \param[in]  none
+ 134:Src/gd32e23x_it.c ****     \param[out] none
+ 135:Src/gd32e23x_it.c ****     \retval     none
+ 136:Src/gd32e23x_it.c **** */
+ 137:Src/gd32e23x_it.c **** void SysTick_Handler(void)
+ 138:Src/gd32e23x_it.c **** {
+ 207              		.loc 1 138 1 view -0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211 0000 10B5     		push	{r4, lr}
+ 212              	.LCFI0:
+ 213              		.cfi_def_cfa_offset 8
+ 214              		.cfi_offset 4, -8
+ 215              		.cfi_offset 14, -4
+ 139:Src/gd32e23x_it.c ****     delay_decrement();
+ 216              		.loc 1 139 5 view .LVU25
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 7
+
+
+ 217 0002 FFF7FEFF 		bl	delay_decrement
+ 218              	.LVL0:
+ 140:Src/gd32e23x_it.c **** }
+ 219              		.loc 1 140 1 is_stmt 0 view .LVU26
+ 220              		@ sp needed
+ 221 0006 10BD     		pop	{r4, pc}
+ 222              		.cfi_endproc
+ 223              	.LFE74:
+ 225              		.text
+ 226              	.Letext0:
+ 227              		.file 2 "Inc/systick.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32e23x_it.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:16     .text.NMI_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:24     .text.NMI_Handler:0000000000000000 NMI_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:39     .text.HardFault_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:46     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:63     .text.MemManage_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:70     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:87     .text.BusFault_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:94     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:111    .text.UsageFault_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:118    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:135    .text.SVC_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:142    .text.SVC_Handler:0000000000000000 SVC_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:156    .text.DebugMon_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:163    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:177    .text.PendSV_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:184    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:198    .text.SysTick_Handler:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccjjS4c2.s:205    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+
+UNDEFINED SYMBOLS
+delay_decrement

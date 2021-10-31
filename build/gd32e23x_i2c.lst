@@ -1,0 +1,2815 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gd32e23x_i2c.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.i2c_deinit,"ax",%progbits
+  16              		.align	1
+  17              		.global	i2c_deinit
+  18              		.arch armv8-m.base
+  19              		.syntax unified
+  20              		.code	16
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	i2c_deinit:
+  25              	.LVL0:
+  26              	.LFB66:
+  27              		.file 1 "Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c"
+   1:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+   2:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \file    gd32e23x_i2c.c
+   3:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief   I2C driver
+   4:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+   5:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \version 2019-02-19, V1.0.0, firmware for GD32E23x
+   6:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \version 2020-12-12, V1.1.0, firmware for GD32E23x
+   7:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+   8:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+   9:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*
+  10:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     Copyright (c) 2020, GigaDevice Semiconductor Inc.
+  11:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  12:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  13:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** are permitted provided that the following conditions are met:
+  14:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  15:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  16:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****        list of conditions and the following disclaimer.
+  17:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  18:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****        this list of conditions and the following disclaimer in the documentation 
+  19:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****        and/or other materials provided with the distribution.
+  20:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  21:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****        may be used to endorse or promote products derived from this software without 
+  22:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****        specific prior written permission.
+  23:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  24:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  25:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  26:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  27:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  28:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  30:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  31:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 2
+
+
+  32:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  33:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** OF SUCH DAMAGE.
+  34:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+  35:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  36:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #include "gd32e23x_i2c.h"
+  37:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  38:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /* I2C register bit mask */
+  39:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define I2CCLK_MAX                    ((uint32_t)0x0000007FU)             /*!< i2cclk maximum value
+  40:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define I2CCLK_MIN                    ((uint32_t)0x00000002U)             /*!< i2cclk minimum value
+  41:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define I2C_FLAG_MASK                 ((uint32_t)0x0000FFFFU)             /*!< i2c flag mask */
+  42:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define I2C_ADDRESS_MASK              ((uint32_t)0x000003FFU)             /*!< i2c address mask */
+  43:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define I2C_ADDRESS2_MASK             ((uint32_t)0x000000FEU)             /*!< the second i2c addre
+  44:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  45:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /* I2C register bit offset */
+  46:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** #define STAT1_PECV_OFFSET             ((uint32_t)8U)     /* bit offset of PECV in I2C_STAT1 */
+  47:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  48:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+  49:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      reset I2C
+  50:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+  51:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+  52:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+  53:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+  54:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_deinit(uint32_t i2c_periph)
+  55:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+  28              		.loc 1 55 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 55 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  56:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     switch(i2c_periph){
+  38              		.loc 1 56 5 is_stmt 1 view .LVU2
+  39 0002 45F20043 		movw	r3, #21504
+  40 0006 C4F20003 		movt	r3, 16384
+  41 000a 9842     		cmp	r0, r3
+  42 000c 06D0     		beq	.L2
+  43 000e 45F60003 		movw	r3, #22528
+  44 0012 C4F20003 		movt	r3, 16384
+  45 0016 9842     		cmp	r0, r3
+  46 0018 09D0     		beq	.L3
+  47              	.LVL1:
+  48              	.L1:
+  57:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     case I2C0:
+  58:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* reset I2C0 */
+  59:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_enable(RCU_I2C0RST);
+  60:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C0RST);
+  61:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         break;
+  62:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     case I2C1:
+  63:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* reset I2C1 */
+  64:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_enable(RCU_I2C1RST);
+  65:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C1RST);
+  66:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         break;
+  67:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     default:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 3
+
+
+  68:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         break;
+  69:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+  70:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+  49              		.loc 1 70 1 is_stmt 0 view .LVU3
+  50              		@ sp needed
+  51 001a 10BD     		pop	{r4, pc}
+  52              	.LVL2:
+  53              	.L2:
+  59:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C0RST);
+  54              		.loc 1 59 9 is_stmt 1 view .LVU4
+  55 001c 40F21540 		movw	r0, #1045
+  56              	.LVL3:
+  59:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C0RST);
+  57              		.loc 1 59 9 is_stmt 0 view .LVU5
+  58 0020 FFF7FEFF 		bl	rcu_periph_reset_enable
+  59              	.LVL4:
+  60:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         break;
+  60              		.loc 1 60 9 is_stmt 1 view .LVU6
+  61 0024 40F21540 		movw	r0, #1045
+  62 0028 FFF7FEFF 		bl	rcu_periph_reset_disable
+  63              	.LVL5:
+  61:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     case I2C1:
+  64              		.loc 1 61 9 view .LVU7
+  65 002c F5E7     		b	.L1
+  66              	.LVL6:
+  67              	.L3:
+  64:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C1RST);
+  68              		.loc 1 64 9 view .LVU8
+  69 002e 40F21640 		movw	r0, #1046
+  70              	.LVL7:
+  64:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         rcu_periph_reset_disable(RCU_I2C1RST);
+  71              		.loc 1 64 9 is_stmt 0 view .LVU9
+  72 0032 FFF7FEFF 		bl	rcu_periph_reset_enable
+  73              	.LVL8:
+  65:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         break;
+  74              		.loc 1 65 9 is_stmt 1 view .LVU10
+  75 0036 40F21640 		movw	r0, #1046
+  76 003a FFF7FEFF 		bl	rcu_periph_reset_disable
+  77              	.LVL9:
+  66:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     default:
+  78              		.loc 1 66 9 view .LVU11
+  79              		.loc 1 70 1 is_stmt 0 view .LVU12
+  80 003e ECE7     		b	.L1
+  81              		.cfi_endproc
+  82              	.LFE66:
+  84              		.section	.text.i2c_clock_config,"ax",%progbits
+  85              		.align	1
+  86              		.global	i2c_clock_config
+  87              		.syntax unified
+  88              		.code	16
+  89              		.thumb_func
+  90              		.fpu softvfp
+  92              	i2c_clock_config:
+  93              	.LVL10:
+  94              	.LFB67:
+  71:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+  72:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 4
+
+
+  73:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      configure I2C clock
+  74:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+  75:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  clkspeed: I2C clock speed, supports standard mode (up to 100 kHz), fast mode (up to
+  76:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                           and fast mode plus (up to 1MHz)
+  77:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  dutycyc: duty cycle in fast mode or fast mode plus
+  78:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+  79:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DTCY_2: T_low/T_high=2 
+  80:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DTCY_16_9: T_low/T_high=16/9
+  81:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+  82:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+  83:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+  84:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_clock_config(uint32_t i2c_periph, uint32_t clkspeed, uint32_t dutycyc)
+  85:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+  95              		.loc 1 85 1 is_stmt 1 view -0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		.loc 1 85 1 is_stmt 0 view .LVU14
+ 100 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 101              	.LCFI1:
+ 102              		.cfi_def_cfa_offset 24
+ 103              		.cfi_offset 3, -24
+ 104              		.cfi_offset 4, -20
+ 105              		.cfi_offset 5, -16
+ 106              		.cfi_offset 6, -12
+ 107              		.cfi_offset 7, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 0400     		movs	r4, r0
+ 110 0004 0D00     		movs	r5, r1
+ 111 0006 1600     		movs	r6, r2
+  86:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t pclk1, clkc, freq, risetime;
+ 112              		.loc 1 86 5 is_stmt 1 view .LVU15
+  87:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t temp;
+ 113              		.loc 1 87 5 view .LVU16
+  88:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+  89:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     pclk1 = rcu_clock_freq_get(CK_APB1);
+ 114              		.loc 1 89 5 view .LVU17
+ 115              		.loc 1 89 13 is_stmt 0 view .LVU18
+ 116 0008 0220     		movs	r0, #2
+ 117              	.LVL11:
+ 118              		.loc 1 89 13 view .LVU19
+ 119 000a FFF7FEFF 		bl	rcu_clock_freq_get
+ 120              	.LVL12:
+  90:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* I2C peripheral clock frequency */
+  91:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     freq = (uint32_t)(pclk1/1000000U);
+ 121              		.loc 1 91 5 is_stmt 1 view .LVU20
+ 122              		.loc 1 91 10 is_stmt 0 view .LVU21
+ 123 000e 44F24023 		movw	r3, #16960
+ 124 0012 C0F20F03 		movt	r3, 15
+ 125 0016 B0FBF3F3 		udiv	r3, r0, r3
+ 126              	.LVL13:
+  92:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(freq >= I2CCLK_MAX){
+ 127              		.loc 1 92 5 is_stmt 1 view .LVU22
+ 128              		.loc 1 92 7 is_stmt 0 view .LVU23
+ 129 001a 4DF6BF52 		movw	r2, #56767
+ 130 001e C0F29172 		movt	r2, 1937
+ 131 0022 9042     		cmp	r0, r2
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 5
+
+
+ 132 0024 1DD8     		bhi	.L19
+  91:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(freq >= I2CCLK_MAX){
+ 133              		.loc 1 91 10 view .LVU24
+ 134 0026 1900     		movs	r1, r3
+ 135              	.L6:
+ 136              	.LVL14:
+  93:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         freq = I2CCLK_MAX;
+  94:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+  95:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     temp = I2C_CTL1(i2c_periph);
+ 137              		.loc 1 95 5 is_stmt 1 view .LVU25
+ 138              		.loc 1 95 10 is_stmt 0 view .LVU26
+ 139 0028 6268     		ldr	r2, [r4, #4]
+ 140              	.LVL15:
+  96:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     temp &= ~I2C_CTL1_I2CCLK;
+ 141              		.loc 1 96 5 is_stmt 1 view .LVU27
+ 142              		.loc 1 96 10 is_stmt 0 view .LVU28
+ 143 002a 7F27     		movs	r7, #127
+ 144 002c BA43     		bics	r2, r7
+ 145              	.LVL16:
+  97:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     temp |= freq;
+ 146              		.loc 1 97 5 is_stmt 1 view .LVU29
+ 147              		.loc 1 97 10 is_stmt 0 view .LVU30
+ 148 002e 0A43     		orrs	r2, r1
+ 149              	.LVL17:
+  98:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+  99:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL1(i2c_periph) = temp;
+ 150              		.loc 1 99 5 is_stmt 1 view .LVU31
+ 151              		.loc 1 99 26 is_stmt 0 view .LVU32
+ 152 0030 6260     		str	r2, [r4, #4]
+ 100:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 101:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(100000U >= clkspeed){
+ 153              		.loc 1 101 5 is_stmt 1 view .LVU33
+ 154              		.loc 1 101 7 is_stmt 0 view .LVU34
+ 155 0032 48F2A062 		movw	r2, #34464
+ 156              	.LVL18:
+ 157              		.loc 1 101 7 view .LVU35
+ 158 0036 C0F20102 		movt	r2, 1
+ 159 003a 9542     		cmp	r5, r2
+ 160 003c 1AD8     		bhi	.L7
+ 102:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* the maximum SCL rise time is 1000ns in standard mode */
+ 103:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         risetime = (uint32_t)((pclk1/1000000U)+1U);
+ 161              		.loc 1 103 9 is_stmt 1 view .LVU36
+ 162              		.loc 1 103 18 is_stmt 0 view .LVU37
+ 163 003e 0133     		adds	r3, r3, #1
+ 164              	.LVL19:
+ 104:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(risetime >= I2CCLK_MAX){
+ 165              		.loc 1 104 9 is_stmt 1 view .LVU38
+ 166              		.loc 1 104 11 is_stmt 0 view .LVU39
+ 167 0040 7E2B     		cmp	r3, #126
+ 168 0042 10D9     		bls	.L8
+ 105:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_RT(i2c_periph) = I2CCLK_MAX;
+ 169              		.loc 1 105 13 is_stmt 1 view .LVU40
+ 170              		.loc 1 105 32 is_stmt 0 view .LVU41
+ 171 0044 7F23     		movs	r3, #127
+ 172              	.LVL20:
+ 173              		.loc 1 105 32 view .LVU42
+ 174 0046 2362     		str	r3, [r4, #32]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 6
+
+
+ 175              	.LVL21:
+ 176              	.L9:
+ 106:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else if(risetime <= I2CCLK_MIN){
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_RT(i2c_periph) = I2CCLK_MIN;
+ 108:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_RT(i2c_periph) = risetime;
+ 110:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 111:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         clkc = (uint32_t)(pclk1/(clkspeed*2U)); 
+ 177              		.loc 1 111 9 is_stmt 1 view .LVU43
+ 178              		.loc 1 111 42 is_stmt 0 view .LVU44
+ 179 0048 6D00     		lsls	r5, r5, #1
+ 180              	.LVL22:
+ 181              		.loc 1 111 14 view .LVU45
+ 182 004a B0FBF5F0 		udiv	r0, r0, r5
+ 183              	.LVL23:
+ 112:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(clkc < 0x04U){
+ 184              		.loc 1 112 9 is_stmt 1 view .LVU46
+ 185              		.loc 1 112 11 is_stmt 0 view .LVU47
+ 186 004e 0328     		cmp	r0, #3
+ 187 0050 00D8     		bhi	.L11
+ 113:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* the CLKC in standard mode minmum value is 4 */
+ 114:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc = 0x04U;
+ 188              		.loc 1 114 18 view .LVU48
+ 189 0052 0420     		movs	r0, #4
+ 190              	.LVL24:
+ 191              	.L11:
+ 115:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 116:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= (I2C_CKCFG_CLKC & clkc);
+ 192              		.loc 1 116 9 is_stmt 1 view .LVU49
+ 193              		.loc 1 116 31 is_stmt 0 view .LVU50
+ 194 0054 E369     		ldr	r3, [r4, #28]
+ 195              		.loc 1 116 50 view .LVU51
+ 196 0056 40F6FF75 		movw	r5, #4095
+ 197 005a 2840     		ands	r0, r5
+ 198              	.LVL25:
+ 199              		.loc 1 116 31 view .LVU52
+ 200 005c 1843     		orrs	r0, r3
+ 201 005e E061     		str	r0, [r4, #28]
+ 202              	.LVL26:
+ 203              	.L5:
+ 117:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 118:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else if(400000U >= clkspeed){
+ 119:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* the maximum SCL rise time is 300ns in fast mode */
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_RT(i2c_periph) = (uint32_t)(((freq*(uint32_t)300U)/(uint32_t)1000U)+(uint32_t)1U);
+ 121:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 122:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc = (uint32_t)(pclk1/(clkspeed*3U));
+ 124:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 125:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 126:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 16/9 */
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc = (uint32_t)(pclk1/(clkspeed*25U));
+ 128:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 129:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 130:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(0U == (clkc & I2C_CKCFG_CLKC)){
+ 131:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* the CLKC in fast mode minmum value is 1 */
+ 132:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc |= 0x0001U;  
+ 133:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 7
+
+
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= I2C_CKCFG_FAST;
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 136:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 137:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* fast mode plus, the maximum SCL rise time is 120ns */
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_RT(i2c_periph) = (uint32_t)(((freq*(uint32_t)120U)/(uint32_t)1000U)+(uint32_t)1U);
+ 139:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 140:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc = (uint32_t)(pclk1/(clkspeed*3U));
+ 142:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 143:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 144:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 16/9 */
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             clkc = (uint32_t)(pclk1/(clkspeed*25U));
+ 146:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 147:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 148:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* enable fast mode */
+ 149:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= I2C_CKCFG_FAST;
+ 150:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 151:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* enable I2C fast mode plus */
+ 152:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_FMPCFG(i2c_periph) = I2C_FMPCFG_FMPEN;
+ 153:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 154:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 204              		.loc 1 154 1 view .LVU53
+ 205              		@ sp needed
+ 206              	.LVL27:
+ 207              		.loc 1 154 1 view .LVU54
+ 208 0060 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 209              	.LVL28:
+ 210              	.L19:
+  93:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 211              		.loc 1 93 14 view .LVU55
+ 212 0062 7F21     		movs	r1, #127
+ 213 0064 E0E7     		b	.L6
+ 214              	.LVL29:
+ 215              	.L8:
+ 106:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_RT(i2c_periph) = I2CCLK_MIN;
+ 216              		.loc 1 106 15 is_stmt 1 view .LVU56
+ 106:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_RT(i2c_periph) = I2CCLK_MIN;
+ 217              		.loc 1 106 17 is_stmt 0 view .LVU57
+ 218 0066 022B     		cmp	r3, #2
+ 219 0068 02D8     		bhi	.L10
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 220              		.loc 1 107 13 is_stmt 1 view .LVU58
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 221              		.loc 1 107 32 is_stmt 0 view .LVU59
+ 222 006a 0223     		movs	r3, #2
+ 223              	.LVL30:
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 224              		.loc 1 107 32 view .LVU60
+ 225 006c 2362     		str	r3, [r4, #32]
+ 226              	.LVL31:
+ 107:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 227              		.loc 1 107 32 view .LVU61
+ 228 006e EBE7     		b	.L9
+ 229              	.LVL32:
+ 230              	.L10:
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 231              		.loc 1 109 13 is_stmt 1 view .LVU62
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 8
+
+
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 232              		.loc 1 109 32 is_stmt 0 view .LVU63
+ 233 0070 2362     		str	r3, [r4, #32]
+ 234              	.LVL33:
+ 109:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 235              		.loc 1 109 32 view .LVU64
+ 236 0072 E9E7     		b	.L9
+ 237              	.LVL34:
+ 238              	.L7:
+ 118:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* the maximum SCL rise time is 300ns in fast mode */
+ 239              		.loc 1 118 11 is_stmt 1 view .LVU65
+ 118:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* the maximum SCL rise time is 300ns in fast mode */
+ 240              		.loc 1 118 13 is_stmt 0 view .LVU66
+ 241 0074 41F68023 		movw	r3, #6784
+ 242 0078 C0F20603 		movt	r3, 6
+ 243 007c 9D42     		cmp	r5, r3
+ 244 007e 2CD8     		bhi	.L13
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 245              		.loc 1 120 9 is_stmt 1 view .LVU67
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 246              		.loc 1 120 47 is_stmt 0 view .LVU68
+ 247 0080 8B00     		lsls	r3, r1, #2
+ 248 0082 5918     		adds	r1, r3, r1
+ 249              	.LVL35:
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 250              		.loc 1 120 47 view .LVU69
+ 251 0084 0B01     		lsls	r3, r1, #4
+ 252 0086 591A     		subs	r1, r3, r1
+ 253 0088 8900     		lsls	r1, r1, #2
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 254              		.loc 1 120 63 view .LVU70
+ 255 008a 40F2E833 		movw	r3, #1000
+ 256 008e B1FBF3F1 		udiv	r1, r1, r3
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 257              		.loc 1 120 30 view .LVU71
+ 258 0092 0131     		adds	r1, r1, #1
+ 120:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 259              		.loc 1 120 28 view .LVU72
+ 260 0094 2162     		str	r1, [r4, #32]
+ 261              	.LVL36:
+ 121:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 262              		.loc 1 121 9 is_stmt 1 view .LVU73
+ 121:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 263              		.loc 1 121 11 is_stmt 0 view .LVU74
+ 264 0096 A6B9     		cbnz	r6, .L14
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 265              		.loc 1 123 13 is_stmt 1 view .LVU75
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 266              		.loc 1 123 46 is_stmt 0 view .LVU76
+ 267 0098 6900     		lsls	r1, r5, #1
+ 268 009a 4D19     		adds	r5, r1, r5
+ 269              	.LVL37:
+ 123:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 270              		.loc 1 123 18 view .LVU77
+ 271 009c B0FBF5F0 		udiv	r0, r0, r5
+ 272              	.LVL38:
+ 124:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 9
+
+
+ 273              		.loc 1 124 13 is_stmt 1 view .LVU78
+ 124:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 274              		.loc 1 124 35 is_stmt 0 view .LVU79
+ 275 00a0 E369     		ldr	r3, [r4, #28]
+ 276 00a2 234A     		ldr	r2, .L21
+ 277 00a4 1340     		ands	r3, r2
+ 278 00a6 E361     		str	r3, [r4, #28]
+ 279              	.L15:
+ 130:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* the CLKC in fast mode minmum value is 1 */
+ 280              		.loc 1 130 9 is_stmt 1 view .LVU80
+ 130:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* the CLKC in fast mode minmum value is 1 */
+ 281              		.loc 1 130 11 is_stmt 0 view .LVU81
+ 282 00a8 0305     		lsls	r3, r0, #20
+ 283 00aa 01D1     		bne	.L16
+ 132:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 284              		.loc 1 132 13 is_stmt 1 view .LVU82
+ 132:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 285              		.loc 1 132 18 is_stmt 0 view .LVU83
+ 286 00ac 0123     		movs	r3, #1
+ 287 00ae 1843     		orrs	r0, r3
+ 288              	.LVL39:
+ 289              	.L16:
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 290              		.loc 1 134 9 is_stmt 1 view .LVU84
+ 134:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 291              		.loc 1 134 31 is_stmt 0 view .LVU85
+ 292 00b0 E369     		ldr	r3, [r4, #28]
+ 293 00b2 48F20002 		movw	r2, #32768
+ 294 00b6 1343     		orrs	r3, r2
+ 295 00b8 E361     		str	r3, [r4, #28]
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 296              		.loc 1 135 9 is_stmt 1 view .LVU86
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 297              		.loc 1 135 31 is_stmt 0 view .LVU87
+ 298 00ba E569     		ldr	r5, [r4, #28]
+ 299 00bc 2843     		orrs	r0, r5
+ 300              	.LVL40:
+ 135:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 301              		.loc 1 135 31 view .LVU88
+ 302 00be E061     		str	r0, [r4, #28]
+ 303 00c0 CEE7     		b	.L5
+ 304              	.LVL41:
+ 305              	.L14:
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 306              		.loc 1 127 13 is_stmt 1 view .LVU89
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 307              		.loc 1 127 46 is_stmt 0 view .LVU90
+ 308 00c2 A900     		lsls	r1, r5, #2
+ 309 00c4 4D19     		adds	r5, r1, r5
+ 310              	.LVL42:
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 311              		.loc 1 127 46 view .LVU91
+ 312 00c6 A900     		lsls	r1, r5, #2
+ 313 00c8 6D18     		adds	r5, r5, r1
+ 127:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 314              		.loc 1 127 18 view .LVU92
+ 315 00ca B0FBF5F0 		udiv	r0, r0, r5
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 10
+
+
+ 316              	.LVL43:
+ 128:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 317              		.loc 1 128 13 is_stmt 1 view .LVU93
+ 128:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 318              		.loc 1 128 35 is_stmt 0 view .LVU94
+ 319 00ce E369     		ldr	r3, [r4, #28]
+ 320 00d0 44F20002 		movw	r2, #16384
+ 321 00d4 1343     		orrs	r3, r2
+ 322 00d6 E361     		str	r3, [r4, #28]
+ 323 00d8 E6E7     		b	.L15
+ 324              	.LVL44:
+ 325              	.L13:
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 326              		.loc 1 138 9 is_stmt 1 view .LVU95
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 327              		.loc 1 138 47 is_stmt 0 view .LVU96
+ 328 00da 0B01     		lsls	r3, r1, #4
+ 329 00dc 591A     		subs	r1, r3, r1
+ 330              	.LVL45:
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 331              		.loc 1 138 47 view .LVU97
+ 332 00de C900     		lsls	r1, r1, #3
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 333              		.loc 1 138 63 view .LVU98
+ 334 00e0 40F2E833 		movw	r3, #1000
+ 335 00e4 B1FBF3F1 		udiv	r1, r1, r3
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 336              		.loc 1 138 30 view .LVU99
+ 337 00e8 0131     		adds	r1, r1, #1
+ 138:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(I2C_DTCY_2 == dutycyc){
+ 338              		.loc 1 138 28 view .LVU100
+ 339 00ea 2162     		str	r1, [r4, #32]
+ 340              	.LVL46:
+ 139:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 341              		.loc 1 139 9 is_stmt 1 view .LVU101
+ 139:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             /* I2C duty cycle is 2 */
+ 342              		.loc 1 139 11 is_stmt 0 view .LVU102
+ 343 00ec 9EB9     		cbnz	r6, .L17
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 344              		.loc 1 141 13 is_stmt 1 view .LVU103
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 345              		.loc 1 141 46 is_stmt 0 view .LVU104
+ 346 00ee 6900     		lsls	r1, r5, #1
+ 347 00f0 4D19     		adds	r5, r1, r5
+ 348              	.LVL47:
+ 141:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) &= ~I2C_CKCFG_DTCY;
+ 349              		.loc 1 141 18 view .LVU105
+ 350 00f2 B0FBF5F0 		udiv	r0, r0, r5
+ 351              	.LVL48:
+ 142:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 352              		.loc 1 142 13 is_stmt 1 view .LVU106
+ 142:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 353              		.loc 1 142 35 is_stmt 0 view .LVU107
+ 354 00f6 E369     		ldr	r3, [r4, #28]
+ 355 00f8 0D4A     		ldr	r2, .L21
+ 356 00fa 1340     		ands	r3, r2
+ 357 00fc E361     		str	r3, [r4, #28]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 11
+
+
+ 358              	.L18:
+ 149:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 359              		.loc 1 149 9 is_stmt 1 view .LVU108
+ 149:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CKCFG(i2c_periph) |= clkc;
+ 360              		.loc 1 149 31 is_stmt 0 view .LVU109
+ 361 00fe E369     		ldr	r3, [r4, #28]
+ 362 0100 48F20002 		movw	r2, #32768
+ 363 0104 1343     		orrs	r3, r2
+ 364 0106 E361     		str	r3, [r4, #28]
+ 150:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* enable I2C fast mode plus */
+ 365              		.loc 1 150 9 is_stmt 1 view .LVU110
+ 150:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* enable I2C fast mode plus */
+ 366              		.loc 1 150 31 is_stmt 0 view .LVU111
+ 367 0108 E569     		ldr	r5, [r4, #28]
+ 368 010a 2843     		orrs	r0, r5
+ 369              	.LVL49:
+ 150:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* enable I2C fast mode plus */
+ 370              		.loc 1 150 31 view .LVU112
+ 371 010c E061     		str	r0, [r4, #28]
+ 152:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 372              		.loc 1 152 9 is_stmt 1 view .LVU113
+ 373 010e 9034     		adds	r4, r4, #144
+ 374              	.LVL50:
+ 152:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 375              		.loc 1 152 32 is_stmt 0 view .LVU114
+ 376 0110 0123     		movs	r3, #1
+ 377 0112 2360     		str	r3, [r4]
+ 378              		.loc 1 154 1 view .LVU115
+ 379 0114 A4E7     		b	.L5
+ 380              	.LVL51:
+ 381              	.L17:
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 382              		.loc 1 145 13 is_stmt 1 view .LVU116
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 383              		.loc 1 145 46 is_stmt 0 view .LVU117
+ 384 0116 A900     		lsls	r1, r5, #2
+ 385 0118 4D19     		adds	r5, r1, r5
+ 386              	.LVL52:
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 387              		.loc 1 145 46 view .LVU118
+ 388 011a A900     		lsls	r1, r5, #2
+ 389 011c 6D18     		adds	r5, r5, r1
+ 145:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             I2C_CKCFG(i2c_periph) |= I2C_CKCFG_DTCY;
+ 390              		.loc 1 145 18 view .LVU119
+ 391 011e B0FBF5F0 		udiv	r0, r0, r5
+ 392              	.LVL53:
+ 146:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 393              		.loc 1 146 13 is_stmt 1 view .LVU120
+ 146:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 394              		.loc 1 146 35 is_stmt 0 view .LVU121
+ 395 0122 E369     		ldr	r3, [r4, #28]
+ 396 0124 44F20002 		movw	r2, #16384
+ 397 0128 1343     		orrs	r3, r2
+ 398 012a E361     		str	r3, [r4, #28]
+ 399 012c E7E7     		b	.L18
+ 400              	.L22:
+ 401 012e C046     		.align	2
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 12
+
+
+ 402              	.L21:
+ 403 0130 FFBFFFFF 		.word	-16385
+ 404              		.cfi_endproc
+ 405              	.LFE67:
+ 407              		.section	.text.i2c_mode_addr_config,"ax",%progbits
+ 408              		.align	1
+ 409              		.global	i2c_mode_addr_config
+ 410              		.syntax unified
+ 411              		.code	16
+ 412              		.thumb_func
+ 413              		.fpu softvfp
+ 415              	i2c_mode_addr_config:
+ 416              	.LVL54:
+ 417              	.LFB68:
+ 155:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 156:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 157:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      configure I2C address 
+ 158:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 159:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  mode:
+ 160:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 161:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_I2CMODE_ENABLE: I2C mode
+ 162:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SMBUSMODE_ENABLE: SMBus mode
+ 163:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  addformat: 7bits or 10bits
+ 164:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 165:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ADDFORMAT_7BITS: 7bits
+ 166:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ADDFORMAT_10BITS: 10bits
+ 167:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  addr: I2C address
+ 168:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 169:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 170:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 171:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_mode_addr_config(uint32_t i2c_periph, uint32_t mode, uint32_t addformat, uint32_t addr)
+ 172:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 418              		.loc 1 172 1 is_stmt 1 view -0
+ 419              		.cfi_startproc
+ 420              		@ args = 0, pretend = 0, frame = 0
+ 421              		@ frame_needed = 0, uses_anonymous_args = 0
+ 422              		.loc 1 172 1 is_stmt 0 view .LVU123
+ 423 0000 30B5     		push	{r4, r5, lr}
+ 424              	.LCFI2:
+ 425              		.cfi_def_cfa_offset 12
+ 426              		.cfi_offset 4, -12
+ 427              		.cfi_offset 5, -8
+ 428              		.cfi_offset 14, -4
+ 173:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* SMBus/I2C mode selected */
+ 174:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 429              		.loc 1 174 5 is_stmt 1 view .LVU124
+ 430              	.LVL55:
+ 175:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 176:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 431              		.loc 1 176 5 view .LVU125
+ 432              		.loc 1 176 9 is_stmt 0 view .LVU126
+ 433 0002 0468     		ldr	r4, [r0]
+ 434              	.LVL56:
+ 177:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_SMBEN); 
+ 435              		.loc 1 177 5 is_stmt 1 view .LVU127
+ 436              		.loc 1 177 9 is_stmt 0 view .LVU128
+ 437 0004 0225     		movs	r5, #2
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 13
+
+
+ 438 0006 AC43     		bics	r4, r5
+ 439              	.LVL57:
+ 178:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= mode;
+ 440              		.loc 1 178 5 is_stmt 1 view .LVU129
+ 441              		.loc 1 178 9 is_stmt 0 view .LVU130
+ 442 0008 0C43     		orrs	r4, r1
+ 443              	.LVL58:
+ 179:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 444              		.loc 1 179 5 is_stmt 1 view .LVU131
+ 445              		.loc 1 179 26 is_stmt 0 view .LVU132
+ 446 000a 0460     		str	r4, [r0]
+ 180:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure address */
+ 181:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     addr = addr & I2C_ADDRESS_MASK;
+ 447              		.loc 1 181 5 is_stmt 1 view .LVU133
+ 448              		.loc 1 181 10 is_stmt 0 view .LVU134
+ 449 000c 40F2FF31 		movw	r1, #1023
+ 450              	.LVL59:
+ 451              		.loc 1 181 10 view .LVU135
+ 452 0010 1940     		ands	r1, r3
+ 453              	.LVL60:
+ 182:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SADDR0(i2c_periph) = (addformat | addr);
+ 454              		.loc 1 182 5 is_stmt 1 view .LVU136
+ 455              		.loc 1 182 41 is_stmt 0 view .LVU137
+ 456 0012 1143     		orrs	r1, r2
+ 457              	.LVL61:
+ 458              		.loc 1 182 28 view .LVU138
+ 459 0014 8160     		str	r1, [r0, #8]
+ 183:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 460              		.loc 1 183 1 view .LVU139
+ 461              		@ sp needed
+ 462              	.LVL62:
+ 463              		.loc 1 183 1 view .LVU140
+ 464 0016 30BD     		pop	{r4, r5, pc}
+ 465              		.cfi_endproc
+ 466              	.LFE68:
+ 468              		.section	.text.i2c_smbus_type_config,"ax",%progbits
+ 469              		.align	1
+ 470              		.global	i2c_smbus_type_config
+ 471              		.syntax unified
+ 472              		.code	16
+ 473              		.thumb_func
+ 474              		.fpu softvfp
+ 476              	i2c_smbus_type_config:
+ 477              	.LVL63:
+ 478              	.LFB69:
+ 184:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 185:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 186:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      SMBus type selection
+ 187:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 188:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  type:
+ 189:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 190:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SMBUS_DEVICE: device
+ 191:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SMBUS_HOST: host
+ 192:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 193:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 194:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 195:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_smbus_type_config(uint32_t i2c_periph, uint32_t type)
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 14
+
+
+ 196:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 479              		.loc 1 196 1 is_stmt 1 view -0
+ 480              		.cfi_startproc
+ 481              		@ args = 0, pretend = 0, frame = 0
+ 482              		@ frame_needed = 0, uses_anonymous_args = 0
+ 483              		@ link register save eliminated.
+ 197:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_SMBUS_HOST == type){
+ 484              		.loc 1 197 5 view .LVU142
+ 485              		.loc 1 197 7 is_stmt 0 view .LVU143
+ 486 0000 0829     		cmp	r1, #8
+ 487 0002 04D0     		beq	.L27
+ 198:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_SMBSEL;
+ 199:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 200:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) &= ~(I2C_CTL0_SMBSEL);
+ 488              		.loc 1 200 9 is_stmt 1 view .LVU144
+ 489              		.loc 1 200 30 is_stmt 0 view .LVU145
+ 490 0004 0368     		ldr	r3, [r0]
+ 491 0006 0822     		movs	r2, #8
+ 492 0008 9343     		bics	r3, r2
+ 493 000a 0360     		str	r3, [r0]
+ 494              	.L24:
+ 201:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 202:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 495              		.loc 1 202 1 view .LVU146
+ 496              		@ sp needed
+ 497 000c 7047     		bx	lr
+ 498              	.L27:
+ 198:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_SMBSEL;
+ 499              		.loc 1 198 9 is_stmt 1 view .LVU147
+ 198:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_SMBSEL;
+ 500              		.loc 1 198 30 is_stmt 0 view .LVU148
+ 501 000e 0368     		ldr	r3, [r0]
+ 502 0010 0822     		movs	r2, #8
+ 503 0012 1343     		orrs	r3, r2
+ 504 0014 0360     		str	r3, [r0]
+ 505 0016 F9E7     		b	.L24
+ 506              		.cfi_endproc
+ 507              	.LFE69:
+ 509              		.section	.text.i2c_ack_config,"ax",%progbits
+ 510              		.align	1
+ 511              		.global	i2c_ack_config
+ 512              		.syntax unified
+ 513              		.code	16
+ 514              		.thumb_func
+ 515              		.fpu softvfp
+ 517              	i2c_ack_config:
+ 518              	.LVL64:
+ 519              	.LFB70:
+ 203:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 204:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 205:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      whether or not to send an ACK
+ 206:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 207:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  ack:
+ 208:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 209:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ACK_ENABLE: ACK will be sent
+ 210:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ACK_DISABLE: ACK will not be sent
+ 211:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 15
+
+
+ 212:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 213:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 214:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_ack_config(uint32_t i2c_periph, uint32_t ack)
+ 215:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 520              		.loc 1 215 1 is_stmt 1 view -0
+ 521              		.cfi_startproc
+ 522              		@ args = 0, pretend = 0, frame = 0
+ 523              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524              		@ link register save eliminated.
+ 216:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_ACK_ENABLE == ack){
+ 525              		.loc 1 216 5 view .LVU150
+ 526              		.loc 1 216 7 is_stmt 0 view .LVU151
+ 527 0000 0129     		cmp	r1, #1
+ 528 0002 04D0     		beq	.L31
+ 217:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_ACKEN;
+ 218:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 219:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) &= ~(I2C_CTL0_ACKEN);
+ 529              		.loc 1 219 9 is_stmt 1 view .LVU152
+ 530              		.loc 1 219 30 is_stmt 0 view .LVU153
+ 531 0004 0368     		ldr	r3, [r0]
+ 532 0006 054A     		ldr	r2, .L32
+ 533 0008 1340     		ands	r3, r2
+ 534 000a 0360     		str	r3, [r0]
+ 535              	.L28:
+ 220:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 221:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 536              		.loc 1 221 1 view .LVU154
+ 537              		@ sp needed
+ 538 000c 7047     		bx	lr
+ 539              	.L31:
+ 217:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_ACKEN;
+ 540              		.loc 1 217 9 is_stmt 1 view .LVU155
+ 217:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_ACKEN;
+ 541              		.loc 1 217 30 is_stmt 0 view .LVU156
+ 542 000e 0368     		ldr	r3, [r0]
+ 543 0010 40F20042 		movw	r2, #1024
+ 544 0014 1343     		orrs	r3, r2
+ 545 0016 0360     		str	r3, [r0]
+ 546 0018 F8E7     		b	.L28
+ 547              	.L33:
+ 548 001a C046     		.align	2
+ 549              	.L32:
+ 550 001c FFFBFFFF 		.word	-1025
+ 551              		.cfi_endproc
+ 552              	.LFE70:
+ 554              		.section	.text.i2c_ackpos_config,"ax",%progbits
+ 555              		.align	1
+ 556              		.global	i2c_ackpos_config
+ 557              		.syntax unified
+ 558              		.code	16
+ 559              		.thumb_func
+ 560              		.fpu softvfp
+ 562              	i2c_ackpos_config:
+ 563              	.LVL65:
+ 564              	.LFB71:
+ 222:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 223:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 16
+
+
+ 224:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      configure I2C POAP position
+ 225:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 226:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  pos:
+ 227:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 228:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ACKPOS_CURRENT: whether to send ACK or not for the current
+ 229:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ACKPOS_NEXT: whether to send ACK or not for the next byte
+ 230:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 231:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 232:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 233:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_ackpos_config(uint32_t i2c_periph, uint32_t pos)
+ 234:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 565              		.loc 1 234 1 is_stmt 1 view -0
+ 566              		.cfi_startproc
+ 567              		@ args = 0, pretend = 0, frame = 0
+ 568              		@ frame_needed = 0, uses_anonymous_args = 0
+ 569              		@ link register save eliminated.
+ 235:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure I2C POAP position */
+ 236:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_ACKPOS_NEXT == pos){
+ 570              		.loc 1 236 5 view .LVU158
+ 571              		.loc 1 236 7 is_stmt 0 view .LVU159
+ 572 0000 29B9     		cbnz	r1, .L35
+ 237:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) |= I2C_CTL0_POAP;
+ 573              		.loc 1 237 9 is_stmt 1 view .LVU160
+ 574              		.loc 1 237 30 is_stmt 0 view .LVU161
+ 575 0002 0368     		ldr	r3, [r0]
+ 576 0004 40F60002 		movw	r2, #2048
+ 577 0008 1343     		orrs	r3, r2
+ 578 000a 0360     		str	r3, [r0]
+ 579              	.L34:
+ 238:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 239:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_CTL0(i2c_periph) &= ~(I2C_CTL0_POAP);
+ 240:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 241:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 580              		.loc 1 241 1 view .LVU162
+ 581              		@ sp needed
+ 582 000c 7047     		bx	lr
+ 583              	.L35:
+ 239:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 584              		.loc 1 239 9 is_stmt 1 view .LVU163
+ 239:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 585              		.loc 1 239 30 is_stmt 0 view .LVU164
+ 586 000e 0368     		ldr	r3, [r0]
+ 587 0010 014A     		ldr	r2, .L37
+ 588 0012 1340     		ands	r3, r2
+ 589 0014 0360     		str	r3, [r0]
+ 590              		.loc 1 241 1 view .LVU165
+ 591 0016 F9E7     		b	.L34
+ 592              	.L38:
+ 593              		.align	2
+ 594              	.L37:
+ 595 0018 FFF7FFFF 		.word	-2049
+ 596              		.cfi_endproc
+ 597              	.LFE71:
+ 599              		.section	.text.i2c_master_addressing,"ax",%progbits
+ 600              		.align	1
+ 601              		.global	i2c_master_addressing
+ 602              		.syntax unified
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 17
+
+
+ 603              		.code	16
+ 604              		.thumb_func
+ 605              		.fpu softvfp
+ 607              	i2c_master_addressing:
+ 608              	.LVL66:
+ 609              	.LFB72:
+ 242:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 243:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 244:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      master sends slave address
+ 245:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 246:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  addr: slave address  
+ 247:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  trandirection: transmitter or receiver
+ 248:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 249:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_TRANSMITTER: transmitter  
+ 250:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_RECEIVER:    receiver  
+ 251:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 252:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 253:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 254:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_master_addressing(uint32_t i2c_periph, uint32_t addr, uint32_t trandirection)
+ 255:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 610              		.loc 1 255 1 is_stmt 1 view -0
+ 611              		.cfi_startproc
+ 612              		@ args = 0, pretend = 0, frame = 0
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614              		@ link register save eliminated.
+ 256:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* master is a transmitter or a receiver */
+ 257:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_TRANSMITTER == trandirection){
+ 615              		.loc 1 257 5 view .LVU167
+ 616              		.loc 1 257 7 is_stmt 0 view .LVU168
+ 617 0000 931C     		adds	r3, r2, #2
+ 618 0002 03D0     		beq	.L42
+ 258:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         addr = addr & I2C_TRANSMITTER;
+ 259:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 260:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         addr = addr | I2C_RECEIVER;
+ 619              		.loc 1 260 9 is_stmt 1 view .LVU169
+ 620              		.loc 1 260 14 is_stmt 0 view .LVU170
+ 621 0004 0123     		movs	r3, #1
+ 622 0006 1943     		orrs	r1, r3
+ 623              	.LVL67:
+ 624              	.L41:
+ 261:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 262:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* send slave address */
+ 263:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_DATA(i2c_periph) = addr;
+ 625              		.loc 1 263 5 is_stmt 1 view .LVU171
+ 626              		.loc 1 263 26 is_stmt 0 view .LVU172
+ 627 0008 0161     		str	r1, [r0, #16]
+ 264:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 628              		.loc 1 264 1 view .LVU173
+ 629              		@ sp needed
+ 630 000a 7047     		bx	lr
+ 631              	.L42:
+ 258:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         addr = addr & I2C_TRANSMITTER;
+ 632              		.loc 1 258 9 is_stmt 1 view .LVU174
+ 258:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         addr = addr & I2C_TRANSMITTER;
+ 633              		.loc 1 258 14 is_stmt 0 view .LVU175
+ 634 000c 0123     		movs	r3, #1
+ 635 000e 9943     		bics	r1, r3
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 18
+
+
+ 636              	.LVL68:
+ 258:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         addr = addr & I2C_TRANSMITTER;
+ 637              		.loc 1 258 14 view .LVU176
+ 638 0010 FAE7     		b	.L41
+ 639              		.cfi_endproc
+ 640              	.LFE72:
+ 642              		.section	.text.i2c_dualaddr_enable,"ax",%progbits
+ 643              		.align	1
+ 644              		.global	i2c_dualaddr_enable
+ 645              		.syntax unified
+ 646              		.code	16
+ 647              		.thumb_func
+ 648              		.fpu softvfp
+ 650              	i2c_dualaddr_enable:
+ 651              	.LVL69:
+ 652              	.LFB73:
+ 265:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 266:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 267:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable dual-address mode
+ 268:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 269:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  addr: the second address in dual-address mode
+ 270:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 271:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 272:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 273:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_dualaddr_enable(uint32_t i2c_periph, uint32_t addr)
+ 274:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 653              		.loc 1 274 1 is_stmt 1 view -0
+ 654              		.cfi_startproc
+ 655              		@ args = 0, pretend = 0, frame = 0
+ 656              		@ frame_needed = 0, uses_anonymous_args = 0
+ 657              		@ link register save eliminated.
+ 275:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure address */
+ 276:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     addr = addr & I2C_ADDRESS2_MASK;
+ 658              		.loc 1 276 5 view .LVU178
+ 659              		.loc 1 276 10 is_stmt 0 view .LVU179
+ 660 0000 FE23     		movs	r3, #254
+ 661 0002 0B40     		ands	r3, r1
+ 662              	.LVL70:
+ 277:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SADDR1(i2c_periph) = (I2C_SADDR1_DUADEN | addr);
+ 663              		.loc 1 277 5 is_stmt 1 view .LVU180
+ 664              		.loc 1 277 49 is_stmt 0 view .LVU181
+ 665 0004 0121     		movs	r1, #1
+ 666 0006 0B43     		orrs	r3, r1
+ 667              	.LVL71:
+ 668              		.loc 1 277 28 view .LVU182
+ 669 0008 C360     		str	r3, [r0, #12]
+ 278:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 670              		.loc 1 278 1 view .LVU183
+ 671              		@ sp needed
+ 672 000a 7047     		bx	lr
+ 673              		.cfi_endproc
+ 674              	.LFE73:
+ 676              		.section	.text.i2c_dualaddr_disable,"ax",%progbits
+ 677              		.align	1
+ 678              		.global	i2c_dualaddr_disable
+ 679              		.syntax unified
+ 680              		.code	16
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 19
+
+
+ 681              		.thumb_func
+ 682              		.fpu softvfp
+ 684              	i2c_dualaddr_disable:
+ 685              	.LVL72:
+ 686              	.LFB74:
+ 279:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 280:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 281:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      disable dual-address mode
+ 282:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1) 
+ 283:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 284:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 285:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 286:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_dualaddr_disable(uint32_t i2c_periph)
+ 287:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 687              		.loc 1 287 1 is_stmt 1 view -0
+ 688              		.cfi_startproc
+ 689              		@ args = 0, pretend = 0, frame = 0
+ 690              		@ frame_needed = 0, uses_anonymous_args = 0
+ 691              		@ link register save eliminated.
+ 288:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SADDR1(i2c_periph) &= ~(I2C_SADDR1_DUADEN);
+ 692              		.loc 1 288 5 view .LVU185
+ 693              		.loc 1 288 28 is_stmt 0 view .LVU186
+ 694 0000 C368     		ldr	r3, [r0, #12]
+ 695 0002 0122     		movs	r2, #1
+ 696 0004 9343     		bics	r3, r2
+ 697 0006 C360     		str	r3, [r0, #12]
+ 289:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 698              		.loc 1 289 1 view .LVU187
+ 699              		@ sp needed
+ 700 0008 7047     		bx	lr
+ 701              		.cfi_endproc
+ 702              	.LFE74:
+ 704              		.section	.text.i2c_enable,"ax",%progbits
+ 705              		.align	1
+ 706              		.global	i2c_enable
+ 707              		.syntax unified
+ 708              		.code	16
+ 709              		.thumb_func
+ 710              		.fpu softvfp
+ 712              	i2c_enable:
+ 713              	.LVL73:
+ 714              	.LFB75:
+ 290:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 291:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 292:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable I2C
+ 293:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1) 
+ 294:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 295:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 296:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 297:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_enable(uint32_t i2c_periph)
+ 298:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 715              		.loc 1 298 1 is_stmt 1 view -0
+ 716              		.cfi_startproc
+ 717              		@ args = 0, pretend = 0, frame = 0
+ 718              		@ frame_needed = 0, uses_anonymous_args = 0
+ 719              		@ link register save eliminated.
+ 299:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) |= I2C_CTL0_I2CEN;
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 20
+
+
+ 720              		.loc 1 299 5 view .LVU189
+ 721              		.loc 1 299 26 is_stmt 0 view .LVU190
+ 722 0000 0368     		ldr	r3, [r0]
+ 723 0002 0122     		movs	r2, #1
+ 724 0004 1343     		orrs	r3, r2
+ 725 0006 0360     		str	r3, [r0]
+ 300:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 726              		.loc 1 300 1 view .LVU191
+ 727              		@ sp needed
+ 728 0008 7047     		bx	lr
+ 729              		.cfi_endproc
+ 730              	.LFE75:
+ 732              		.section	.text.i2c_disable,"ax",%progbits
+ 733              		.align	1
+ 734              		.global	i2c_disable
+ 735              		.syntax unified
+ 736              		.code	16
+ 737              		.thumb_func
+ 738              		.fpu softvfp
+ 740              	i2c_disable:
+ 741              	.LVL74:
+ 742              	.LFB76:
+ 301:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 302:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 303:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      disable I2C
+ 304:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1) 
+ 305:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 306:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 307:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 308:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_disable(uint32_t i2c_periph)
+ 309:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 743              		.loc 1 309 1 is_stmt 1 view -0
+ 744              		.cfi_startproc
+ 745              		@ args = 0, pretend = 0, frame = 0
+ 746              		@ frame_needed = 0, uses_anonymous_args = 0
+ 747              		@ link register save eliminated.
+ 310:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) &= ~(I2C_CTL0_I2CEN);
+ 748              		.loc 1 310 5 view .LVU193
+ 749              		.loc 1 310 26 is_stmt 0 view .LVU194
+ 750 0000 0368     		ldr	r3, [r0]
+ 751 0002 0122     		movs	r2, #1
+ 752 0004 9343     		bics	r3, r2
+ 753 0006 0360     		str	r3, [r0]
+ 311:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 754              		.loc 1 311 1 view .LVU195
+ 755              		@ sp needed
+ 756 0008 7047     		bx	lr
+ 757              		.cfi_endproc
+ 758              	.LFE76:
+ 760              		.section	.text.i2c_start_on_bus,"ax",%progbits
+ 761              		.align	1
+ 762              		.global	i2c_start_on_bus
+ 763              		.syntax unified
+ 764              		.code	16
+ 765              		.thumb_func
+ 766              		.fpu softvfp
+ 768              	i2c_start_on_bus:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 21
+
+
+ 769              	.LVL75:
+ 770              	.LFB77:
+ 312:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 313:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 314:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      generate a START condition on I2C bus
+ 315:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 316:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 317:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 318:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 319:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_start_on_bus(uint32_t i2c_periph)
+ 320:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 771              		.loc 1 320 1 is_stmt 1 view -0
+ 772              		.cfi_startproc
+ 773              		@ args = 0, pretend = 0, frame = 0
+ 774              		@ frame_needed = 0, uses_anonymous_args = 0
+ 775              		@ link register save eliminated.
+ 321:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) |= I2C_CTL0_START;
+ 776              		.loc 1 321 5 view .LVU197
+ 777              		.loc 1 321 26 is_stmt 0 view .LVU198
+ 778 0000 0368     		ldr	r3, [r0]
+ 779 0002 40F20012 		movw	r2, #256
+ 780 0006 1343     		orrs	r3, r2
+ 781 0008 0360     		str	r3, [r0]
+ 322:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 782              		.loc 1 322 1 view .LVU199
+ 783              		@ sp needed
+ 784 000a 7047     		bx	lr
+ 785              		.cfi_endproc
+ 786              	.LFE77:
+ 788              		.section	.text.i2c_stop_on_bus,"ax",%progbits
+ 789              		.align	1
+ 790              		.global	i2c_stop_on_bus
+ 791              		.syntax unified
+ 792              		.code	16
+ 793              		.thumb_func
+ 794              		.fpu softvfp
+ 796              	i2c_stop_on_bus:
+ 797              	.LVL76:
+ 798              	.LFB78:
+ 323:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 324:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 325:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      generate a STOP condition on I2C bus
+ 326:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 327:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 328:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 329:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 330:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_stop_on_bus(uint32_t i2c_periph)
+ 331:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 799              		.loc 1 331 1 is_stmt 1 view -0
+ 800              		.cfi_startproc
+ 801              		@ args = 0, pretend = 0, frame = 0
+ 802              		@ frame_needed = 0, uses_anonymous_args = 0
+ 803              		@ link register save eliminated.
+ 332:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) |= I2C_CTL0_STOP;
+ 804              		.loc 1 332 5 view .LVU201
+ 805              		.loc 1 332 26 is_stmt 0 view .LVU202
+ 806 0000 0368     		ldr	r3, [r0]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 22
+
+
+ 807 0002 40F20022 		movw	r2, #512
+ 808 0006 1343     		orrs	r3, r2
+ 809 0008 0360     		str	r3, [r0]
+ 333:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 810              		.loc 1 333 1 view .LVU203
+ 811              		@ sp needed
+ 812 000a 7047     		bx	lr
+ 813              		.cfi_endproc
+ 814              	.LFE78:
+ 816              		.section	.text.i2c_data_transmit,"ax",%progbits
+ 817              		.align	1
+ 818              		.global	i2c_data_transmit
+ 819              		.syntax unified
+ 820              		.code	16
+ 821              		.thumb_func
+ 822              		.fpu softvfp
+ 824              	i2c_data_transmit:
+ 825              	.LVL77:
+ 826              	.LFB79:
+ 334:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 335:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 336:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      I2C transmit data function
+ 337:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 338:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  data: data of transmission 
+ 339:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 340:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 341:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 342:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_data_transmit(uint32_t i2c_periph, uint8_t data)
+ 343:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 827              		.loc 1 343 1 is_stmt 1 view -0
+ 828              		.cfi_startproc
+ 829              		@ args = 0, pretend = 0, frame = 0
+ 830              		@ frame_needed = 0, uses_anonymous_args = 0
+ 831              		@ link register save eliminated.
+ 344:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_DATA(i2c_periph) = DATA_TRANS(data);
+ 832              		.loc 1 344 5 view .LVU205
+ 833              		.loc 1 344 26 is_stmt 0 view .LVU206
+ 834 0000 0161     		str	r1, [r0, #16]
+ 345:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 835              		.loc 1 345 1 view .LVU207
+ 836              		@ sp needed
+ 837 0002 7047     		bx	lr
+ 838              		.cfi_endproc
+ 839              	.LFE79:
+ 841              		.section	.text.i2c_data_receive,"ax",%progbits
+ 842              		.align	1
+ 843              		.global	i2c_data_receive
+ 844              		.syntax unified
+ 845              		.code	16
+ 846              		.thumb_func
+ 847              		.fpu softvfp
+ 849              	i2c_data_receive:
+ 850              	.LVL78:
+ 851              	.LFB80:
+ 346:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 347:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 348:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      I2C receive data function
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 23
+
+
+ 349:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 350:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 351:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     data of received
+ 352:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 353:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** uint8_t i2c_data_receive(uint32_t i2c_periph)
+ 354:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 852              		.loc 1 354 1 is_stmt 1 view -0
+ 853              		.cfi_startproc
+ 854              		@ args = 0, pretend = 0, frame = 0
+ 855              		@ frame_needed = 0, uses_anonymous_args = 0
+ 856              		@ link register save eliminated.
+ 355:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     return (uint8_t)DATA_RECV(I2C_DATA(i2c_periph));
+ 857              		.loc 1 355 5 view .LVU209
+ 858              		.loc 1 355 21 is_stmt 0 view .LVU210
+ 859 0000 0069     		ldr	r0, [r0, #16]
+ 860              	.LVL79:
+ 861              		.loc 1 355 12 view .LVU211
+ 862 0002 C0B2     		uxtb	r0, r0
+ 356:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 863              		.loc 1 356 1 view .LVU212
+ 864              		@ sp needed
+ 865 0004 7047     		bx	lr
+ 866              		.cfi_endproc
+ 867              	.LFE80:
+ 869              		.section	.text.i2c_dma_enable,"ax",%progbits
+ 870              		.align	1
+ 871              		.global	i2c_dma_enable
+ 872              		.syntax unified
+ 873              		.code	16
+ 874              		.thumb_func
+ 875              		.fpu softvfp
+ 877              	i2c_dma_enable:
+ 878              	.LVL80:
+ 879              	.LFB81:
+ 357:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 358:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 359:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable I2C DMA mode 
+ 360:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 361:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  dmastate:
+ 362:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 363:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DMA_ON: DMA mode enable
+ 364:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DMA_OFF: DMA mode disable
+ 365:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 366:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 367:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 368:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_dma_enable(uint32_t i2c_periph, uint32_t dmastate)
+ 369:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 880              		.loc 1 369 1 is_stmt 1 view -0
+ 881              		.cfi_startproc
+ 882              		@ args = 0, pretend = 0, frame = 0
+ 883              		@ frame_needed = 0, uses_anonymous_args = 0
+ 884              		@ link register save eliminated.
+ 370:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure I2C DMA function */
+ 371:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 885              		.loc 1 371 5 view .LVU214
+ 372:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 373:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL1(i2c_periph);
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 24
+
+
+ 886              		.loc 1 373 5 view .LVU215
+ 887              		.loc 1 373 9 is_stmt 0 view .LVU216
+ 888 0000 4368     		ldr	r3, [r0, #4]
+ 889              	.LVL81:
+ 374:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL1_DMAON); 
+ 890              		.loc 1 374 5 is_stmt 1 view .LVU217
+ 891              		.loc 1 374 9 is_stmt 0 view .LVU218
+ 892 0002 024A     		ldr	r2, .L52
+ 893 0004 1340     		ands	r3, r2
+ 894              	.LVL82:
+ 375:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= dmastate;
+ 895              		.loc 1 375 5 is_stmt 1 view .LVU219
+ 896              		.loc 1 375 9 is_stmt 0 view .LVU220
+ 897 0006 0B43     		orrs	r3, r1
+ 898              	.LVL83:
+ 376:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL1(i2c_periph) = ctl;
+ 899              		.loc 1 376 5 is_stmt 1 view .LVU221
+ 900              		.loc 1 376 26 is_stmt 0 view .LVU222
+ 901 0008 4360     		str	r3, [r0, #4]
+ 377:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 902              		.loc 1 377 1 view .LVU223
+ 903              		@ sp needed
+ 904 000a 7047     		bx	lr
+ 905              	.L53:
+ 906              		.align	2
+ 907              	.L52:
+ 908 000c FFF7FFFF 		.word	-2049
+ 909              		.cfi_endproc
+ 910              	.LFE81:
+ 912              		.section	.text.i2c_dma_last_transfer_config,"ax",%progbits
+ 913              		.align	1
+ 914              		.global	i2c_dma_last_transfer_config
+ 915              		.syntax unified
+ 916              		.code	16
+ 917              		.thumb_func
+ 918              		.fpu softvfp
+ 920              	i2c_dma_last_transfer_config:
+ 921              	.LVL84:
+ 922              	.LFB82:
+ 378:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 379:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 380:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      configure whether next DMA EOT is DMA last transfer or not
+ 381:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 382:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  dmalast:
+ 383:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 384:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DMALST_ON: next DMA EOT is the last transfer
+ 385:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_DMALST_OFF: next DMA EOT is not the last transfer
+ 386:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 387:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 388:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 389:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_dma_last_transfer_config(uint32_t i2c_periph, uint32_t dmalast)
+ 390:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 923              		.loc 1 390 1 is_stmt 1 view -0
+ 924              		.cfi_startproc
+ 925              		@ args = 0, pretend = 0, frame = 0
+ 926              		@ frame_needed = 0, uses_anonymous_args = 0
+ 927              		@ link register save eliminated.
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 25
+
+
+ 391:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure DMA last transfer */
+ 392:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 928              		.loc 1 392 5 view .LVU225
+ 393:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 394:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL1(i2c_periph);
+ 929              		.loc 1 394 5 view .LVU226
+ 930              		.loc 1 394 9 is_stmt 0 view .LVU227
+ 931 0000 4368     		ldr	r3, [r0, #4]
+ 932              	.LVL85:
+ 395:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL1_DMALST); 
+ 933              		.loc 1 395 5 is_stmt 1 view .LVU228
+ 934              		.loc 1 395 9 is_stmt 0 view .LVU229
+ 935 0002 024A     		ldr	r2, .L55
+ 936 0004 1340     		ands	r3, r2
+ 937              	.LVL86:
+ 396:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= dmalast;
+ 938              		.loc 1 396 5 is_stmt 1 view .LVU230
+ 939              		.loc 1 396 9 is_stmt 0 view .LVU231
+ 940 0006 0B43     		orrs	r3, r1
+ 941              	.LVL87:
+ 397:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL1(i2c_periph) = ctl;
+ 942              		.loc 1 397 5 is_stmt 1 view .LVU232
+ 943              		.loc 1 397 26 is_stmt 0 view .LVU233
+ 944 0008 4360     		str	r3, [r0, #4]
+ 398:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 945              		.loc 1 398 1 view .LVU234
+ 946              		@ sp needed
+ 947 000a 7047     		bx	lr
+ 948              	.L56:
+ 949              		.align	2
+ 950              	.L55:
+ 951 000c FFEFFFFF 		.word	-4097
+ 952              		.cfi_endproc
+ 953              	.LFE82:
+ 955              		.section	.text.i2c_stretch_scl_low_config,"ax",%progbits
+ 956              		.align	1
+ 957              		.global	i2c_stretch_scl_low_config
+ 958              		.syntax unified
+ 959              		.code	16
+ 960              		.thumb_func
+ 961              		.fpu softvfp
+ 963              	i2c_stretch_scl_low_config:
+ 964              	.LVL88:
+ 965              	.LFB83:
+ 399:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 400:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 401:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      whether to stretch SCL low when data is not ready in slave mode 
+ 402:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 403:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  stretchpara:
+ 404:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 405:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SCLSTRETCH_ENABLE: SCL stretching is enabled
+ 406:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SCLSTRETCH_DISABLE: SCL stretching is disabled
+ 407:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 408:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 409:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 410:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_stretch_scl_low_config(uint32_t i2c_periph, uint32_t stretchpara)
+ 411:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 26
+
+
+ 966              		.loc 1 411 1 is_stmt 1 view -0
+ 967              		.cfi_startproc
+ 968              		@ args = 0, pretend = 0, frame = 0
+ 969              		@ frame_needed = 0, uses_anonymous_args = 0
+ 970              		@ link register save eliminated.
+ 412:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure I2C SCL strerching enable or disable */
+ 413:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 971              		.loc 1 413 5 view .LVU236
+ 414:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 415:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 972              		.loc 1 415 5 view .LVU237
+ 973              		.loc 1 415 9 is_stmt 0 view .LVU238
+ 974 0000 0368     		ldr	r3, [r0]
+ 975              	.LVL89:
+ 416:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_SS); 
+ 976              		.loc 1 416 5 is_stmt 1 view .LVU239
+ 977              		.loc 1 416 9 is_stmt 0 view .LVU240
+ 978 0002 8022     		movs	r2, #128
+ 979 0004 9343     		bics	r3, r2
+ 980              	.LVL90:
+ 417:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= stretchpara;
+ 981              		.loc 1 417 5 is_stmt 1 view .LVU241
+ 982              		.loc 1 417 9 is_stmt 0 view .LVU242
+ 983 0006 0B43     		orrs	r3, r1
+ 984              	.LVL91:
+ 418:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 985              		.loc 1 418 5 is_stmt 1 view .LVU243
+ 986              		.loc 1 418 26 is_stmt 0 view .LVU244
+ 987 0008 0360     		str	r3, [r0]
+ 419:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 988              		.loc 1 419 1 view .LVU245
+ 989              		@ sp needed
+ 990 000a 7047     		bx	lr
+ 991              		.cfi_endproc
+ 992              	.LFE83:
+ 994              		.section	.text.i2c_slave_response_to_gcall_config,"ax",%progbits
+ 995              		.align	1
+ 996              		.global	i2c_slave_response_to_gcall_config
+ 997              		.syntax unified
+ 998              		.code	16
+ 999              		.thumb_func
+ 1000              		.fpu softvfp
+ 1002              	i2c_slave_response_to_gcall_config:
+ 1003              	.LVL92:
+ 1004              	.LFB84:
+ 420:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 421:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 422:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      whether or not to response to a general call 
+ 423:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 424:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  gcallpara:
+ 425:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 426:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_GCEN_ENABLE: slave will response to a general call
+ 427:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_GCEN_DISABLE: slave will not response to a general call
+ 428:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 429:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 430:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 431:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_slave_response_to_gcall_config(uint32_t i2c_periph, uint32_t gcallpara)
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 27
+
+
+ 432:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1005              		.loc 1 432 1 is_stmt 1 view -0
+ 1006              		.cfi_startproc
+ 1007              		@ args = 0, pretend = 0, frame = 0
+ 1008              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1009              		@ link register save eliminated.
+ 433:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* configure slave response to a general call enable or disable */
+ 434:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1010              		.loc 1 434 5 view .LVU247
+ 435:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 436:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1011              		.loc 1 436 5 view .LVU248
+ 1012              		.loc 1 436 9 is_stmt 0 view .LVU249
+ 1013 0000 0368     		ldr	r3, [r0]
+ 1014              	.LVL93:
+ 437:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_GCEN); 
+ 1015              		.loc 1 437 5 is_stmt 1 view .LVU250
+ 1016              		.loc 1 437 9 is_stmt 0 view .LVU251
+ 1017 0002 4022     		movs	r2, #64
+ 1018 0004 9343     		bics	r3, r2
+ 1019              	.LVL94:
+ 438:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= gcallpara;
+ 1020              		.loc 1 438 5 is_stmt 1 view .LVU252
+ 1021              		.loc 1 438 9 is_stmt 0 view .LVU253
+ 1022 0006 0B43     		orrs	r3, r1
+ 1023              	.LVL95:
+ 439:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1024              		.loc 1 439 5 is_stmt 1 view .LVU254
+ 1025              		.loc 1 439 26 is_stmt 0 view .LVU255
+ 1026 0008 0360     		str	r3, [r0]
+ 440:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1027              		.loc 1 440 1 view .LVU256
+ 1028              		@ sp needed
+ 1029 000a 7047     		bx	lr
+ 1030              		.cfi_endproc
+ 1031              	.LFE84:
+ 1033              		.section	.text.i2c_software_reset_config,"ax",%progbits
+ 1034              		.align	1
+ 1035              		.global	i2c_software_reset_config
+ 1036              		.syntax unified
+ 1037              		.code	16
+ 1038              		.thumb_func
+ 1039              		.fpu softvfp
+ 1041              	i2c_software_reset_config:
+ 1042              	.LVL96:
+ 1043              	.LFB85:
+ 441:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 442:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 443:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      software reset I2C 
+ 444:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 445:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  sreset:
+ 446:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 447:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SRESET_SET: I2C is under reset
+ 448:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SRESET_RESET: I2C is not under reset
+ 449:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 450:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 451:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 28
+
+
+ 452:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_software_reset_config(uint32_t i2c_periph, uint32_t sreset)
+ 453:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1044              		.loc 1 453 1 is_stmt 1 view -0
+ 1045              		.cfi_startproc
+ 1046              		@ args = 0, pretend = 0, frame = 0
+ 1047              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1048              		@ link register save eliminated.
+ 454:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* modify CTL0 and configure software reset I2C state */
+ 455:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1049              		.loc 1 455 5 view .LVU258
+ 456:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 457:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1050              		.loc 1 457 5 view .LVU259
+ 1051              		.loc 1 457 9 is_stmt 0 view .LVU260
+ 1052 0000 0368     		ldr	r3, [r0]
+ 1053              	.LVL97:
+ 458:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_SRESET); 
+ 1054              		.loc 1 458 5 is_stmt 1 view .LVU261
+ 1055              		.loc 1 458 9 is_stmt 0 view .LVU262
+ 1056 0002 024A     		ldr	r2, .L60
+ 1057 0004 1340     		ands	r3, r2
+ 1058              	.LVL98:
+ 459:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= sreset;
+ 1059              		.loc 1 459 5 is_stmt 1 view .LVU263
+ 1060              		.loc 1 459 9 is_stmt 0 view .LVU264
+ 1061 0006 0B43     		orrs	r3, r1
+ 1062              	.LVL99:
+ 460:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1063              		.loc 1 460 5 is_stmt 1 view .LVU265
+ 1064              		.loc 1 460 26 is_stmt 0 view .LVU266
+ 1065 0008 0360     		str	r3, [r0]
+ 461:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1066              		.loc 1 461 1 view .LVU267
+ 1067              		@ sp needed
+ 1068 000a 7047     		bx	lr
+ 1069              	.L61:
+ 1070              		.align	2
+ 1071              	.L60:
+ 1072 000c FF7FFFFF 		.word	-32769
+ 1073              		.cfi_endproc
+ 1074              	.LFE85:
+ 1076              		.section	.text.i2c_pec_enable,"ax",%progbits
+ 1077              		.align	1
+ 1078              		.global	i2c_pec_enable
+ 1079              		.syntax unified
+ 1080              		.code	16
+ 1081              		.thumb_func
+ 1082              		.fpu softvfp
+ 1084              	i2c_pec_enable:
+ 1085              	.LVL100:
+ 1086              	.LFB86:
+ 462:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 463:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 464:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      I2C PEC calculation on or off
+ 465:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 466:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  pecpara:
+ 467:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 29
+
+
+ 468:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_PEC_ENABLE: PEC calculation on 
+ 469:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_PEC_DISABLE: PEC calculation off 
+ 470:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 471:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 472:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 473:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_pec_enable(uint32_t i2c_periph, uint32_t pecstate)
+ 474:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1087              		.loc 1 474 1 is_stmt 1 view -0
+ 1088              		.cfi_startproc
+ 1089              		@ args = 0, pretend = 0, frame = 0
+ 1090              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1091              		@ link register save eliminated.
+ 475:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* on/off PEC calculation */
+ 476:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1092              		.loc 1 476 5 view .LVU269
+ 477:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 478:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1093              		.loc 1 478 5 view .LVU270
+ 1094              		.loc 1 478 9 is_stmt 0 view .LVU271
+ 1095 0000 0368     		ldr	r3, [r0]
+ 1096              	.LVL101:
+ 479:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_PECEN);
+ 1097              		.loc 1 479 5 is_stmt 1 view .LVU272
+ 1098              		.loc 1 479 9 is_stmt 0 view .LVU273
+ 1099 0002 2022     		movs	r2, #32
+ 1100 0004 9343     		bics	r3, r2
+ 1101              	.LVL102:
+ 480:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= pecstate;
+ 1102              		.loc 1 480 5 is_stmt 1 view .LVU274
+ 1103              		.loc 1 480 9 is_stmt 0 view .LVU275
+ 1104 0006 0B43     		orrs	r3, r1
+ 1105              	.LVL103:
+ 481:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1106              		.loc 1 481 5 is_stmt 1 view .LVU276
+ 1107              		.loc 1 481 26 is_stmt 0 view .LVU277
+ 1108 0008 0360     		str	r3, [r0]
+ 482:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1109              		.loc 1 482 1 view .LVU278
+ 1110              		@ sp needed
+ 1111 000a 7047     		bx	lr
+ 1112              		.cfi_endproc
+ 1113              	.LFE86:
+ 1115              		.section	.text.i2c_pec_transfer_enable,"ax",%progbits
+ 1116              		.align	1
+ 1117              		.global	i2c_pec_transfer_enable
+ 1118              		.syntax unified
+ 1119              		.code	16
+ 1120              		.thumb_func
+ 1121              		.fpu softvfp
+ 1123              	i2c_pec_transfer_enable:
+ 1124              	.LVL104:
+ 1125              	.LFB87:
+ 483:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 484:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 485:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      I2C whether to transfer PEC value
+ 486:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 487:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  pecpara:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 30
+
+
+ 488:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 489:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_PECTRANS_ENABLE: transfer PEC 
+ 490:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_PECTRANS_DISABLE: not transfer PEC 
+ 491:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 492:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 493:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 494:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_pec_transfer_enable(uint32_t i2c_periph, uint32_t pecpara)
+ 495:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1126              		.loc 1 495 1 is_stmt 1 view -0
+ 1127              		.cfi_startproc
+ 1128              		@ args = 0, pretend = 0, frame = 0
+ 1129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1130              		@ link register save eliminated.
+ 496:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* whether to transfer PEC */
+ 497:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1131              		.loc 1 497 5 view .LVU280
+ 498:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 499:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1132              		.loc 1 499 5 view .LVU281
+ 1133              		.loc 1 499 9 is_stmt 0 view .LVU282
+ 1134 0000 0368     		ldr	r3, [r0]
+ 1135              	.LVL105:
+ 500:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_PECTRANS);
+ 1136              		.loc 1 500 5 is_stmt 1 view .LVU283
+ 1137              		.loc 1 500 9 is_stmt 0 view .LVU284
+ 1138 0002 024A     		ldr	r2, .L64
+ 1139 0004 1340     		ands	r3, r2
+ 1140              	.LVL106:
+ 501:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= pecpara;
+ 1141              		.loc 1 501 5 is_stmt 1 view .LVU285
+ 1142              		.loc 1 501 9 is_stmt 0 view .LVU286
+ 1143 0006 0B43     		orrs	r3, r1
+ 1144              	.LVL107:
+ 502:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1145              		.loc 1 502 5 is_stmt 1 view .LVU287
+ 1146              		.loc 1 502 26 is_stmt 0 view .LVU288
+ 1147 0008 0360     		str	r3, [r0]
+ 503:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1148              		.loc 1 503 1 view .LVU289
+ 1149              		@ sp needed
+ 1150 000a 7047     		bx	lr
+ 1151              	.L65:
+ 1152              		.align	2
+ 1153              	.L64:
+ 1154 000c FFEFFFFF 		.word	-4097
+ 1155              		.cfi_endproc
+ 1156              	.LFE87:
+ 1158              		.section	.text.i2c_pec_value_get,"ax",%progbits
+ 1159              		.align	1
+ 1160              		.global	i2c_pec_value_get
+ 1161              		.syntax unified
+ 1162              		.code	16
+ 1163              		.thumb_func
+ 1164              		.fpu softvfp
+ 1166              	i2c_pec_value_get:
+ 1167              	.LVL108:
+ 1168              	.LFB88:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 31
+
+
+ 504:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 505:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 506:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      get packet error checking value 
+ 507:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 508:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 509:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     PEC value
+ 510:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 511:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** uint8_t i2c_pec_value_get(uint32_t i2c_periph)
+ 512:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1169              		.loc 1 512 1 is_stmt 1 view -0
+ 1170              		.cfi_startproc
+ 1171              		@ args = 0, pretend = 0, frame = 0
+ 1172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1173              		@ link register save eliminated.
+ 513:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     return (uint8_t)((I2C_STAT1(i2c_periph) & I2C_STAT1_PECV)>>STAT1_PECV_OFFSET);
+ 1174              		.loc 1 513 5 view .LVU291
+ 1175              		.loc 1 513 23 is_stmt 0 view .LVU292
+ 1176 0000 8069     		ldr	r0, [r0, #24]
+ 1177              	.LVL109:
+ 1178              		.loc 1 513 62 view .LVU293
+ 1179 0002 000A     		lsrs	r0, r0, #8
+ 1180              		.loc 1 513 12 view .LVU294
+ 1181 0004 C0B2     		uxtb	r0, r0
+ 514:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1182              		.loc 1 514 1 view .LVU295
+ 1183              		@ sp needed
+ 1184 0006 7047     		bx	lr
+ 1185              		.cfi_endproc
+ 1186              	.LFE88:
+ 1188              		.section	.text.i2c_smbus_issue_alert,"ax",%progbits
+ 1189              		.align	1
+ 1190              		.global	i2c_smbus_issue_alert
+ 1191              		.syntax unified
+ 1192              		.code	16
+ 1193              		.thumb_func
+ 1194              		.fpu softvfp
+ 1196              	i2c_smbus_issue_alert:
+ 1197              	.LVL110:
+ 1198              	.LFB89:
+ 515:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 516:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 517:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      I2C issue alert through SMBA pin 
+ 518:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 519:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  smbuspara:
+ 520:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 521:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SALTSEND_ENABLE: issue alert through SMBA pin 
+ 522:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_SALTSEND_DISABLE: not issue alert through SMBA pin 
+ 523:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 524:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 525:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 526:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_smbus_issue_alert(uint32_t i2c_periph, uint32_t smbuspara)
+ 527:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1199              		.loc 1 527 1 is_stmt 1 view -0
+ 1200              		.cfi_startproc
+ 1201              		@ args = 0, pretend = 0, frame = 0
+ 1202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1203              		@ link register save eliminated.
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 32
+
+
+ 528:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* issue alert through SMBA pin configure*/
+ 529:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1204              		.loc 1 529 5 view .LVU297
+ 530:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 531:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1205              		.loc 1 531 5 view .LVU298
+ 1206              		.loc 1 531 9 is_stmt 0 view .LVU299
+ 1207 0000 0368     		ldr	r3, [r0]
+ 1208              	.LVL111:
+ 532:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_SALT);
+ 1209              		.loc 1 532 5 is_stmt 1 view .LVU300
+ 1210              		.loc 1 532 9 is_stmt 0 view .LVU301
+ 1211 0002 024A     		ldr	r2, .L68
+ 1212 0004 1340     		ands	r3, r2
+ 1213              	.LVL112:
+ 533:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= smbuspara;
+ 1214              		.loc 1 533 5 is_stmt 1 view .LVU302
+ 1215              		.loc 1 533 9 is_stmt 0 view .LVU303
+ 1216 0006 0B43     		orrs	r3, r1
+ 1217              	.LVL113:
+ 534:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1218              		.loc 1 534 5 is_stmt 1 view .LVU304
+ 1219              		.loc 1 534 26 is_stmt 0 view .LVU305
+ 1220 0008 0360     		str	r3, [r0]
+ 535:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1221              		.loc 1 535 1 view .LVU306
+ 1222              		@ sp needed
+ 1223 000a 7047     		bx	lr
+ 1224              	.L69:
+ 1225              		.align	2
+ 1226              	.L68:
+ 1227 000c FFDFFFFF 		.word	-8193
+ 1228              		.cfi_endproc
+ 1229              	.LFE89:
+ 1231              		.section	.text.i2c_smbus_arp_enable,"ax",%progbits
+ 1232              		.align	1
+ 1233              		.global	i2c_smbus_arp_enable
+ 1234              		.syntax unified
+ 1235              		.code	16
+ 1236              		.thumb_func
+ 1237              		.fpu softvfp
+ 1239              	i2c_smbus_arp_enable:
+ 1240              	.LVL114:
+ 1241              	.LFB90:
+ 536:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 537:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 538:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable or disable I2C ARP protocol in SMBus switch
+ 539:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 540:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  smbuspara:
+ 541:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 542:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ARP_ENABLE: enable ARP
+ 543:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_ARP_DISABLE: disable ARP
+ 544:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 545:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 546:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 547:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_smbus_arp_enable(uint32_t i2c_periph, uint32_t arpstate)
+ 548:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 33
+
+
+ 1242              		.loc 1 548 1 is_stmt 1 view -0
+ 1243              		.cfi_startproc
+ 1244              		@ args = 0, pretend = 0, frame = 0
+ 1245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1246              		@ link register save eliminated.
+ 549:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* enable or disable I2C ARP protocol*/
+ 550:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t ctl = 0U;
+ 1247              		.loc 1 550 5 view .LVU308
+ 551:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 552:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl = I2C_CTL0(i2c_periph);
+ 1248              		.loc 1 552 5 view .LVU309
+ 1249              		.loc 1 552 9 is_stmt 0 view .LVU310
+ 1250 0000 0368     		ldr	r3, [r0]
+ 1251              	.LVL115:
+ 553:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl &= ~(I2C_CTL0_ARPEN);
+ 1252              		.loc 1 553 5 is_stmt 1 view .LVU311
+ 1253              		.loc 1 553 9 is_stmt 0 view .LVU312
+ 1254 0002 1022     		movs	r2, #16
+ 1255 0004 9343     		bics	r3, r2
+ 1256              	.LVL116:
+ 554:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     ctl |= arpstate;
+ 1257              		.loc 1 554 5 is_stmt 1 view .LVU313
+ 1258              		.loc 1 554 9 is_stmt 0 view .LVU314
+ 1259 0006 0B43     		orrs	r3, r1
+ 1260              	.LVL117:
+ 555:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_CTL0(i2c_periph) = ctl;
+ 1261              		.loc 1 555 5 is_stmt 1 view .LVU315
+ 1262              		.loc 1 555 26 is_stmt 0 view .LVU316
+ 1263 0008 0360     		str	r3, [r0]
+ 556:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1264              		.loc 1 556 1 view .LVU317
+ 1265              		@ sp needed
+ 1266 000a 7047     		bx	lr
+ 1267              		.cfi_endproc
+ 1268              	.LFE90:
+ 1270              		.section	.text.i2c_sam_enable,"ax",%progbits
+ 1271              		.align	1
+ 1272              		.global	i2c_sam_enable
+ 1273              		.syntax unified
+ 1274              		.code	16
+ 1275              		.thumb_func
+ 1276              		.fpu softvfp
+ 1278              	i2c_sam_enable:
+ 1279              	.LVL118:
+ 1280              	.LFB91:
+ 557:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 558:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 559:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable SAM_V interface
+ 560:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 561:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 562:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 563:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 564:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_sam_enable(uint32_t i2c_periph)
+ 565:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1281              		.loc 1 565 1 is_stmt 1 view -0
+ 1282              		.cfi_startproc
+ 1283              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 34
+
+
+ 1284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1285              		@ link register save eliminated.
+ 566:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SAMCS(i2c_periph) |= I2C_SAMCS_SAMEN;
+ 1286              		.loc 1 566 5 view .LVU319
+ 1287              		.loc 1 566 27 is_stmt 0 view .LVU320
+ 1288 0000 8030     		adds	r0, r0, #128
+ 1289              	.LVL119:
+ 1290              		.loc 1 566 27 view .LVU321
+ 1291 0002 0368     		ldr	r3, [r0]
+ 1292 0004 0122     		movs	r2, #1
+ 1293 0006 1343     		orrs	r3, r2
+ 1294 0008 0360     		str	r3, [r0]
+ 567:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1295              		.loc 1 567 1 view .LVU322
+ 1296              		@ sp needed
+ 1297 000a 7047     		bx	lr
+ 1298              		.cfi_endproc
+ 1299              	.LFE91:
+ 1301              		.section	.text.i2c_sam_disable,"ax",%progbits
+ 1302              		.align	1
+ 1303              		.global	i2c_sam_disable
+ 1304              		.syntax unified
+ 1305              		.code	16
+ 1306              		.thumb_func
+ 1307              		.fpu softvfp
+ 1309              	i2c_sam_disable:
+ 1310              	.LVL120:
+ 1311              	.LFB92:
+ 568:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 569:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 570:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      disable SAM_V interface
+ 571:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 572:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 573:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 574:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 575:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_sam_disable(uint32_t i2c_periph)
+ 576:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1312              		.loc 1 576 1 is_stmt 1 view -0
+ 1313              		.cfi_startproc
+ 1314              		@ args = 0, pretend = 0, frame = 0
+ 1315              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1316              		@ link register save eliminated.
+ 577:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SAMCS(i2c_periph) &= ~(I2C_SAMCS_SAMEN);
+ 1317              		.loc 1 577 5 view .LVU324
+ 1318              		.loc 1 577 27 is_stmt 0 view .LVU325
+ 1319 0000 8030     		adds	r0, r0, #128
+ 1320              	.LVL121:
+ 1321              		.loc 1 577 27 view .LVU326
+ 1322 0002 0368     		ldr	r3, [r0]
+ 1323 0004 0122     		movs	r2, #1
+ 1324 0006 9343     		bics	r3, r2
+ 1325 0008 0360     		str	r3, [r0]
+ 578:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1326              		.loc 1 578 1 view .LVU327
+ 1327              		@ sp needed
+ 1328 000a 7047     		bx	lr
+ 1329              		.cfi_endproc
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 35
+
+
+ 1330              	.LFE92:
+ 1332              		.section	.text.i2c_sam_timeout_enable,"ax",%progbits
+ 1333              		.align	1
+ 1334              		.global	i2c_sam_timeout_enable
+ 1335              		.syntax unified
+ 1336              		.code	16
+ 1337              		.thumb_func
+ 1338              		.fpu softvfp
+ 1340              	i2c_sam_timeout_enable:
+ 1341              	.LVL122:
+ 1342              	.LFB93:
+ 579:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 580:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 581:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable SAM_V interface timeout detect
+ 582:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 583:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 584:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 585:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 586:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_sam_timeout_enable(uint32_t i2c_periph)
+ 587:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1343              		.loc 1 587 1 is_stmt 1 view -0
+ 1344              		.cfi_startproc
+ 1345              		@ args = 0, pretend = 0, frame = 0
+ 1346              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1347              		@ link register save eliminated.
+ 588:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SAMCS(i2c_periph) |= I2C_SAMCS_STOEN;
+ 1348              		.loc 1 588 5 view .LVU329
+ 1349              		.loc 1 588 27 is_stmt 0 view .LVU330
+ 1350 0000 8030     		adds	r0, r0, #128
+ 1351              	.LVL123:
+ 1352              		.loc 1 588 27 view .LVU331
+ 1353 0002 0368     		ldr	r3, [r0]
+ 1354 0004 0222     		movs	r2, #2
+ 1355 0006 1343     		orrs	r3, r2
+ 1356 0008 0360     		str	r3, [r0]
+ 589:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1357              		.loc 1 589 1 view .LVU332
+ 1358              		@ sp needed
+ 1359 000a 7047     		bx	lr
+ 1360              		.cfi_endproc
+ 1361              	.LFE93:
+ 1363              		.section	.text.i2c_sam_timeout_disable,"ax",%progbits
+ 1364              		.align	1
+ 1365              		.global	i2c_sam_timeout_disable
+ 1366              		.syntax unified
+ 1367              		.code	16
+ 1368              		.thumb_func
+ 1369              		.fpu softvfp
+ 1371              	i2c_sam_timeout_disable:
+ 1372              	.LVL124:
+ 1373              	.LFB94:
+ 590:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 591:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 592:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      disable SAM_V interface timeout detect
+ 593:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 594:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 595:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 36
+
+
+ 596:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 597:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_sam_timeout_disable(uint32_t i2c_periph)
+ 598:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1374              		.loc 1 598 1 is_stmt 1 view -0
+ 1375              		.cfi_startproc
+ 1376              		@ args = 0, pretend = 0, frame = 0
+ 1377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1378              		@ link register save eliminated.
+ 599:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_SAMCS(i2c_periph) &= ~(I2C_SAMCS_STOEN);
+ 1379              		.loc 1 599 5 view .LVU334
+ 1380              		.loc 1 599 27 is_stmt 0 view .LVU335
+ 1381 0000 8030     		adds	r0, r0, #128
+ 1382              	.LVL125:
+ 1383              		.loc 1 599 27 view .LVU336
+ 1384 0002 0368     		ldr	r3, [r0]
+ 1385 0004 0222     		movs	r2, #2
+ 1386 0006 9343     		bics	r3, r2
+ 1387 0008 0360     		str	r3, [r0]
+ 600:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1388              		.loc 1 600 1 view .LVU337
+ 1389              		@ sp needed
+ 1390 000a 7047     		bx	lr
+ 1391              		.cfi_endproc
+ 1392              	.LFE94:
+ 1394              		.section	.text.i2c_flag_get,"ax",%progbits
+ 1395              		.align	1
+ 1396              		.global	i2c_flag_get
+ 1397              		.syntax unified
+ 1398              		.code	16
+ 1399              		.thumb_func
+ 1400              		.fpu softvfp
+ 1402              	i2c_flag_get:
+ 1403              	.LVL126:
+ 1404              	.LFB95:
+ 601:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 602:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 603:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      check I2C flag is set or not
+ 604:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 605:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  flag: I2C flags, refer to i2c_flag_enum
+ 606:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 607:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_SBSEND: start condition send out 
+ 608:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_ADDSEND: address is sent in master mode or received and matches in slave
+ 609:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_BTC: byte transmission finishes
+ 610:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_ADD10SEND: header of 10-bit address is sent in master mode
+ 611:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_STPDET: stop condition detected in slave mode
+ 612:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_RBNE: I2C_DATA is not Empty during receiving
+ 613:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_TBE: I2C_DATA is empty during transmitting
+ 614:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_BERR: a bus error occurs indication a unexpected start or stop condition
+ 615:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_LOSTARB: arbitration lost in master mode
+ 616:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_AERR: acknowledge error
+ 617:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_OUERR: overrun or underrun situation occurs in slave mode
+ 618:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_PECERR: PEC error when receiving data
+ 619:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_SMBTO: timeout signal in SMBus mode
+ 620:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_SMBALT: SMBus alert status
+ 621:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_MASTER: a flag indicating whether I2C block is in master or slave mode
+ 622:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_I2CBSY: busy flag
+ 623:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_TR: whether the I2C is a transmitter or a receiver
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 37
+
+
+ 624:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_RXGC: general call address (00h) received
+ 625:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_DEFSMB: default address of SMBus device
+ 626:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_HSTSMB: SMBus host header detected in slave mode
+ 627:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_DUMOD: dual flag in slave mode indicating which address is matched in du
+ 628:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_TFF: txframe fall flag
+ 629:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_TFR: txframe rise flag
+ 630:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_RFF: rxframe fall flag
+ 631:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_FLAG_RFR: rxframe rise flag
+ 632:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 633:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     FlagStatus: SET or RESET
+ 634:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 635:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** FlagStatus i2c_flag_get(uint32_t i2c_periph, i2c_flag_enum flag)
+ 636:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1405              		.loc 1 636 1 is_stmt 1 view -0
+ 1406              		.cfi_startproc
+ 1407              		@ args = 0, pretend = 0, frame = 0
+ 1408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1409              		@ link register save eliminated.
+ 637:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(RESET != (I2C_REG_VAL(i2c_periph, flag) & BIT(I2C_BIT_POS(flag)))){
+ 1410              		.loc 1 637 5 view .LVU339
+ 1411              		.loc 1 637 18 is_stmt 0 view .LVU340
+ 1412 0000 8B09     		lsrs	r3, r1, #6
+ 1413 0002 1B18     		adds	r3, r3, r0
+ 1414 0004 1B68     		ldr	r3, [r3]
+ 1415              		.loc 1 637 50 view .LVU341
+ 1416 0006 1F22     		movs	r2, #31
+ 1417 0008 1140     		ands	r1, r2
+ 1418              	.LVL127:
+ 1419              		.loc 1 637 14 view .LVU342
+ 1420 000a CB40     		lsrs	r3, r3, r1
+ 1421              		.loc 1 637 7 view .LVU343
+ 1422 000c DB07     		lsls	r3, r3, #31
+ 1423 000e 01D5     		bpl	.L77
+ 638:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         return SET;
+ 1424              		.loc 1 638 16 view .LVU344
+ 1425 0010 0120     		movs	r0, #1
+ 1426              	.LVL128:
+ 1427              	.L76:
+ 639:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 640:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         return RESET;
+ 641:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 642:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1428              		.loc 1 642 1 view .LVU345
+ 1429              		@ sp needed
+ 1430 0012 7047     		bx	lr
+ 1431              	.LVL129:
+ 1432              	.L77:
+ 640:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 1433              		.loc 1 640 16 view .LVU346
+ 1434 0014 0020     		movs	r0, #0
+ 1435              	.LVL130:
+ 640:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 1436              		.loc 1 640 16 view .LVU347
+ 1437 0016 FCE7     		b	.L76
+ 1438              		.cfi_endproc
+ 1439              	.LFE95:
+ 1441              		.section	.text.i2c_flag_clear,"ax",%progbits
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 38
+
+
+ 1442              		.align	1
+ 1443              		.global	i2c_flag_clear
+ 1444              		.syntax unified
+ 1445              		.code	16
+ 1446              		.thumb_func
+ 1447              		.fpu softvfp
+ 1449              	i2c_flag_clear:
+ 1450              	.LVL131:
+ 1451              	.LFB96:
+ 643:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 644:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 645:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      clear I2C flag
+ 646:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 647:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  flag: I2C flags, refer to i2c_flag_enum
+ 648:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 649:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_SMBALT: SMBus Alert status
+ 650:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_SMBTO: timeout signal in SMBus mode
+ 651:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_PECERR: PEC error when receiving data
+ 652:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_OUERR: over-run or under-run situation occurs in slave mode    
+ 653:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_AERR: acknowledge error
+ 654:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_LOSTARB: arbitration lost in master mode   
+ 655:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_BERR: a bus error   
+ 656:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_ADDSEND: cleared by reading I2C_STAT0 and reading I2C_STAT1
+ 657:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_TFF: txframe fall flag
+ 658:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_TFR: txframe rise flag
+ 659:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_RFF: rxframe fall flag
+ 660:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg       I2C_FLAG_RFR: rxframe rise flag
+ 661:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 662:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 663:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 664:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_flag_clear(uint32_t i2c_periph, i2c_flag_enum flag)
+ 665:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1452              		.loc 1 665 1 is_stmt 1 view -0
+ 1453              		.cfi_startproc
+ 1454              		@ args = 0, pretend = 0, frame = 0
+ 1455              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1456              		@ link register save eliminated.
+ 666:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_FLAG_ADDSEND == flag){
+ 1457              		.loc 1 666 5 view .LVU349
+ 1458              		.loc 1 666 7 is_stmt 0 view .LVU350
+ 1459 0000 40F20153 		movw	r3, #1281
+ 1460 0004 9942     		cmp	r1, r3
+ 1461 0006 09D0     		beq	.L81
+ 667:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* read I2C_STAT0 and then read I2C_STAT1 to clear ADDSEND */
+ 668:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT0(i2c_periph);
+ 669:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT1(i2c_periph);
+ 670:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 671:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_REG_VAL(i2c_periph, flag) &= ~BIT(I2C_BIT_POS(flag));
+ 1462              		.loc 1 671 9 is_stmt 1 view .LVU351
+ 1463              		.loc 1 671 39 is_stmt 0 view .LVU352
+ 1464 0008 8B09     		lsrs	r3, r1, #6
+ 1465 000a 1818     		adds	r0, r3, r0
+ 1466              	.LVL132:
+ 1467              		.loc 1 671 39 view .LVU353
+ 1468 000c 0368     		ldr	r3, [r0]
+ 1469              		.loc 1 671 43 view .LVU354
+ 1470 000e 1F22     		movs	r2, #31
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 39
+
+
+ 1471 0010 1140     		ands	r1, r2
+ 1472              	.LVL133:
+ 1473              		.loc 1 671 43 view .LVU355
+ 1474 0012 1E3A     		subs	r2, r2, #30
+ 1475 0014 8A40     		lsls	r2, r2, r1
+ 1476              		.loc 1 671 39 view .LVU356
+ 1477 0016 9343     		bics	r3, r2
+ 1478 0018 0360     		str	r3, [r0]
+ 1479              	.L78:
+ 672:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 673:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1480              		.loc 1 673 1 view .LVU357
+ 1481              		@ sp needed
+ 1482 001a 7047     		bx	lr
+ 1483              	.LVL134:
+ 1484              	.L81:
+ 668:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT1(i2c_periph);
+ 1485              		.loc 1 668 9 is_stmt 1 view .LVU358
+ 1486 001c 4369     		ldr	r3, [r0, #20]
+ 669:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 1487              		.loc 1 669 9 view .LVU359
+ 1488 001e 8369     		ldr	r3, [r0, #24]
+ 1489 0020 FBE7     		b	.L78
+ 1490              		.cfi_endproc
+ 1491              	.LFE96:
+ 1493              		.section	.text.i2c_interrupt_enable,"ax",%progbits
+ 1494              		.align	1
+ 1495              		.global	i2c_interrupt_enable
+ 1496              		.syntax unified
+ 1497              		.code	16
+ 1498              		.thumb_func
+ 1499              		.fpu softvfp
+ 1501              	i2c_interrupt_enable:
+ 1502              	.LVL135:
+ 1503              	.LFB97:
+ 674:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 675:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 676:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      enable I2C interrupt
+ 677:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 678:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  interrupt: I2C interrupts, refer to i2c_interrupt_enum
+ 679:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 680:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_ERR: error interrupt enable 
+ 681:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_EV: event interrupt enable 
+ 682:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_BUF: buffer interrupt enable
+ 683:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_TFF: txframe fall interrupt enable
+ 684:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_TFR: txframe rise interrupt enable
+ 685:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_RFF: rxframe fall interrupt enable
+ 686:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_RFR: rxframe rise interrupt enable
+ 687:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 688:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 689:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 690:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_interrupt_enable(uint32_t i2c_periph, i2c_interrupt_enum interrupt)
+ 691:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1504              		.loc 1 691 1 view -0
+ 1505              		.cfi_startproc
+ 1506              		@ args = 0, pretend = 0, frame = 0
+ 1507              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 40
+
+
+ 1508              		@ link register save eliminated.
+ 692:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_REG_VAL(i2c_periph, interrupt) |= BIT(I2C_BIT_POS(interrupt));
+ 1509              		.loc 1 692 5 view .LVU361
+ 1510              		.loc 1 692 40 is_stmt 0 view .LVU362
+ 1511 0000 8B09     		lsrs	r3, r1, #6
+ 1512 0002 1818     		adds	r0, r3, r0
+ 1513              	.LVL136:
+ 1514              		.loc 1 692 40 view .LVU363
+ 1515 0004 0368     		ldr	r3, [r0]
+ 1516              		.loc 1 692 43 view .LVU364
+ 1517 0006 1F22     		movs	r2, #31
+ 1518 0008 1140     		ands	r1, r2
+ 1519              	.LVL137:
+ 1520              		.loc 1 692 43 view .LVU365
+ 1521 000a 1E3A     		subs	r2, r2, #30
+ 1522 000c 8A40     		lsls	r2, r2, r1
+ 1523              		.loc 1 692 40 view .LVU366
+ 1524 000e 1343     		orrs	r3, r2
+ 1525 0010 0360     		str	r3, [r0]
+ 693:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1526              		.loc 1 693 1 view .LVU367
+ 1527              		@ sp needed
+ 1528 0012 7047     		bx	lr
+ 1529              		.cfi_endproc
+ 1530              	.LFE97:
+ 1532              		.section	.text.i2c_interrupt_disable,"ax",%progbits
+ 1533              		.align	1
+ 1534              		.global	i2c_interrupt_disable
+ 1535              		.syntax unified
+ 1536              		.code	16
+ 1537              		.thumb_func
+ 1538              		.fpu softvfp
+ 1540              	i2c_interrupt_disable:
+ 1541              	.LVL138:
+ 1542              	.LFB98:
+ 694:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 695:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 696:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      disable I2C interrupt
+ 697:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 698:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  interrupt: I2C interrupts, refer to i2c_flag_enum
+ 699:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 700:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_ERR: error interrupt enable 
+ 701:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_EV: event interrupt enable 
+ 702:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_BUF: buffer interrupt enable
+ 703:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_TFF: txframe fall interrupt enable
+ 704:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_TFR: txframe rise interrupt enable
+ 705:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_RFF: rxframe fall interrupt enable
+ 706:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_RFR: rxframe rise interrupt enable
+ 707:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 708:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 709:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 710:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_interrupt_disable(uint32_t i2c_periph, i2c_interrupt_enum interrupt)
+ 711:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1543              		.loc 1 711 1 is_stmt 1 view -0
+ 1544              		.cfi_startproc
+ 1545              		@ args = 0, pretend = 0, frame = 0
+ 1546              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 41
+
+
+ 1547              		@ link register save eliminated.
+ 712:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     I2C_REG_VAL(i2c_periph, interrupt) &= ~BIT(I2C_BIT_POS(interrupt));
+ 1548              		.loc 1 712 5 view .LVU369
+ 1549              		.loc 1 712 40 is_stmt 0 view .LVU370
+ 1550 0000 8B09     		lsrs	r3, r1, #6
+ 1551 0002 1818     		adds	r0, r3, r0
+ 1552              	.LVL139:
+ 1553              		.loc 1 712 40 view .LVU371
+ 1554 0004 0368     		ldr	r3, [r0]
+ 1555              		.loc 1 712 44 view .LVU372
+ 1556 0006 1F22     		movs	r2, #31
+ 1557 0008 1140     		ands	r1, r2
+ 1558              	.LVL140:
+ 1559              		.loc 1 712 44 view .LVU373
+ 1560 000a 1E3A     		subs	r2, r2, #30
+ 1561 000c 8A40     		lsls	r2, r2, r1
+ 1562              		.loc 1 712 40 view .LVU374
+ 1563 000e 9343     		bics	r3, r2
+ 1564 0010 0360     		str	r3, [r0]
+ 713:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1565              		.loc 1 713 1 view .LVU375
+ 1566              		@ sp needed
+ 1567 0012 7047     		bx	lr
+ 1568              		.cfi_endproc
+ 1569              	.LFE98:
+ 1571              		.section	.text.i2c_interrupt_flag_get,"ax",%progbits
+ 1572              		.align	1
+ 1573              		.global	i2c_interrupt_flag_get
+ 1574              		.syntax unified
+ 1575              		.code	16
+ 1576              		.thumb_func
+ 1577              		.fpu softvfp
+ 1579              	i2c_interrupt_flag_get:
+ 1580              	.LVL141:
+ 1581              	.LFB99:
+ 714:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 715:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 716:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      check I2C interrupt flag
+ 717:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ 718:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  int_flag: I2C interrupt flags, refer to i2c_interrupt_flag_enum
+ 719:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 720:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_SBSEND: start condition sent out in master mode interrupt flag
+ 721:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_ADDSEND: address is sent in master mode or received and matches in s
+ 722:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_BTC: byte transmission finishes
+ 723:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_ADD10SEND: header of 10-bit address is sent in master mode interrupt
+ 724:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_STPDET: etop condition detected in slave mode interrupt flag
+ 725:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_RBNE: I2C_DATA is not Empty during receiving interrupt flag
+ 726:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_TBE: I2C_DATA is empty during transmitting interrupt flag
+ 727:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_BERR: a bus error occurs indication a unexpected start or stop condi
+ 728:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_LOSTARB: arbitration lost in master mode interrupt flag
+ 729:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_AERR: acknowledge error interrupt flag
+ 730:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_OUERR: over-run or under-run situation occurs in slave mode interrup
+ 731:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_PECERR: PEC error when receiving data interrupt flag
+ 732:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_SMBTO: timeout signal in SMBus mode interrupt flag
+ 733:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_SMBALT: SMBus Alert status interrupt flag
+ 734:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_TFF: txframe fall interrupt flag
+ 735:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_TFR: txframe rise interrupt flag
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 42
+
+
+ 736:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_RFF: rxframe fall interrupt flag
+ 737:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_RFR: rxframe rise interrupt flag
+ 738:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 739:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     FlagStatus: SET or RESET
+ 740:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 741:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** FlagStatus i2c_interrupt_flag_get(uint32_t i2c_periph, i2c_interrupt_flag_enum int_flag)
+ 742:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1582              		.loc 1 742 1 is_stmt 1 view -0
+ 1583              		.cfi_startproc
+ 1584              		@ args = 0, pretend = 0, frame = 0
+ 1585              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1586              		.loc 1 742 1 is_stmt 0 view .LVU377
+ 1587 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1588              	.LCFI3:
+ 1589              		.cfi_def_cfa_offset 20
+ 1590              		.cfi_offset 4, -20
+ 1591              		.cfi_offset 5, -16
+ 1592              		.cfi_offset 6, -12
+ 1593              		.cfi_offset 7, -8
+ 1594              		.cfi_offset 14, -4
+ 743:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     uint32_t intenable = 0U, flagstatus = 0U, bufie;
+ 1595              		.loc 1 743 5 is_stmt 1 view .LVU378
+ 1596              	.LVL142:
+ 744:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 745:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* check BUFIE */
+ 746:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     bufie = I2C_CTL1(i2c_periph)&I2C_CTL1_BUFIE;
+ 1597              		.loc 1 746 5 view .LVU379
+ 1598              		.loc 1 746 13 is_stmt 0 view .LVU380
+ 1599 0002 4368     		ldr	r3, [r0, #4]
+ 1600              		.loc 1 746 11 view .LVU381
+ 1601 0004 40F20045 		movw	r5, #1024
+ 1602 0008 1D40     		ands	r5, r3
+ 1603              	.LVL143:
+ 747:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     
+ 748:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* get the interrupt enable bit status */
+ 749:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     intenable = (I2C_REG_VAL(i2c_periph, int_flag) & BIT(I2C_BIT_POS(int_flag)));
+ 1604              		.loc 1 749 5 is_stmt 1 view .LVU382
+ 1605              		.loc 1 749 18 is_stmt 0 view .LVU383
+ 1606 000a 8A09     		lsrs	r2, r1, #6
+ 1607 000c 40F2FF33 		movw	r3, #1023
+ 1608 0010 1340     		ands	r3, r2
+ 1609 0012 1B18     		adds	r3, r3, r0
+ 1610 0014 1C68     		ldr	r4, [r3]
+ 1611              		.loc 1 749 54 view .LVU384
+ 1612 0016 1F22     		movs	r2, #31
+ 1613 0018 1600     		movs	r6, r2
+ 1614 001a 0E40     		ands	r6, r1
+ 1615 001c 0123     		movs	r3, #1
+ 1616 001e 1F00     		movs	r7, r3
+ 1617 0020 B740     		lsls	r7, r7, r6
+ 1618              		.loc 1 749 15 view .LVU385
+ 1619 0022 3C40     		ands	r4, r7
+ 1620              	.LVL144:
+ 750:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     /* get the corresponding flag bit status */
+ 751:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     flagstatus = (I2C_REG_VAL2(i2c_periph, int_flag) & BIT(I2C_BIT_POS2(int_flag)));
+ 1621              		.loc 1 751 5 is_stmt 1 view .LVU386
+ 1622              		.loc 1 751 19 is_stmt 0 view .LVU387
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 43
+
+
+ 1623 0024 8E0D     		lsrs	r6, r1, #22
+ 1624 0026 3018     		adds	r0, r6, r0
+ 1625              	.LVL145:
+ 1626              		.loc 1 751 19 view .LVU388
+ 1627 0028 0068     		ldr	r0, [r0]
+ 1628              		.loc 1 751 56 view .LVU389
+ 1629 002a 0E0C     		lsrs	r6, r1, #16
+ 1630 002c 3240     		ands	r2, r6
+ 1631 002e 9340     		lsls	r3, r3, r2
+ 1632              		.loc 1 751 16 view .LVU390
+ 1633 0030 0340     		ands	r3, r0
+ 1634              	.LVL146:
+ 752:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 753:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if((I2C_INT_FLAG_RBNE == int_flag) || (I2C_INT_FLAG_TBE == int_flag)){
+ 1635              		.loc 1 753 5 is_stmt 1 view .LVU391
+ 1636              		.loc 1 753 7 is_stmt 0 view .LVU392
+ 1637 0032 40F20912 		movw	r2, #265
+ 1638 0036 C0F20652 		movt	r2, 1286
+ 1639 003a 9142     		cmp	r1, r2
+ 1640 003c 09D0     		beq	.L85
+ 1641              		.loc 1 753 40 discriminator 1 view .LVU393
+ 1642 003e 40F20912 		movw	r2, #265
+ 1643 0042 C0F20752 		movt	r2, 1287
+ 1644 0046 9142     		cmp	r1, r2
+ 1645 0048 03D0     		beq	.L85
+ 1646              	.LVL147:
+ 1647              	.L86:
+ 754:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(intenable && bufie){
+ 755:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             intenable = 1U;
+ 756:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 757:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****             intenable = 0U;
+ 758:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 759:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 760:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if((0U != flagstatus) && (0U != intenable)){
+ 1648              		.loc 1 760 5 is_stmt 1 view .LVU394
+ 1649              		.loc 1 760 7 is_stmt 0 view .LVU395
+ 1650 004a 53B1     		cbz	r3, .L90
+ 1651              		.loc 1 760 27 discriminator 1 view .LVU396
+ 1652 004c 5CB9     		cbnz	r4, .L91
+ 761:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         return SET;
+ 762:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 763:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         return RESET; 
+ 1653              		.loc 1 763 16 view .LVU397
+ 1654 004e 0020     		movs	r0, #0
+ 1655 0050 08E0     		b	.L87
+ 1656              	.L85:
+ 754:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(intenable && bufie){
+ 1657              		.loc 1 754 9 is_stmt 1 view .LVU398
+ 754:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(intenable && bufie){
+ 1658              		.loc 1 754 11 is_stmt 0 view .LVU399
+ 1659 0052 14B1     		cbz	r4, .L88
+ 754:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         if(intenable && bufie){
+ 1660              		.loc 1 754 22 discriminator 1 view .LVU400
+ 1661 0054 1DB9     		cbnz	r5, .L89
+ 757:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 1662              		.loc 1 757 23 view .LVU401
+ 1663 0056 0024     		movs	r4, #0
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 44
+
+
+ 1664              	.LVL148:
+ 757:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 1665              		.loc 1 757 23 view .LVU402
+ 1666 0058 F7E7     		b	.L86
+ 1667              	.LVL149:
+ 1668              	.L88:
+ 757:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 1669              		.loc 1 757 23 view .LVU403
+ 1670 005a 0024     		movs	r4, #0
+ 1671              	.LVL150:
+ 757:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }
+ 1672              		.loc 1 757 23 view .LVU404
+ 1673 005c F5E7     		b	.L86
+ 1674              	.LVL151:
+ 1675              	.L89:
+ 755:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 1676              		.loc 1 755 23 view .LVU405
+ 1677 005e 0124     		movs	r4, #1
+ 1678              	.LVL152:
+ 755:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         }else{
+ 1679              		.loc 1 755 23 view .LVU406
+ 1680 0060 F3E7     		b	.L86
+ 1681              	.LVL153:
+ 1682              	.L90:
+ 1683              		.loc 1 763 16 view .LVU407
+ 1684 0062 0020     		movs	r0, #0
+ 1685              	.L87:
+ 764:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 765:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ 1686              		.loc 1 765 1 view .LVU408
+ 1687              		@ sp needed
+ 1688              	.LVL154:
+ 1689              	.LVL155:
+ 1690              		.loc 1 765 1 view .LVU409
+ 1691 0064 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1692              	.LVL156:
+ 1693              	.L91:
+ 761:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 1694              		.loc 1 761 16 view .LVU410
+ 1695 0066 0120     		movs	r0, #1
+ 1696 0068 FCE7     		b	.L87
+ 1697              		.cfi_endproc
+ 1698              	.LFE99:
+ 1700              		.section	.text.i2c_interrupt_flag_clear,"ax",%progbits
+ 1701              		.align	1
+ 1702              		.global	i2c_interrupt_flag_clear
+ 1703              		.syntax unified
+ 1704              		.code	16
+ 1705              		.thumb_func
+ 1706              		.fpu softvfp
+ 1708              	i2c_interrupt_flag_clear:
+ 1709              	.LVL157:
+ 1710              	.LFB100:
+ 766:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** 
+ 767:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** /*!
+ 768:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \brief      clear I2C interrupt flag
+ 769:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  i2c_periph: I2Cx(x=0,1)
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 45
+
+
+ 770:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[in]  intflag: I2C interrupt flags, refer to i2c_interrupt_flag_enum
+ 771:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****                 only one parameter can be selected which is shown as below:
+ 772:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_ADDSEND: address is sent in master mode or received and matches in s
+ 773:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_BERR: a bus error occurs indication a unexpected start or stop condi
+ 774:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_LOSTARB: arbitration lost in master mode interrupt flag
+ 775:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_AERR: acknowledge error interrupt flag
+ 776:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_OUERR: over-run or under-run situation occurs in slave mode interrup
+ 777:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_PECERR: PEC error when receiving data interrupt flag
+ 778:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_SMBTO: timeout signal in SMBus mode interrupt flag
+ 779:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_SMBALT: SMBus Alert status interrupt flag
+ 780:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_TFF: txframe fall interrupt flag
+ 781:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_TFR: txframe rise interrupt flag
+ 782:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_RFF: rxframe fall interrupt flag
+ 783:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****       \arg        I2C_INT_FLAG_RFR: rxframe rise interrupt flag
+ 784:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \param[out] none
+ 785:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     \retval     none
+ 786:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** */
+ 787:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** void i2c_interrupt_flag_clear(uint32_t i2c_periph, i2c_interrupt_flag_enum int_flag)
+ 788:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** {
+ 1711              		.loc 1 788 1 is_stmt 1 view -0
+ 1712              		.cfi_startproc
+ 1713              		@ args = 0, pretend = 0, frame = 0
+ 1714              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1715              		@ link register save eliminated.
+ 789:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     if(I2C_INT_FLAG_ADDSEND == int_flag){
+ 1716              		.loc 1 789 5 view .LVU412
+ 1717              		.loc 1 789 7 is_stmt 0 view .LVU413
+ 1718 0000 40F20913 		movw	r3, #265
+ 1719 0004 C0F20153 		movt	r3, 1281
+ 1720 0008 9942     		cmp	r1, r3
+ 1721 000a 0AD0     		beq	.L95
+ 790:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         /* read I2C_STAT0 and then read I2C_STAT1 to clear ADDSEND */
+ 791:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT0(i2c_periph);
+ 792:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT1(i2c_periph);
+ 793:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 794:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_REG_VAL2(i2c_periph, int_flag) &= ~BIT(I2C_BIT_POS2(int_flag));
+ 1722              		.loc 1 794 9 is_stmt 1 view .LVU414
+ 1723              		.loc 1 794 44 is_stmt 0 view .LVU415
+ 1724 000c 8B0D     		lsrs	r3, r1, #22
+ 1725 000e 1818     		adds	r0, r3, r0
+ 1726              	.LVL158:
+ 1727              		.loc 1 794 44 view .LVU416
+ 1728 0010 0368     		ldr	r3, [r0]
+ 1729              		.loc 1 794 48 view .LVU417
+ 1730 0012 090C     		lsrs	r1, r1, #16
+ 1731              	.LVL159:
+ 1732              		.loc 1 794 48 view .LVU418
+ 1733 0014 1F22     		movs	r2, #31
+ 1734 0016 1140     		ands	r1, r2
+ 1735 0018 1E3A     		subs	r2, r2, #30
+ 1736 001a 8A40     		lsls	r2, r2, r1
+ 1737              		.loc 1 794 44 view .LVU419
+ 1738 001c 9343     		bics	r3, r2
+ 1739 001e 0360     		str	r3, [r0]
+ 1740              	.L92:
+ 795:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }
+ 796:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c **** }
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 46
+
+
+ 1741              		.loc 1 796 1 view .LVU420
+ 1742              		@ sp needed
+ 1743 0020 7047     		bx	lr
+ 1744              	.LVL160:
+ 1745              	.L95:
+ 791:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****         I2C_STAT1(i2c_periph);
+ 1746              		.loc 1 791 9 is_stmt 1 view .LVU421
+ 1747 0022 4369     		ldr	r3, [r0, #20]
+ 792:Drivers/GD32E23x_standard_peripheral/Source/gd32e23x_i2c.c ****     }else{
+ 1748              		.loc 1 792 9 view .LVU422
+ 1749 0024 8369     		ldr	r3, [r0, #24]
+ 1750 0026 FBE7     		b	.L92
+ 1751              		.cfi_endproc
+ 1752              	.LFE100:
+ 1754              		.text
+ 1755              	.Letext0:
+ 1756              		.file 2 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/machine/_defa
+ 1757              		.file 3 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/sys/_stdint.h
+ 1758              		.file 4 "Drivers/CMSIS/Device/GD/GD32E23x/Include/gd32e23x.h"
+ 1759              		.file 5 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_rcu.h"
+ 1760              		.file 6 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_i2c.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 47
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32e23x_i2c.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:16     .text.i2c_deinit:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:24     .text.i2c_deinit:0000000000000000 i2c_deinit
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:85     .text.i2c_clock_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:92     .text.i2c_clock_config:0000000000000000 i2c_clock_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:403    .text.i2c_clock_config:0000000000000130 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:408    .text.i2c_mode_addr_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:415    .text.i2c_mode_addr_config:0000000000000000 i2c_mode_addr_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:469    .text.i2c_smbus_type_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:476    .text.i2c_smbus_type_config:0000000000000000 i2c_smbus_type_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:510    .text.i2c_ack_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:517    .text.i2c_ack_config:0000000000000000 i2c_ack_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:550    .text.i2c_ack_config:000000000000001c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:555    .text.i2c_ackpos_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:562    .text.i2c_ackpos_config:0000000000000000 i2c_ackpos_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:595    .text.i2c_ackpos_config:0000000000000018 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:600    .text.i2c_master_addressing:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:607    .text.i2c_master_addressing:0000000000000000 i2c_master_addressing
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:643    .text.i2c_dualaddr_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:650    .text.i2c_dualaddr_enable:0000000000000000 i2c_dualaddr_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:677    .text.i2c_dualaddr_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:684    .text.i2c_dualaddr_disable:0000000000000000 i2c_dualaddr_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:705    .text.i2c_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:712    .text.i2c_enable:0000000000000000 i2c_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:733    .text.i2c_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:740    .text.i2c_disable:0000000000000000 i2c_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:761    .text.i2c_start_on_bus:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:768    .text.i2c_start_on_bus:0000000000000000 i2c_start_on_bus
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:789    .text.i2c_stop_on_bus:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:796    .text.i2c_stop_on_bus:0000000000000000 i2c_stop_on_bus
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:817    .text.i2c_data_transmit:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:824    .text.i2c_data_transmit:0000000000000000 i2c_data_transmit
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:842    .text.i2c_data_receive:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:849    .text.i2c_data_receive:0000000000000000 i2c_data_receive
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:870    .text.i2c_dma_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:877    .text.i2c_dma_enable:0000000000000000 i2c_dma_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:908    .text.i2c_dma_enable:000000000000000c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:913    .text.i2c_dma_last_transfer_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:920    .text.i2c_dma_last_transfer_config:0000000000000000 i2c_dma_last_transfer_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:951    .text.i2c_dma_last_transfer_config:000000000000000c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:956    .text.i2c_stretch_scl_low_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:963    .text.i2c_stretch_scl_low_config:0000000000000000 i2c_stretch_scl_low_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:995    .text.i2c_slave_response_to_gcall_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1002   .text.i2c_slave_response_to_gcall_config:0000000000000000 i2c_slave_response_to_gcall_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1034   .text.i2c_software_reset_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1041   .text.i2c_software_reset_config:0000000000000000 i2c_software_reset_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1072   .text.i2c_software_reset_config:000000000000000c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1077   .text.i2c_pec_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1084   .text.i2c_pec_enable:0000000000000000 i2c_pec_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1116   .text.i2c_pec_transfer_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1123   .text.i2c_pec_transfer_enable:0000000000000000 i2c_pec_transfer_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1154   .text.i2c_pec_transfer_enable:000000000000000c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1159   .text.i2c_pec_value_get:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1166   .text.i2c_pec_value_get:0000000000000000 i2c_pec_value_get
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1189   .text.i2c_smbus_issue_alert:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1196   .text.i2c_smbus_issue_alert:0000000000000000 i2c_smbus_issue_alert
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s 			page 48
+
+
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1227   .text.i2c_smbus_issue_alert:000000000000000c $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1232   .text.i2c_smbus_arp_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1239   .text.i2c_smbus_arp_enable:0000000000000000 i2c_smbus_arp_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1271   .text.i2c_sam_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1278   .text.i2c_sam_enable:0000000000000000 i2c_sam_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1302   .text.i2c_sam_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1309   .text.i2c_sam_disable:0000000000000000 i2c_sam_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1333   .text.i2c_sam_timeout_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1340   .text.i2c_sam_timeout_enable:0000000000000000 i2c_sam_timeout_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1364   .text.i2c_sam_timeout_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1371   .text.i2c_sam_timeout_disable:0000000000000000 i2c_sam_timeout_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1395   .text.i2c_flag_get:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1402   .text.i2c_flag_get:0000000000000000 i2c_flag_get
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1442   .text.i2c_flag_clear:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1449   .text.i2c_flag_clear:0000000000000000 i2c_flag_clear
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1494   .text.i2c_interrupt_enable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1501   .text.i2c_interrupt_enable:0000000000000000 i2c_interrupt_enable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1533   .text.i2c_interrupt_disable:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1540   .text.i2c_interrupt_disable:0000000000000000 i2c_interrupt_disable
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1572   .text.i2c_interrupt_flag_get:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1579   .text.i2c_interrupt_flag_get:0000000000000000 i2c_interrupt_flag_get
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1701   .text.i2c_interrupt_flag_clear:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//ccEm75xO.s:1708   .text.i2c_interrupt_flag_clear:0000000000000000 i2c_interrupt_flag_clear
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable
+rcu_clock_freq_get

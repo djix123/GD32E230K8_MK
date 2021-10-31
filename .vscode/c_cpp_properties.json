@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/Src",
+                "${workspaceFolder}/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/GD/GD32E23x/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/GD/GD32E23x/Source",
+                "${workspaceFolder}/Drivers/GD32E23x_standard_peripheral/Include",
+                "${workspaceFolder}/Drivers/GD32E23x_standard_peripheral/Source"
+            ],
+            "defines": [
+                "GD32E23x",
+                "GD32E230"
+            ],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

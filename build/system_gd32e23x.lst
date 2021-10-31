@@ -1,0 +1,970 @@
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 1
+
+
+   1              		.cpu cortex-m23
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 0
+  10              		.eabi_attribute 18, 4
+  11              		.file	"system_gd32e23x.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.system_clock_8m_irc8m,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv8-m.base
+  18              		.syntax unified
+  19              		.code	16
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	system_clock_8m_irc8m:
+  24              	.LFB68:
+  25              		.file 1 "Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c"
+   1:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+   2:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \file  system_gd32e23x.c
+   3:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief CMSIS Cortex-M23 Device Peripheral Access Layer Source File for
+   4:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****            GD32E23x Device Series
+   5:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+   6:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+   7:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* Copyright (c) 2012 ARM LIMITED
+   8:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+   9:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    All rights reserved.
+  10:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    Redistribution and use in source and binary forms, with or without
+  11:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    modification, are permitted provided that the following conditions are met:
+  12:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    - Redistributions of source code must retain the above copyright
+  13:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****      notice, this list of conditions and the following disclaimer.
+  14:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    - Redistributions in binary form must reproduce the above copyright
+  15:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****      notice, this list of conditions and the following disclaimer in the
+  16:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****      documentation and/or other materials provided with the distribution.
+  17:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    - Neither the name of ARM nor the names of its contributors may be used
+  18:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****      to endorse or promote products derived from this software without
+  19:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****      specific prior written permission.
+  20:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    *
+  21:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  25:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    POSSIBILITY OF SUCH DAMAGE.
+  32:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****    ---------------------------------------------------------------------------*/
+  33:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 2
+
+
+  34:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* This file refers the CMSIS standard, some adjustments are made according to GigaDevice chips */
+  35:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  36:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #include "gd32e23x.h"
+  37:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  38:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* system frequency define */
+  39:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define __IRC8M           (IRC8M_VALUE)            /* internal 8 MHz RC oscillator frequency */
+  40:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define __HXTAL           (HXTAL_VALUE)            /* high speed crystal oscillator frequency */
+  41:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define __SYS_OSC_CLK     (__IRC8M)                /* main oscillator frequency */
+  42:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  43:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define VECT_TAB_OFFSET  (uint32_t)0x00            /* vector table base offset */
+  44:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  45:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* select a system clock by uncommenting the following line */
+  46:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** //#define __SYSTEM_CLOCK_8M_HXTAL              (__HXTAL)
+  47:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define __SYSTEM_CLOCK_8M_IRC8M              (__IRC8M)
+  48:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** //#define __SYSTEM_CLOCK_72M_PLL_HXTAL         (uint32_t)(72000000)
+  49:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** //#define __SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2    (uint32_t)(72000000)
+  50:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  51:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define SEL_IRC8M       0x00
+  52:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define SEL_HXTAL       0x01
+  53:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #define SEL_PLL         0x02
+  54:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  55:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* set the system clock frequency and declare the system clock configuration function */
+  56:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef __SYSTEM_CLOCK_8M_HXTAL
+  57:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_8M_HXTAL;
+  58:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_8m_hxtal(void);
+  59:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  60:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+  61:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_72M_PLL_HXTAL;
+  62:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_72m_hxtal(void);
+  63:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  64:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2)
+  65:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2;
+  66:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_72m_irc8m(void);
+  67:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  68:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #else
+  69:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_8M_IRC8M;
+  70:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_8m_irc8m(void);
+  71:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif /* __SYSTEM_CLOCK_8M_HXTAL */
+  72:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  73:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /* configure the system clock */
+  74:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_config(void);
+  75:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+  76:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+  77:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      setup the microcontroller system, initialize the system
+  78:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+  79:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+  80:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+  81:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+  82:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** void SystemInit (void)
+  83:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+  84:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable IRC8M */
+  85:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_IRC8MEN;
+  86:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)){
+  87:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+  88:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* reset RCU */
+  89:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC |\
+  90:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****                   RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV | RCU_CFG0_PLLDV);
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 3
+
+
+  91:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLMF4 | RCU_CFG0_PLLDV);
+  92:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
+  93:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+  94:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~(RCU_CFG2_USART0SEL | RCU_CFG2_ADCSEL);
+  95:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
+  96:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
+  97:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
+  98:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_INT = 0x00000000U;
+  99:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 100:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* configure system clock */
+ 101:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_config();
+ 102:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 103:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef VECT_TAB_SRAM
+ 104:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     nvic_vector_table_set(NVIC_VECTTAB_RAM,VECT_TAB_OFFSET);
+ 105:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #else
+ 106:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     nvic_vector_table_set(NVIC_VECTTAB_FLASH,VECT_TAB_OFFSET);
+ 107:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif
+ 108:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 109:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 110:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 111:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      configure the system clock
+ 112:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ 113:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 114:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 115:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 116:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_config(void)
+ 117:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+ 118:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef __SYSTEM_CLOCK_8M_HXTAL
+ 119:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_8m_hxtal();
+ 120:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+ 121:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_72m_hxtal();
+ 122:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2)
+ 123:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_72m_irc8m();
+ 124:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC48M_DIV2)
+ 125:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_72m_irc48m();
+ 126:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #else
+ 127:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     system_clock_8m_irc8m();
+ 128:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif /* __SYSTEM_CLOCK_8M_HXTAL */
+ 129:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 130:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 131:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef __SYSTEM_CLOCK_8M_HXTAL
+ 132:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 133:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      configure the system clock to 8M by HXTAL
+ 134:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ 135:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 136:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 137:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 138:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_8m_hxtal(void)
+ 139:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+ 140:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t timeout = 0U;
+ 141:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t stab_flag = 0U;
+ 142:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 143:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable HXTAL */
+ 144:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_HXTALEN;
+ 145:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 146:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 147:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     do{
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 4
+
+
+ 148:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         timeout++;
+ 149:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         stab_flag = (RCU_CTL0 & RCU_CTL0_HXTALSTB);
+ 150:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 151:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));    
+ 152:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* if fail */
+ 153:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     if(0U == (RCU_CTL0 & RCU_CTL0_HXTALSTB)){
+ 154:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         while(1){
+ 155:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 156:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 157:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 158:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* HXTAL is stable */
+ 159:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* AHB = SYSCLK */
+ 160:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 161:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB2 = AHB */
+ 162:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 163:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB1 = AHB */
+ 164:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+ 165:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 166:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* select HXTAL as system clock */
+ 167:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 168:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_CKSYSSRC_HXTAL;
+ 169:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 170:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until HXTAL is selected as system clock */
+ 171:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_HXTAL)){
+ 172:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 173:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 174:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 175:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_HXTAL)
+ 176:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 177:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      configure the system clock to 72M by PLL which selects HXTAL as its clock source
+ 178:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ 179:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 180:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 181:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 182:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_72m_hxtal(void)
+ 183:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+ 184:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t timeout = 0U;
+ 185:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t stab_flag = 0U;
+ 186:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 187:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable HXTAL */
+ 188:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_HXTALEN;
+ 189:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 190:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 191:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     do{
+ 192:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         timeout++;
+ 193:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         stab_flag = (RCU_CTL0 & RCU_CTL0_HXTALSTB);
+ 194:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 195:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 196:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* if fail */
+ 197:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     if(0U == (RCU_CTL0 & RCU_CTL0_HXTALSTB)){
+ 198:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         while(1){
+ 199:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 200:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 201:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 202:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT_2;
+ 203:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 204:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* HXTAL is stable */
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 5
+
+
+ 205:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* AHB = SYSCLK */
+ 206:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 207:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB2 = AHB */
+ 208:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 209:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB1 = AHB */
+ 210:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+ 211:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 212:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* PLL = HXTAL * 9 = 72 MHz */
+ 213:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
+ 214:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL9);
+ 215:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 216:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable PLL */
+ 217:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_PLLEN;
+ 218:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 219:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until PLL is stable */
+ 220:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)){
+ 221:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 222:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 223:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* select PLL as system clock */
+ 224:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 225:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 226:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 227:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until PLL is selected as system clock */
+ 228:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 229:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 230:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 231:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 232:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #elif defined (__SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2)
+ 233:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 234:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      configure the system clock to 72M by PLL which selects IRC8M/2 as its clock source
+ 235:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ 236:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 237:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 238:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 239:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_72m_irc8m(void)
+ 240:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+ 241:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t timeout = 0U;
+ 242:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t stab_flag = 0U;
+ 243:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 244:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable IRC8M */
+ 245:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_IRC8MEN;
+ 246:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 247:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until IRC8M is stable or the startup time is longer than IRC8M_STARTUP_TIMEOUT */
+ 248:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     do{
+ 249:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         timeout++;
+ 250:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         stab_flag = (RCU_CTL0 & RCU_CTL0_IRC8MSTB);
+ 251:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 252:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while((0U == stab_flag) && (IRC8M_STARTUP_TIMEOUT != timeout));
+ 253:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 254:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* if fail */
+ 255:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     if(0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)){
+ 256:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         while(1){
+ 257:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 258:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 259:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 260:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT_2;
+ 261:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 6
+
+
+ 262:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* AHB = SYSCLK */
+ 263:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 264:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB2 = AHB */
+ 265:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 266:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB1 = AHB */
+ 267:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+ 268:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* PLL = (IRC8M/2) * 18 = 72 MHz */
+ 269:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF);
+ 270:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= (RCU_PLLSRC_IRC8M_DIV2 | RCU_PLL_MUL18);
+ 271:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 272:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable PLL */
+ 273:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 |= RCU_CTL0_PLLEN;
+ 274:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 275:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until PLL is stable */
+ 276:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)){
+ 277:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 278:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 279:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* select PLL as system clock */
+ 280:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 281:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+ 282:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 283:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until PLL is selected as system clock */
+ 284:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLL)){
+ 285:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 286:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 287:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 288:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #else
+ 289:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 290:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      configure the system clock to 8M by IRC8M
+ 291:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ 292:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 293:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 294:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 295:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** static void system_clock_8m_irc8m(void)
+ 296:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+  26              		.loc 1 296 1 view -0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+ 297:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* AHB = SYSCLK */
+ 298:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+  31              		.loc 1 298 5 view .LVU1
+  32              		.loc 1 298 14 is_stmt 0 view .LVU2
+  33 0000 41F20403 		movw	r3, #4100
+  34 0004 C4F20203 		movt	r3, 16386
+  35 0008 1A68     		ldr	r2, [r3]
+  36 000a 1A60     		str	r2, [r3]
+ 299:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB2 = AHB */
+ 300:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+  37              		.loc 1 300 5 is_stmt 1 view .LVU3
+  38              		.loc 1 300 14 is_stmt 0 view .LVU4
+  39 000c 1A68     		ldr	r2, [r3]
+  40 000e 1A60     		str	r2, [r3]
+ 301:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* APB1 = AHB */
+ 302:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+  41              		.loc 1 302 5 is_stmt 1 view .LVU5
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 7
+
+
+  42              		.loc 1 302 14 is_stmt 0 view .LVU6
+  43 0010 1A68     		ldr	r2, [r3]
+  44 0012 1A60     		str	r2, [r3]
+ 303:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 304:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* select IRC8M as system clock */
+ 305:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+  45              		.loc 1 305 5 is_stmt 1 view .LVU7
+  46              		.loc 1 305 14 is_stmt 0 view .LVU8
+  47 0014 1A68     		ldr	r2, [r3]
+  48 0016 0321     		movs	r1, #3
+  49 0018 8A43     		bics	r2, r1
+  50 001a 1A60     		str	r2, [r3]
+ 306:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG0 |= RCU_CKSYSSRC_IRC8M;
+  51              		.loc 1 306 5 is_stmt 1 view .LVU9
+  52              		.loc 1 306 14 is_stmt 0 view .LVU10
+  53 001c 1A68     		ldr	r2, [r3]
+  54 001e 1A60     		str	r2, [r3]
+ 307:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 308:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* wait until IRC8M is selected as system clock */
+ 309:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U != (RCU_CFG0 & RCU_SCSS_IRC8M)){
+  55              		.loc 1 309 5 is_stmt 1 view .LVU11
+ 310:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+  56              		.loc 1 310 5 view .LVU12
+ 309:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+  57              		.loc 1 309 10 view .LVU13
+ 309:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+  58              		.loc 1 309 18 is_stmt 0 view .LVU14
+  59 0020 1B68     		ldr	r3, [r3]
+ 311:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+  60              		.loc 1 311 1 view .LVU15
+  61              		@ sp needed
+  62 0022 7047     		bx	lr
+  63              		.cfi_endproc
+  64              	.LFE68:
+  66              		.section	.text.system_clock_config,"ax",%progbits
+  67              		.align	1
+  68              		.syntax unified
+  69              		.code	16
+  70              		.thumb_func
+  71              		.fpu softvfp
+  73              	system_clock_config:
+  74              	.LFB67:
+ 117:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #ifdef __SYSTEM_CLOCK_8M_HXTAL
+  75              		.loc 1 117 1 is_stmt 1 view -0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 10B5     		push	{r4, lr}
+  80              	.LCFI0:
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 4, -8
+  83              		.cfi_offset 14, -4
+ 127:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif /* __SYSTEM_CLOCK_8M_HXTAL */
+  84              		.loc 1 127 5 view .LVU17
+  85 0002 FFF7FEFF 		bl	system_clock_8m_irc8m
+  86              	.LVL0:
+ 129:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 8
+
+
+  87              		.loc 1 129 1 is_stmt 0 view .LVU18
+  88              		@ sp needed
+  89 0006 10BD     		pop	{r4, pc}
+  90              		.cfi_endproc
+  91              	.LFE67:
+  93              		.section	.text.SystemInit,"ax",%progbits
+  94              		.align	1
+  95              		.global	SystemInit
+  96              		.syntax unified
+  97              		.code	16
+  98              		.thumb_func
+  99              		.fpu softvfp
+ 101              	SystemInit:
+ 102              	.LFB66:
+  83:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* enable IRC8M */
+ 103              		.loc 1 83 1 is_stmt 1 view -0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 10B5     		push	{r4, lr}
+ 108              	.LCFI1:
+ 109              		.cfi_def_cfa_offset 8
+ 110              		.cfi_offset 4, -8
+ 111              		.cfi_offset 14, -4
+  85:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)){
+ 112              		.loc 1 85 5 view .LVU20
+  85:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     while(0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)){
+ 113              		.loc 1 85 14 is_stmt 0 view .LVU21
+ 114 0002 41F20003 		movw	r3, #4096
+ 115 0006 C4F20203 		movt	r3, 16386
+ 116 000a 1A68     		ldr	r2, [r3]
+ 117 000c 0121     		movs	r1, #1
+ 118 000e 0A43     		orrs	r2, r1
+ 119 0010 1A60     		str	r2, [r3]
+  86:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 120              		.loc 1 86 5 is_stmt 1 view .LVU22
+ 121              	.L4:
+  87:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* reset RCU */
+ 122              		.loc 1 87 5 discriminator 1 view .LVU23
+  86:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 123              		.loc 1 86 10 discriminator 1 view .LVU24
+  86:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 124              		.loc 1 86 18 is_stmt 0 discriminator 1 view .LVU25
+ 125 0012 41F20003 		movw	r3, #4096
+ 126 0016 C4F20203 		movt	r3, 16386
+ 127 001a 1B68     		ldr	r3, [r3]
+  86:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 128              		.loc 1 86 10 discriminator 1 view .LVU26
+ 129 001c 9B07     		lsls	r3, r3, #30
+ 130 001e F8D5     		bpl	.L4
+  89:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****                   RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV | RCU_CFG0_PLLDV);
+ 131              		.loc 1 89 5 is_stmt 1 view .LVU27
+  89:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****                   RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV | RCU_CFG0_PLLDV);
+ 132              		.loc 1 89 14 is_stmt 0 view .LVU28
+ 133 0020 41F20403 		movw	r3, #4100
+ 134 0024 C4F20203 		movt	r3, 16386
+ 135 0028 1A68     		ldr	r2, [r3]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 9
+
+
+ 136 002a 0C21     		movs	r1, #12
+ 137 002c C0F6FF01 		movt	r1, 2303
+ 138 0030 0A40     		ands	r2, r1
+ 139 0032 1A60     		str	r2, [r3]
+  91:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
+ 140              		.loc 1 91 5 is_stmt 1 view .LVU29
+  91:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
+ 141              		.loc 1 91 14 is_stmt 0 view .LVU30
+ 142 0034 1A68     		ldr	r2, [r3]
+ 143 0036 4FF6FF71 		movw	r1, #65535
+ 144 003a C7F2C271 		movt	r1, 30658
+ 145 003e 0A40     		ands	r2, r1
+ 146 0040 1A60     		str	r2, [r3]
+  92:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+ 147              		.loc 1 92 5 is_stmt 1 view .LVU31
+  92:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+ 148              		.loc 1 92 14 is_stmt 0 view .LVU32
+ 149 0042 41F20003 		movw	r3, #4096
+ 150 0046 C4F20203 		movt	r3, 16386
+ 151 004a 1A68     		ldr	r2, [r3]
+ 152 004c 4FF6FF71 		movw	r1, #65535
+ 153 0050 CFF6F261 		movt	r1, 65266
+ 154 0054 0A40     		ands	r2, r1
+ 155 0056 1A60     		str	r2, [r3]
+  93:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~(RCU_CFG2_USART0SEL | RCU_CFG2_ADCSEL);
+ 156              		.loc 1 93 5 is_stmt 1 view .LVU33
+  93:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~(RCU_CFG2_USART0SEL | RCU_CFG2_ADCSEL);
+ 157              		.loc 1 93 14 is_stmt 0 view .LVU34
+ 158 0058 41F22C03 		movw	r3, #4140
+ 159 005c C4F20203 		movt	r3, 16386
+ 160 0060 1A68     		ldr	r2, [r3]
+ 161 0062 0F21     		movs	r1, #15
+ 162 0064 8A43     		bics	r2, r1
+ 163 0066 1A60     		str	r2, [r3]
+  94:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
+ 164              		.loc 1 94 5 is_stmt 1 view .LVU35
+  94:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
+ 165              		.loc 1 94 14 is_stmt 0 view .LVU36
+ 166 0068 41F23003 		movw	r3, #4144
+ 167 006c C4F20203 		movt	r3, 16386
+ 168 0070 1A68     		ldr	r2, [r3]
+ 169 0072 1049     		ldr	r1, .L5
+ 170 0074 0A40     		ands	r2, r1
+ 171 0076 1A60     		str	r2, [r3]
+  95:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
+ 172              		.loc 1 95 5 is_stmt 1 view .LVU37
+  95:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
+ 173              		.loc 1 95 14 is_stmt 0 view .LVU38
+ 174 0078 1A68     		ldr	r2, [r3]
+ 175 007a 0F49     		ldr	r1, .L5+4
+ 176 007c 0A40     		ands	r2, r1
+ 177 007e 1A60     		str	r2, [r3]
+  96:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
+ 178              		.loc 1 96 5 is_stmt 1 view .LVU39
+  96:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
+ 179              		.loc 1 96 14 is_stmt 0 view .LVU40
+ 180 0080 1A68     		ldr	r2, [r3]
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 10
+
+
+ 181 0082 5200     		lsls	r2, r2, #1
+ 182 0084 5208     		lsrs	r2, r2, #1
+ 183 0086 1A60     		str	r2, [r3]
+  97:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_INT = 0x00000000U;
+ 184              		.loc 1 97 5 is_stmt 1 view .LVU41
+  97:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     RCU_INT = 0x00000000U;
+ 185              		.loc 1 97 14 is_stmt 0 view .LVU42
+ 186 0088 41F23403 		movw	r3, #4148
+ 187 008c C4F20203 		movt	r3, 16386
+ 188 0090 1A68     		ldr	r2, [r3]
+ 189 0092 0121     		movs	r1, #1
+ 190 0094 8A43     		bics	r2, r1
+ 191 0096 1A60     		str	r2, [r3]
+  98:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 192              		.loc 1 98 5 is_stmt 1 view .LVU43
+  98:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 193              		.loc 1 98 13 is_stmt 0 view .LVU44
+ 194 0098 41F20803 		movw	r3, #4104
+ 195 009c C4F20203 		movt	r3, 16386
+ 196 00a0 0022     		movs	r2, #0
+ 197 00a2 1A60     		str	r2, [r3]
+ 101:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     
+ 198              		.loc 1 101 5 is_stmt 1 view .LVU45
+ 199 00a4 FFF7FEFF 		bl	system_clock_config
+ 200              	.LVL1:
+ 106:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif
+ 201              		.loc 1 106 5 view .LVU46
+ 202 00a8 8020     		movs	r0, #128
+ 203 00aa 0021     		movs	r1, #0
+ 204 00ac 0005     		lsls	r0, r0, #20
+ 205 00ae FFF7FEFF 		bl	nvic_vector_table_set
+ 206              	.LVL2:
+ 108:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 207              		.loc 1 108 1 is_stmt 0 view .LVU47
+ 208              		@ sp needed
+ 209 00b2 10BD     		pop	{r4, pc}
+ 210              	.L6:
+ 211              		.align	2
+ 212              	.L5:
+ 213 00b4 FCFEFFFF 		.word	-260
+ 214 00b8 FFFFFEFF 		.word	-65537
+ 215              		.cfi_endproc
+ 216              	.LFE66:
+ 218              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	SystemCoreClockUpdate
+ 221              		.syntax unified
+ 222              		.code	16
+ 223              		.thumb_func
+ 224              		.fpu softvfp
+ 226              	SystemCoreClockUpdate:
+ 227              	.LFB69:
+ 312:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** #endif /* __SYSTEM_CLOCK_8M_HXTAL */
+ 313:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 314:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** /*!
+ 315:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \brief      update the SystemCoreClock with current core clock retrieved from cpu registers
+ 316:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[in]  none
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 11
+
+
+ 317:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \param[out] none
+ 318:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     \retval     none
+ 319:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** */
+ 320:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** void SystemCoreClockUpdate (void)
+ 321:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** {
+ 228              		.loc 1 321 1 is_stmt 1 view -0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 16
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232 0000 10B5     		push	{r4, lr}
+ 233              	.LCFI2:
+ 234              		.cfi_def_cfa_offset 8
+ 235              		.cfi_offset 4, -8
+ 236              		.cfi_offset 14, -4
+ 237 0002 84B0     		sub	sp, sp, #16
+ 238              	.LCFI3:
+ 239              		.cfi_def_cfa_offset 24
+ 322:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t sws = 0U;
+ 240              		.loc 1 322 5 view .LVU49
+ 241              	.LVL3:
+ 323:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     uint32_t pllmf = 0U, pllmf4 = 0U, pllsel = 0U, prediv = 0U, idx = 0U, clk_exp = 0U;
+ 242              		.loc 1 323 5 view .LVU50
+ 324:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* exponent of AHB clock divider */
+ 325:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     const uint8_t ahb_exp[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 243              		.loc 1 325 5 view .LVU51
+ 244              		.loc 1 325 19 is_stmt 0 view .LVU52
+ 245 0004 6A46     		mov	r2, sp
+ 246 0006 40F20003 		movw	r3, #:lower16:.LANCHOR0
+ 247 000a C0F20003 		movt	r3, #:upper16:.LANCHOR0
+ 248 000e 13CB     		ldmia	r3!, {r0, r1, r4}
+ 249 0010 13C2     		stmia	r2!, {r0, r1, r4}
+ 250 0012 1B68     		ldr	r3, [r3]
+ 251 0014 1360     		str	r3, [r2]
+ 326:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** 
+ 327:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     sws = GET_BITS(RCU_CFG0, 2, 3);
+ 252              		.loc 1 327 5 is_stmt 1 view .LVU53
+ 253              		.loc 1 327 11 is_stmt 0 view .LVU54
+ 254 0016 41F20403 		movw	r3, #4100
+ 255 001a C4F20203 		movt	r3, 16386
+ 256 001e 1A68     		ldr	r2, [r3]
+ 257 0020 9208     		lsrs	r2, r2, #2
+ 258              		.loc 1 327 9 view .LVU55
+ 259 0022 0323     		movs	r3, #3
+ 260 0024 1340     		ands	r3, r2
+ 261              	.LVL4:
+ 328:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     switch(sws){
+ 262              		.loc 1 328 5 is_stmt 1 view .LVU56
+ 263 0026 012B     		cmp	r3, #1
+ 264 0028 28D0     		beq	.L8
+ 265 002a 022B     		cmp	r3, #2
+ 266 002c 30D0     		beq	.L9
+ 267 002e 4BB1     		cbz	r3, .L16
+ 329:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* IRC8M is selected as CK_SYS */
+ 330:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     case SEL_IRC8M:
+ 331:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         SystemCoreClock = IRC8M_VALUE;
+ 332:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 333:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* HXTAL is selected as CK_SYS */
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 12
+
+
+ 334:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     case SEL_HXTAL:
+ 335:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         SystemCoreClock = HXTAL_VALUE;
+ 336:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 337:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* PLL is selected as CK_SYS */
+ 338:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     case SEL_PLL:
+ 339:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         /* get the value of PLLMF[3:0] */
+ 340:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf = GET_BITS(RCU_CFG0, 18, 21);
+ 341:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+ 342:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         /* high 16 bits */
+ 343:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         if(1U == pllmf4){
+ 344:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf += 17U;
+ 345:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else if(15U == pllmf){
+ 346:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf = 16U;
+ 347:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 348:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf += 2U;
+ 349:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 350:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         
+ 351:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 352:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllsel = GET_BITS(RCU_CFG0, 16, 16);
+ 353:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         if(0U != pllsel){
+ 354:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             prediv = (GET_BITS(RCU_CFG1, 0, 3) + 1U);
+ 355:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
+ 356:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 357:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             SystemCoreClock = (IRC8M_VALUE >> 1) * pllmf;
+ 358:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 359:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 360:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* IRC8M is selected as CK_SYS */
+ 361:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     default:
+ 362:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         SystemCoreClock = IRC8M_VALUE;
+ 268              		.loc 1 362 9 view .LVU57
+ 269              		.loc 1 362 25 is_stmt 0 view .LVU58
+ 270 0030 40F20003 		movw	r3, #:lower16:.LANCHOR1
+ 271              	.LVL5:
+ 272              		.loc 1 362 25 view .LVU59
+ 273 0034 C0F20003 		movt	r3, #:upper16:.LANCHOR1
+ 274 0038 41F20022 		movw	r2, #4608
+ 275              	.LVL6:
+ 276              		.loc 1 362 25 view .LVU60
+ 277 003c C0F27A02 		movt	r2, 122
+ 278 0040 1A60     		str	r2, [r3]
+ 363:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 279              		.loc 1 363 9 is_stmt 1 view .LVU61
+ 280 0042 08E0     		b	.L11
+ 281              	.LVL7:
+ 282              	.L16:
+ 331:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 283              		.loc 1 331 9 view .LVU62
+ 331:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 284              		.loc 1 331 25 is_stmt 0 view .LVU63
+ 285 0044 40F20003 		movw	r3, #:lower16:.LANCHOR1
+ 286              	.LVL8:
+ 331:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 287              		.loc 1 331 25 view .LVU64
+ 288 0048 C0F20003 		movt	r3, #:upper16:.LANCHOR1
+ 289 004c 41F20022 		movw	r2, #4608
+ 290              	.LVL9:
+ 331:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 13
+
+
+ 291              		.loc 1 331 25 view .LVU65
+ 292 0050 C0F27A02 		movt	r2, 122
+ 293 0054 1A60     		str	r2, [r3]
+ 332:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* HXTAL is selected as CK_SYS */
+ 294              		.loc 1 332 9 is_stmt 1 view .LVU66
+ 295              	.LVL10:
+ 296              	.L11:
+ 364:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     }
+ 365:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* calculate AHB clock frequency */
+ 366:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     idx = GET_BITS(RCU_CFG0, 4, 7);
+ 297              		.loc 1 366 5 view .LVU67
+ 298              		.loc 1 366 11 is_stmt 0 view .LVU68
+ 299 0056 41F20403 		movw	r3, #4100
+ 300 005a C4F20203 		movt	r3, 16386
+ 301 005e 1A68     		ldr	r2, [r3]
+ 302 0060 1209     		lsrs	r2, r2, #4
+ 303              		.loc 1 366 9 view .LVU69
+ 304 0062 0F23     		movs	r3, #15
+ 305 0064 1340     		ands	r3, r2
+ 306              	.LVL11:
+ 367:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     clk_exp = ahb_exp[idx];
+ 307              		.loc 1 367 5 is_stmt 1 view .LVU70
+ 308              		.loc 1 367 22 is_stmt 0 view .LVU71
+ 309 0066 6A46     		mov	r2, sp
+ 310 0068 D25C     		ldrb	r2, [r2, r3]
+ 311              	.LVL12:
+ 368:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     SystemCoreClock >>= clk_exp;
+ 312              		.loc 1 368 5 is_stmt 1 view .LVU72
+ 313              		.loc 1 368 21 is_stmt 0 view .LVU73
+ 314 006a 40F20003 		movw	r3, #:lower16:.LANCHOR1
+ 315              	.LVL13:
+ 316              		.loc 1 368 21 view .LVU74
+ 317 006e C0F20003 		movt	r3, #:upper16:.LANCHOR1
+ 318 0072 1968     		ldr	r1, [r3]
+ 319 0074 D140     		lsrs	r1, r1, r2
+ 320 0076 1960     		str	r1, [r3]
+ 369:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c **** }
+ 321              		.loc 1 369 1 view .LVU75
+ 322 0078 04B0     		add	sp, sp, #16
+ 323              		@ sp needed
+ 324 007a 10BD     		pop	{r4, pc}
+ 325              	.LVL14:
+ 326              	.L8:
+ 335:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 327              		.loc 1 335 9 is_stmt 1 view .LVU76
+ 335:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 328              		.loc 1 335 25 is_stmt 0 view .LVU77
+ 329 007c 40F20003 		movw	r3, #:lower16:.LANCHOR1
+ 330              	.LVL15:
+ 335:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 331              		.loc 1 335 25 view .LVU78
+ 332 0080 C0F20003 		movt	r3, #:upper16:.LANCHOR1
+ 333 0084 41F20022 		movw	r2, #4608
+ 334              	.LVL16:
+ 335:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         break;
+ 335              		.loc 1 335 25 view .LVU79
+ 336 0088 C0F27A02 		movt	r2, 122
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 14
+
+
+ 337 008c 1A60     		str	r2, [r3]
+ 336:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****     /* PLL is selected as CK_SYS */
+ 338              		.loc 1 336 9 is_stmt 1 view .LVU80
+ 339 008e E2E7     		b	.L11
+ 340              	.LVL17:
+ 341              	.L9:
+ 340:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+ 342              		.loc 1 340 9 view .LVU81
+ 340:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+ 343              		.loc 1 340 17 is_stmt 0 view .LVU82
+ 344 0090 41F20402 		movw	r2, #4100
+ 345 0094 C4F20202 		movt	r2, 16386
+ 346 0098 1168     		ldr	r1, [r2]
+ 347 009a 890C     		lsrs	r1, r1, #18
+ 340:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+ 348              		.loc 1 340 15 view .LVU83
+ 349 009c 0F23     		movs	r3, #15
+ 350              	.LVL18:
+ 340:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+ 351              		.loc 1 340 15 view .LVU84
+ 352 009e 0B40     		ands	r3, r1
+ 353              	.LVL19:
+ 341:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         /* high 16 bits */
+ 354              		.loc 1 341 9 is_stmt 1 view .LVU85
+ 341:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         /* high 16 bits */
+ 355              		.loc 1 341 18 is_stmt 0 view .LVU86
+ 356 00a0 1268     		ldr	r2, [r2]
+ 357              	.LVL20:
+ 343:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf += 17U;
+ 358              		.loc 1 343 9 is_stmt 1 view .LVU87
+ 343:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf += 17U;
+ 359              		.loc 1 343 11 is_stmt 0 view .LVU88
+ 360 00a2 1201     		lsls	r2, r2, #4
+ 361 00a4 1CD5     		bpl	.L12
+ 362              	.LVL21:
+ 344:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else if(15U == pllmf){
+ 363              		.loc 1 344 13 is_stmt 1 view .LVU89
+ 344:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else if(15U == pllmf){
+ 364              		.loc 1 344 19 is_stmt 0 view .LVU90
+ 365 00a6 1133     		adds	r3, r3, #17
+ 366              	.LVL22:
+ 367              	.L13:
+ 352:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         if(0U != pllsel){
+ 368              		.loc 1 352 9 is_stmt 1 view .LVU91
+ 352:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         if(0U != pllsel){
+ 369              		.loc 1 352 18 is_stmt 0 view .LVU92
+ 370 00a8 41F20402 		movw	r2, #4100
+ 371 00ac C4F20202 		movt	r2, 16386
+ 372 00b0 1268     		ldr	r2, [r2]
+ 373              	.LVL23:
+ 353:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             prediv = (GET_BITS(RCU_CFG1, 0, 3) + 1U);
+ 374              		.loc 1 353 9 is_stmt 1 view .LVU93
+ 353:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             prediv = (GET_BITS(RCU_CFG1, 0, 3) + 1U);
+ 375              		.loc 1 353 11 is_stmt 0 view .LVU94
+ 376 00b2 D203     		lsls	r2, r2, #15
+ 377 00b4 1AD5     		bpl	.L14
+ 378              	.LVL24:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 15
+
+
+ 354:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
+ 379              		.loc 1 354 13 is_stmt 1 view .LVU95
+ 354:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
+ 380              		.loc 1 354 23 is_stmt 0 view .LVU96
+ 381 00b6 41F22C02 		movw	r2, #4140
+ 382 00ba C4F20202 		movt	r2, 16386
+ 383 00be 1168     		ldr	r1, [r2]
+ 384 00c0 0F22     		movs	r2, #15
+ 385 00c2 1140     		ands	r1, r2
+ 354:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
+ 386              		.loc 1 354 20 view .LVU97
+ 387 00c4 0131     		adds	r1, r1, #1
+ 388              	.LVL25:
+ 355:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 389              		.loc 1 355 13 is_stmt 1 view .LVU98
+ 355:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 390              		.loc 1 355 44 is_stmt 0 view .LVU99
+ 391 00c6 41F20022 		movw	r2, #4608
+ 392 00ca C0F27A02 		movt	r2, 122
+ 393 00ce B2FBF1F2 		udiv	r2, r2, r1
+ 355:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 394              		.loc 1 355 54 view .LVU100
+ 395 00d2 5343     		muls	r3, r2
+ 396              	.LVL26:
+ 355:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 397              		.loc 1 355 29 view .LVU101
+ 398 00d4 40F20002 		movw	r2, #:lower16:.LANCHOR1
+ 399 00d8 C0F20002 		movt	r2, #:upper16:.LANCHOR1
+ 400 00dc 1360     		str	r3, [r2]
+ 401 00de BAE7     		b	.L11
+ 402              	.LVL27:
+ 403              	.L12:
+ 345:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf = 16U;
+ 404              		.loc 1 345 15 is_stmt 1 view .LVU102
+ 345:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****             pllmf = 16U;
+ 405              		.loc 1 345 17 is_stmt 0 view .LVU103
+ 406 00e0 0F2B     		cmp	r3, #15
+ 407 00e2 01D0     		beq	.L15
+ 348:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 408              		.loc 1 348 13 is_stmt 1 view .LVU104
+ 348:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 409              		.loc 1 348 19 is_stmt 0 view .LVU105
+ 410 00e4 0233     		adds	r3, r3, #2
+ 411              	.LVL28:
+ 348:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 412              		.loc 1 348 19 view .LVU106
+ 413 00e6 DFE7     		b	.L13
+ 414              	.L15:
+ 346:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 415              		.loc 1 346 19 view .LVU107
+ 416 00e8 1023     		movs	r3, #16
+ 417              	.LVL29:
+ 346:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }else{
+ 418              		.loc 1 346 19 view .LVU108
+ 419 00ea DDE7     		b	.L13
+ 420              	.LVL30:
+ 421              	.L14:
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 16
+
+
+ 357:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 422              		.loc 1 357 13 is_stmt 1 view .LVU109
+ 357:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 423              		.loc 1 357 50 is_stmt 0 view .LVU110
+ 424 00ec 5901     		lsls	r1, r3, #5
+ 425 00ee C91A     		subs	r1, r1, r3
+ 426 00f0 8A01     		lsls	r2, r1, #6
+ 427 00f2 521A     		subs	r2, r2, r1
+ 428 00f4 D200     		lsls	r2, r2, #3
+ 429 00f6 D318     		adds	r3, r2, r3
+ 430              	.LVL31:
+ 357:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 431              		.loc 1 357 50 view .LVU111
+ 432 00f8 1A02     		lsls	r2, r3, #8
+ 357:Drivers/CMSIS/Device/GD/GD32E23x/Source/system_gd32e23x.c ****         }
+ 433              		.loc 1 357 29 view .LVU112
+ 434 00fa 40F20003 		movw	r3, #:lower16:.LANCHOR1
+ 435 00fe C0F20003 		movt	r3, #:upper16:.LANCHOR1
+ 436 0102 1A60     		str	r2, [r3]
+ 437 0104 A7E7     		b	.L11
+ 438              		.cfi_endproc
+ 439              	.LFE69:
+ 441              		.global	SystemCoreClock
+ 442              		.section	.rodata
+ 443              		.align	2
+ 444              		.set	.LANCHOR0,. + 0
+ 445              	.LC0:
+ 446 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 446      00000000 
+ 446      01020304 
+ 446      06
+ 447 000d 070809   		.ascii	"\007\010\011"
+ 448              		.section	.data.SystemCoreClock,"aw"
+ 449              		.align	2
+ 450              		.set	.LANCHOR1,. + 0
+ 453              	SystemCoreClock:
+ 454 0000 00127A00 		.word	8000000
+ 455              		.text
+ 456              	.Letext0:
+ 457              		.file 2 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/machine/_defa
+ 458              		.file 3 "/Users/jgiles/projects/gcc-arm-none-eabi-10.3-2021.07/arm-none-eabi/include/sys/_stdint.h
+ 459              		.file 4 "Drivers/CMSIS/Device/GD/GD32E23x/Include/system_gd32e23x.h"
+ 460              		.file 5 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_dbg.h"
+ 461              		.file 6 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_rcu.h"
+ 462              		.file 7 "Drivers/GD32E23x_standard_peripheral/Include/gd32e23x_misc.h"
+ARM GAS  /var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_gd32e23x.c
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:16     .text.system_clock_8m_irc8m:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:23     .text.system_clock_8m_irc8m:0000000000000000 system_clock_8m_irc8m
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:67     .text.system_clock_config:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:73     .text.system_clock_config:0000000000000000 system_clock_config
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:94     .text.SystemInit:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:101    .text.SystemInit:0000000000000000 SystemInit
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:213    .text.SystemInit:00000000000000b4 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:219    .text.SystemCoreClockUpdate:0000000000000000 $t
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:226    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:444    .rodata:0000000000000000 .LANCHOR0
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:450    .data.SystemCoreClock:0000000000000000 .LANCHOR1
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:453    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:443    .rodata:0000000000000000 $d
+/var/folders/rv/zq8s_02j1dj4vjvr1mm5zl2r0000gn/T//cc8aH9aF.s:449    .data.SystemCoreClock:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+nvic_vector_table_set
